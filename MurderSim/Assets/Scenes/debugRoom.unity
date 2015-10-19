@@ -225,6 +225,21 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
+--- !u!114 &1007668958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1007668954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f71f800175354c479f951a57d23a081, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trustworthiness: 0
+  friendliness: 0
+  courageousness: 0
+  dangerousness: 0
 --- !u!1001 &1645344535
 Prefab:
   m_ObjectHideFlags: 0
@@ -404,4 +419,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textbox: {fileID: 0}
   speechHappening: 0
-  letterDelay: .100000001
+  letterDelay: .0500000007

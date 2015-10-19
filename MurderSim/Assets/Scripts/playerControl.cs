@@ -10,7 +10,7 @@ public class playerControl : MonoBehaviour {
     private ConversationScript conversationScript;
 
     
-    [SerializeField] private bool facingNPC;
+    [SerializeField] private GameObject facingNPC;
 
 	// Use this for initialization
 	void Start () {
@@ -18,23 +18,25 @@ public class playerControl : MonoBehaviour {
 
         box = GetComponent<BoxCollider2D>();
         lastDirection = "up";
-        facingNPC = false;
+        facingNPC = null;
 	}
 	
 	// Update is called once per frame
 	void Update () {
         checkCollisions();
         getInput();
-        Move();
+
+        if (!conversationScript.speechHappening)
+            Move();
     }
 
     void getInput()
     {
-        if (facingNPC)
+        if (facingNPC != null)
         {
             if (Input.GetKeyDown("space"))
             {
-                conversationScript.displayDebugText();
+				conversationScript.startConversationWith(facingNPC);
             }
         }
     }
@@ -81,11 +83,11 @@ public class playerControl : MonoBehaviour {
             if (hit.transform.name.Equals("Npc"))
             {
                 Debug.Log("Hit NPC");
-                facingNPC = true;
+                facingNPC = hit.transform.gameObject;
             }
         }
         else {
-            facingNPC = false;
+            facingNPC = null;
             conversationScript.speechHappening = false;
         }
     }
