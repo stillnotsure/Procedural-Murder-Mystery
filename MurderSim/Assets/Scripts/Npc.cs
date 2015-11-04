@@ -5,9 +5,12 @@ using System.Collections;
 public class Npc {
 
     public enum Gender { Male, Female };
-    public Family family;
+
     public string firstname, surname;
     public Gender gender;
+
+    [System.NonSerialized]
+    public Family family;
 
     public Npc(){
         family = null;
