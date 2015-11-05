@@ -43,6 +43,7 @@ public class PlotGenerator : MonoBehaviour {
     // Use this for initialization
     [ContextMenu("Reset")]
     void Start () {
+
         families = new List<Family>();
         npcs = new List<Npc>();
 
@@ -89,6 +90,21 @@ public class PlotGenerator : MonoBehaviour {
                 motive = Motives.inheritance;   //Killing a family member for the sake of gaining inheritance, either from the victim or from someone who would've otherwise given money to that victim
                 break;
         }
+
+        //Check that there is a suitable sibling pair for the inheritance plot
+        if (motive == Motives.inheritance) {
+            Debug.Log("checking if there are siblings for an inheritance plot");
+            if (findSiblings()[0] != null) {
+                Debug.Log("Found suitable siblings for inheritance plot");
+                motive = Motives.inheritance;
+            }
+            else {
+                Debug.Log("No suitable siblings found for the inheritance plot, choosing new motive");
+                selectMotive();
+            }
+
+        }
+
     }
 
     void prepareMotive() {
@@ -105,7 +121,35 @@ public class PlotGenerator : MonoBehaviour {
             //Make murderer hate victim
             relationships[m,v] = -3;
         }
+
+        //inheritance for now just means an NPC killing their sibling to inherit from their (wealthy) parents later. Could later include murdering a spouse
+        else if (motive == Motives.inheritance) {
+            Npc[] siblings = findSiblings();
+            murderer = siblings[0];
+            victim = siblings[1];
+        }
        
+    }
+
+    Npc[] findSiblings() {
+        //Find a family with two children
+        int a = -1;
+        int b = -1;
+        Npc[] siblings = new Npc[2];
+
+        foreach (Family family in families) {
+
+            if (family.children.Count > 1) {
+                a = Random.Range(0, family.children.Count);
+                while (b == -1 || b == a) {
+                    b = Random.Range(0, family.children.Count);
+                }
+                siblings[0] = family.children[a];
+                siblings[1] = family.children[b];
+                break;
+            }
+        }
+        return siblings;
     }
 
     void generateCharacters(){
@@ -124,7 +168,7 @@ public class PlotGenerator : MonoBehaviour {
                     relationships[i, x] = Random.Range(-3, 4);
                     relationships[i, x] = Random.Range(-3, 4);
                 }
-                Debug.Log(npcs[i].firstname + " " + npcs[i].surname + " an attitude of " + relationships[i, x] + " towards " + npcs[x].firstname + npcs[x].surname);
+                //Debug.Log(npcs[i].firstname + " " + npcs[i].surname + " an attitude of " + relationships[i, x] + " towards " + npcs[x].firstname + npcs[x].surname);
             }
         }
     }
