@@ -102,9 +102,7 @@ public class PlotGenerator : MonoBehaviour {
                 Debug.Log("No suitable siblings found for the inheritance plot, choosing new motive");
                 selectMotive();
             }
-
         }
-
     }
 
     void prepareMotive() {
@@ -128,7 +126,69 @@ public class PlotGenerator : MonoBehaviour {
             murderer = siblings[0];
             victim = siblings[1];
         }
-       
+
+        else if (motive == Motives.loverRevenge)
+        {
+            murderer = npcs[Random.Range(0, npcs.Count)];
+            victim = findPotentialLover(murderer);
+
+            //Now manipulate the m & v's affections for eachother
+            int m = npcs.IndexOf(murderer);
+            int v = npcs.IndexOf(victim);
+            relationships[m, v] = 3;
+            relationships[v, m] = Random.Range(-3, 3); //Set to anything OTHER than love
+        }
+
+        else if (motive == Motives.jealousLove) {
+            //Randomly choose murderer
+            //Find opposite gendered counterpart, same as with lover revenge
+            //Give THEM a randomly chosen gendered counterpart and make them the victim
+            murderer = npcs[Random.Range(0, npcs.Count)];
+            Npc stalkee = findPotentialLover(murderer);
+            victim = findPotentialLover(stalkee);
+
+            Debug.Log(murderer.firstname + " killed " + victim.firstname + " because they were both in love with " + stalkee.firstname);
+
+            //Now manipulate the m & v's affections for eachother
+            int m = npcs.IndexOf(murderer);
+            int s = npcs.IndexOf(stalkee);
+            int v = npcs.IndexOf(victim);
+
+            relationships[m, s] = 3;
+            relationships[s, m] = Random.Range(-3, 3); //Set to anything OTHER than love
+            relationships[s, v] = 3;
+            relationships[v, m] = Random.Range(-3, 3); //Set to anything other than love again
+            relationships[m, v] = Random.Range(-3, 0); //Make the murderer at least dislike the victim
+        }
+    }
+
+    Npc findPotentialLover(Npc seeker) {
+        List<Npc> potentialLovers = new List<Npc>();
+        Npc lover = null;
+
+        foreach (Npc npc in npcs) {
+            if (npc != murderer && npc != seeker && npc.gender != seeker.gender && npc.family != seeker.family) {
+                potentialLovers.Add(npc);
+            }
+        }
+
+        //If none in the right gender exist outside the seeker's family, then create one
+        if (potentialLovers.Count == 0) {
+            //Find a random NPC not in the seeker's family and not the possible murderer and make them the opposite gender
+            while (lover == null || lover == seeker || lover.family == seeker.family || lover == murderer) {
+                lover = npcs[Random.Range(0, npcs.Count)];
+            }
+            if (lover.gender == Npc.Gender.Female)
+                lover.gender = Npc.Gender.Male;
+            else
+                lover.gender = Npc.Gender.Female;
+        }
+        //Otherwise, select one randomly from the potentials
+        else {
+            lover = potentialLovers[Random.Range(0, potentialLovers.Count)];
+        }
+
+        return lover;
     }
 
     Npc[] findSiblings() {
