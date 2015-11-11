@@ -10,6 +10,8 @@ public class Family
     public Npc wife;
     public List<Npc> children;
 
+
+
     public Family(string name)
     {
         family_name = name;
@@ -19,6 +21,8 @@ public class Family
 }
 
 public class PlotGenerator : MonoBehaviour {
+
+    private DebugRoomDisplay display;
 
     public int number_of_characters = 8;
     public int max_families = 2;
@@ -43,7 +47,7 @@ public class PlotGenerator : MonoBehaviour {
     // Use this for initialization
     [ContextMenu("Reset")]
     void Start () {
-
+        display = GetComponent<DebugRoomDisplay>();
         families = new List<Family>();
         npcs = new List<Npc>();
 

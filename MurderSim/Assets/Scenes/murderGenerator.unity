@@ -180,6 +180,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1723004281}
   - 114: {fileID: 1723004280}
+  - 114: {fileID: 1723004282}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -198,218 +199,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bef0bc572f641814f8a65dc140e56c71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  number_of_characters: 8
+  max_families: 2
+  max_family_size: 4
   motive: 0
   victim:
-    family:
-      family_name: 
-      family_members: []
-      husband:
-        family:
-          family_name: 
-          family_members: []
-          husband:
-            family:
-              family_name: 
-              family_members: []
-              husband:
-                family:
-                  family_name: 
-                firstname: 
-                surname: 
-                gender: 0
-              wife:
-                family:
-                  family_name: 
-                firstname: 
-                surname: 
-                gender: 0
-              children: []
-            firstname: 
-            surname: 
-            gender: 0
-          wife:
-            family:
-              family_name: 
-              family_members: []
-              husband:
-                family:
-                  family_name: 
-                firstname: 
-                surname: 
-                gender: 0
-              wife:
-                family:
-                  family_name: 
-                firstname: 
-                surname: 
-                gender: 0
-              children: []
-            firstname: 
-            surname: 
-            gender: 0
-          children: []
-        firstname: 
-        surname: 
-        gender: 0
-      wife:
-        family:
-          family_name: 
-          family_members: []
-          husband:
-            family:
-              family_name: 
-              family_members: []
-              husband:
-                family:
-                  family_name: 
-                firstname: 
-                surname: 
-                gender: 0
-              wife:
-                family:
-                  family_name: 
-                firstname: 
-                surname: 
-                gender: 0
-              children: []
-            firstname: 
-            surname: 
-            gender: 0
-          wife:
-            family:
-              family_name: 
-              family_members: []
-              husband:
-                family:
-                  family_name: 
-                firstname: 
-                surname: 
-                gender: 0
-              wife:
-                family:
-                  family_name: 
-                firstname: 
-                surname: 
-                gender: 0
-              children: []
-            firstname: 
-            surname: 
-            gender: 0
-          children: []
-        firstname: 
-        surname: 
-        gender: 0
-      children: []
     firstname: 
     surname: 
     gender: 0
   murderer:
-    family:
-      family_name: 
-      family_members: []
-      husband:
-        family:
-          family_name: 
-          family_members: []
-          husband:
-            family:
-              family_name: 
-              family_members: []
-              husband:
-                family:
-                  family_name: 
-                firstname: 
-                surname: 
-                gender: 0
-              wife:
-                family:
-                  family_name: 
-                firstname: 
-                surname: 
-                gender: 0
-              children: []
-            firstname: 
-            surname: 
-            gender: 0
-          wife:
-            family:
-              family_name: 
-              family_members: []
-              husband:
-                family:
-                  family_name: 
-                firstname: 
-                surname: 
-                gender: 0
-              wife:
-                family:
-                  family_name: 
-                firstname: 
-                surname: 
-                gender: 0
-              children: []
-            firstname: 
-            surname: 
-            gender: 0
-          children: []
-        firstname: 
-        surname: 
-        gender: 0
-      wife:
-        family:
-          family_name: 
-          family_members: []
-          husband:
-            family:
-              family_name: 
-              family_members: []
-              husband:
-                family:
-                  family_name: 
-                firstname: 
-                surname: 
-                gender: 0
-              wife:
-                family:
-                  family_name: 
-                firstname: 
-                surname: 
-                gender: 0
-              children: []
-            firstname: 
-            surname: 
-            gender: 0
-          wife:
-            family:
-              family_name: 
-              family_members: []
-              husband:
-                family:
-                  family_name: 
-                firstname: 
-                surname: 
-                gender: 0
-              wife:
-                family:
-                  family_name: 
-                firstname: 
-                surname: 
-                gender: 0
-              children: []
-            firstname: 
-            surname: 
-            gender: 0
-          children: []
-        firstname: 
-        surname: 
-        gender: 0
-      children: []
     firstname: 
     surname: 
     gender: 0
-  number_of_characters: 8
-  max_families: 2
-  max_family_size: 4
   families: []
   npcs: []
 --- !u!4 &1723004281
@@ -424,3 +225,15 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!114 &1723004282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1723004279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e06945d320ca1134ba769e5bc039bd5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxLines: 8
