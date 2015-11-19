@@ -10,8 +10,6 @@ public class Family
     public Npc wife;
     public List<Npc> children;
 
-
-
     public Family(string name)
     {
         family_name = name;
@@ -23,6 +21,7 @@ public class Family
 public class PlotGenerator : MonoBehaviour {
 
     private DebugRoomDisplay display;
+    private Mansion mansion;
 
     public int number_of_characters = 8;
     public int max_families = 2;
@@ -48,6 +47,8 @@ public class PlotGenerator : MonoBehaviour {
     [ContextMenu("Reset")]
     void Start () {
         display = GetComponent<DebugRoomDisplay>();
+        mansion = GetComponent<Mansion>();
+        
         families = new List<Family>();
         npcs = new List<Npc>();
 
@@ -66,11 +67,14 @@ public class PlotGenerator : MonoBehaviour {
         if (motive == Motives.none) selectMotive();
         prepareMotive();
         createRelationships();
+        placeNPCs();
     }
 	
 	// Update is called once per frame
 	void Update () {
-	
+	    foreach (Npc npc in npcs) {
+            npc.act();
+        }
 	}
 
     void selectMotive()
@@ -113,11 +117,11 @@ public class PlotGenerator : MonoBehaviour {
         //revenge just requires one NPC to hate another
         if (motive == Motives.revenge){
             int m = Random.Range(0, number_of_characters);
-            murderer = npcs[m];
+            setMurderer(npcs[m]);
             int v = 0;
             while (victim == null || victim == murderer) {
                 v = Random.Range(0, number_of_characters);
-                victim = npcs[v];
+                setVictim(npcs[v]);
             }
 
             //Make murderer hate victim
@@ -127,14 +131,14 @@ public class PlotGenerator : MonoBehaviour {
         //inheritance for now just means an NPC killing their sibling to inherit from their (wealthy) parents later. Could later include murdering a spouse
         else if (motive == Motives.inheritance) {
             Npc[] siblings = findSiblings();
-            murderer = siblings[0];
-            victim = siblings[1];
+            setMurderer(siblings[0]);
+            setVictim(siblings[1]);
         }
 
         else if (motive == Motives.loverRevenge)
         {
-            murderer = npcs[Random.Range(0, npcs.Count)];
-            victim = findPotentialLover(murderer);
+            setMurderer(npcs[Random.Range(0, npcs.Count)]);
+            setVictim(findPotentialLover(murderer));
 
             //Now manipulate the m & v's affections for eachother
             int m = npcs.IndexOf(murderer);
@@ -147,9 +151,9 @@ public class PlotGenerator : MonoBehaviour {
             //Randomly choose murderer
             //Find opposite gendered counterpart, same as with lover revenge
             //Give THEM a randomly chosen gendered counterpart and make them the victim
-            murderer = npcs[Random.Range(0, npcs.Count)];
+            setMurderer(npcs[Random.Range(0, npcs.Count)]);
             Npc stalkee = findPotentialLover(murderer);
-            victim = findPotentialLover(stalkee);
+            setVictim(findPotentialLover(stalkee));
 
             Debug.Log(murderer.firstname + " killed " + victim.firstname + " because they were both in love with " + stalkee.firstname);
 
@@ -214,6 +218,16 @@ public class PlotGenerator : MonoBehaviour {
             }
         }
         return siblings;
+    }
+
+    void setMurderer(Npc npc) {
+        npc.isMurderer = true;
+        murderer = npc;
+    }
+
+    void setVictim(Npc npc) {
+        npc.isVictim = true;
+        victim = npc;
     }
 
     void generateCharacters(){
@@ -365,7 +379,14 @@ public class PlotGenerator : MonoBehaviour {
             }
         }
     }
-
+    
+    void placeNPCs() {
+        foreach (Npc npc in npcs) {
+            int r = Random.Range(0, mansion.rooms.Count);
+            npc.currentRoom = mansion.rooms[r];
+            mansion.rooms[r].npcs.Add(npc);
+        }
+    }
     void loadNames()
     {
         firstnames_m = new List<string> {

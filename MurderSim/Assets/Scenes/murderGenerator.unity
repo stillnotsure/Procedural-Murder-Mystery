@@ -181,6 +181,7 @@ GameObject:
   - 4: {fileID: 1723004281}
   - 114: {fileID: 1723004280}
   - 114: {fileID: 1723004282}
+  - 114: {fileID: 1723004283}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -207,10 +208,16 @@ MonoBehaviour:
     firstname: 
     surname: 
     gender: 0
+    isMurderer: 0
+    isVictim: 0
+    isAlive: 1
   murderer:
     firstname: 
     surname: 
     gender: 0
+    isMurderer: 0
+    isVictim: 0
+    isAlive: 1
   families: []
   npcs: []
 --- !u!4 &1723004281
@@ -236,4 +243,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e06945d320ca1134ba769e5bc039bd5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxLines: 8
+--- !u!114 &1723004283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1723004279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b49fefaf40bdbab428b82222a8993d4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rooms: []
+  entranceHall:
+    roomName: 
+    npcs: []
+    neighbouringRooms: []
+  eastHall:
+    roomName: 
+    npcs: []
+    neighbouringRooms: []
+  westHall:
+    roomName: 
+    npcs: []
+    neighbouringRooms: []
+  diningRoom:
+    roomName: 
+    npcs: []
+    neighbouringRooms: []
+  study:
+    roomName: 
+    npcs: []
+    neighbouringRooms: []
+  kitchen:
+    roomName: 
+    npcs: []
+    neighbouringRooms: []
+  livingRoom:
+    roomName: 
+    npcs: []
+    neighbouringRooms: []
+  eastWashroom:
+    roomName: 
+    npcs: []
+    neighbouringRooms: []
+  westWashroom:
+    roomName: 
+    npcs: []
+    neighbouringRooms: []
+  sewingRoom:
+    roomName: 
+    npcs: []
+    neighbouringRooms: []
+  utilityCloset:
+    roomName: 
+    npcs: []
+    neighbouringRooms: []
