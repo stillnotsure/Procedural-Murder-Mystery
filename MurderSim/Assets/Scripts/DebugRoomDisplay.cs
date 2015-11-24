@@ -30,7 +30,6 @@ public class DebugRoomDisplay : MonoBehaviour {
             NPCLog log = new NPCLog(plotGenerator.npcs[i], rect);
             logs.Add(log);
             plotGenerator.npcs[i].log = log;
-            plotGenerator.npcs[i].initLog();
         }
     }
 
@@ -55,7 +54,7 @@ public class NPCLog {
     public Rect rect;
     public Rect nameRect;
     public Npc npc;
-    public int maxLines = 8;
+    public int maxLines = 9;
     private Queue<string> queue = new Queue<string>();
     public string Mytext = "";
 
@@ -83,7 +82,7 @@ public class NPCLog {
 
         Mytext = "";
         foreach (string st in queue)
-            Mytext = Mytext + st + "\n";
+            Mytext = Mytext + st + "\n\n";
     }
 
 }

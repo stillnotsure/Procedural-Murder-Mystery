@@ -182,8 +182,11 @@ GameObject:
   - 114: {fileID: 1723004280}
   - 114: {fileID: 1723004282}
   - 114: {fileID: 1723004283}
+  - 114: {fileID: 1723004284}
+  - 114: {fileID: 1723004285}
+  - 82: {fileID: 1723004286}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -204,20 +207,8 @@ MonoBehaviour:
   max_families: 2
   max_family_size: 4
   motive: 0
-  victim:
-    firstname: 
-    surname: 
-    gender: 0
-    isMurderer: 0
-    isVictim: 0
-    isAlive: 1
-  murderer:
-    firstname: 
-    surname: 
-    gender: 0
-    isMurderer: 0
-    isVictim: 0
-    isAlive: 1
+  victim: {fileID: 0}
+  murderer: {fileID: 0}
   families: []
   npcs: []
 --- !u!4 &1723004281
@@ -255,47 +246,100 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rooms: []
-  entranceHall:
-    roomName: 
-    npcs: []
-    neighbouringRooms: []
-  eastHall:
-    roomName: 
-    npcs: []
-    neighbouringRooms: []
-  westHall:
-    roomName: 
-    npcs: []
-    neighbouringRooms: []
-  diningRoom:
-    roomName: 
-    npcs: []
-    neighbouringRooms: []
-  study:
-    roomName: 
-    npcs: []
-    neighbouringRooms: []
-  kitchen:
-    roomName: 
-    npcs: []
-    neighbouringRooms: []
-  livingRoom:
-    roomName: 
-    npcs: []
-    neighbouringRooms: []
-  eastWashroom:
-    roomName: 
-    npcs: []
-    neighbouringRooms: []
-  westWashroom:
-    roomName: 
-    npcs: []
-    neighbouringRooms: []
-  sewingRoom:
-    roomName: 
-    npcs: []
-    neighbouringRooms: []
-  utilityCloset:
-    roomName: 
-    npcs: []
-    neighbouringRooms: []
+--- !u!114 &1723004284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1723004279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 020dfb4fb27758a46804004e62040a8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemPrefabs: []
+--- !u!114 &1723004285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1723004279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 219cd3699c5b7904ba0b1ae311cc5ed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  efxSource: {fileID: 1723004286}
+  musicSource: {fileID: 1723004286}
+  lowPitchRange: .949999988
+  highPitchRange: 1.04999995
+--- !u!82 &1723004286
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1723004279}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d0ed92d493a7cc94fac4ff483e28a669, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 1
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2

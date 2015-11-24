@@ -20,6 +20,9 @@ public class Family
 
 public class PlotGenerator : MonoBehaviour {
 
+    //todo: turn the neccesary variables static so there won't be hundreds of PG references floating around
+
+    private ItemManager itemManager;
     private DebugRoomDisplay display;
     private Mansion mansion;
 
@@ -38,7 +41,6 @@ public class PlotGenerator : MonoBehaviour {
     private readonly int nullRelationship = 100;
 
     //To be removed once a much better solution is found...
-    //Change these to lists
     private List<string> firstnames_m;
     private List<string> firstnames_f;
     private List<string> surnames;
@@ -46,9 +48,11 @@ public class PlotGenerator : MonoBehaviour {
     // Use this for initialization
     [ContextMenu("Reset")]
     void Start () {
+        itemManager = GetComponent<ItemManager>();
         display = GetComponent<DebugRoomDisplay>();
         mansion = GetComponent<Mansion>();
-        
+        mansion.setupRooms();
+
         families = new List<Family>();
         npcs = new List<Npc>();
 
@@ -68,14 +72,18 @@ public class PlotGenerator : MonoBehaviour {
         prepareMotive();
         createRelationships();
         placeNPCs();
+        placeWeaponAtMurderer();
+        
     }
 	
 	// Update is called once per frame
 	void Update () {
-	    foreach (Npc npc in npcs) {
-            npc.act();
-        }
-	}
+
+    }
+    
+    void placeWeaponAtMurderer() {
+        itemManager.createItem(0, murderer.currentRoom);
+    }
 
     void selectMotive()
     {
@@ -252,7 +260,8 @@ public class PlotGenerator : MonoBehaviour {
     }
 
     Npc newCharacter() {
-        Npc newNPC = new Npc();
+        GameObject npcGameobject = (GameObject)Instantiate(Resources.Load("NPC Placeholder"));
+        Npc newNPC = npcGameobject.GetComponent<Npc>();
 
         //Assign gender
         int r = Random.Range(0, 2);
@@ -270,6 +279,7 @@ public class PlotGenerator : MonoBehaviour {
             firstnames_f.RemoveAt(r);
         }
 
+        npcGameobject.name = newNPC.firstname;
         return newNPC;
     }
 
@@ -306,7 +316,7 @@ public class PlotGenerator : MonoBehaviour {
             }
 
             //If there is room in an existing family, try to join it
-            if (npc.surname == null) {
+            if (npc.surname == "") {
                 foreach (Family family in families) {
                     //If the family has room for children, or is missing a husband or wife and this NPC is the right gender, add to family
                     if (family.family_members.Count < max_family_size && ((family.husband != null && family.wife != null) || (npc.gender == Npc.Gender.Male && family.husband == null) || (npc.gender == Npc.Gender.Female && family.wife == null)) ) {
@@ -332,7 +342,7 @@ public class PlotGenerator : MonoBehaviour {
             }
 
             //If not joined a family by this point, take a random surname
-            if (npc.surname == null) {
+            if (npc.surname == "") {
                 int i = Random.Range(0, surnames.Count);
                 string randomSurname = surnames[i];
                 surnames.RemoveAt(i);
@@ -387,6 +397,7 @@ public class PlotGenerator : MonoBehaviour {
             mansion.rooms[r].npcs.Add(npc);
         }
     }
+
     void loadNames()
     {
         firstnames_m = new List<string> {

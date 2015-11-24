@@ -4,13 +4,8 @@ using System.Collections.Generic;
 public class Mansion : MonoBehaviour {
 
     public List<Room> rooms;
-
-    // Use this for initialization
-    void Start () {
-        setupRooms();
-	}
 	
-    void setupRooms() {
+    public void setupRooms() {
         Room entranceHall = new Room("Entrance Hall");
         Room eastHall = (new Room("East Hall"));
         Room westHall = (new Room("West Hall"));
@@ -26,8 +21,8 @@ public class Mansion : MonoBehaviour {
         rooms.AddRange(new List<Room> { entranceHall, eastHall, westHall, diningRoom, study, kitchen, livingRoom, eastWashroom, westWashroom, sewingRoom, utilityCloset});
 
         entranceHall.setNeighbouringRooms(new List<Room> {diningRoom, eastHall, westHall });
-        eastHall.setNeighbouringRooms(new List<Room> { entranceHall, study, eastWashroom, livingRoom});
-        westHall.setNeighbouringRooms(new List<Room> {entranceHall, sewingRoom, kitchen });
+        eastHall.setNeighbouringRooms(new List<Room> { entranceHall, study, eastWashroom, livingRoom, utilityCloset});
+        westHall.setNeighbouringRooms(new List<Room> {entranceHall, sewingRoom, kitchen, westWashroom });
         diningRoom.setNeighbouringRooms(new List<Room> {entranceHall, kitchen });
         study.setNeighbouringRooms(new List<Room> {eastHall});
         kitchen.setNeighbouringRooms(new List<Room> {diningRoom, westHall});
@@ -50,18 +45,18 @@ public class Mansion : MonoBehaviour {
 public class Room {     
     public string roomName;
     public List<Npc> npcs;
-    //public List<Item> items;
+    public List<Item> items;
     public List<Room> neighbouringRooms;
 
     public Room(string roomName) {
         this.roomName = roomName;
         neighbouringRooms = new List<Room>();
         npcs = new List<Npc>();
+        items = new List<Item>();
     }
 
     public void setNeighbouringRooms(List<Room> rooms) {
         foreach (Room room in rooms) {
-            Debug.Log("adding " + room.roomName + " as a neighbouring room for " + roomName);
             neighbouringRooms.Add(room);
         }
     }
