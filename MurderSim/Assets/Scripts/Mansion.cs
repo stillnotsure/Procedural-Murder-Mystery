@@ -45,14 +45,14 @@ public class Mansion : MonoBehaviour {
 public class Room {     
     public string roomName;
     public List<Npc> npcs;
-    public List<Item> items;
+    public List<GameObject> items;
     public List<Room> neighbouringRooms;
 
     public Room(string roomName) {
         this.roomName = roomName;
         neighbouringRooms = new List<Room>();
         npcs = new List<Npc>();
-        items = new List<Item>();
+        items = new List<GameObject>();
     }
 
     public void setNeighbouringRooms(List<Room> rooms) {

@@ -257,7 +257,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 020dfb4fb27758a46804004e62040a8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemPrefabs: []
+  itemsPool: []
+  itemPrefabs:
+  - {fileID: 110612, guid: e0b6340d1f07a654abbf46423beaf5cb, type: 2}
+  - {fileID: 151332, guid: c89d18b4e1dfc064e9ba2a6b08061c50, type: 2}
+  - {fileID: 122574, guid: 07ede85c03619f04cba5348ec4bd2948, type: 2}
 --- !u!114 &1723004285
 MonoBehaviour:
   m_ObjectHideFlags: 0

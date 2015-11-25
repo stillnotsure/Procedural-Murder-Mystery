@@ -57,7 +57,7 @@ public class Npc : MonoBehaviour{
     }
 
     private void pickupItem(Item item) {
-        item.room.items.Remove(item);
+        item.room.items.Remove(item.gameObject);
         item.room = null;
         item.held = true;
         inventory.Add(item);
@@ -69,7 +69,7 @@ public class Npc : MonoBehaviour{
         inventory.Remove(item);
         item.held = false;
         item.room = currentRoom;
-        currentRoom.items.Add(item);
+        currentRoom.items.Add(item.gameObject);
     }
 
     private bool victimInRoom() {
@@ -85,8 +85,8 @@ public class Npc : MonoBehaviour{
 
     private void seekVictim() {
         //TODO - low - pathfinding for victim search
-
         List<Room> neighbouringRooms = new List<Room>(currentRoom.neighbouringRooms);
+
         if (lastRoom != null && neighbouringRooms.Count > 1) neighbouringRooms.Remove(lastRoom);   //Makes it so they won't check the room they were just in
 
         int r = Random.Range(0, neighbouringRooms.Count);
@@ -96,10 +96,10 @@ public class Npc : MonoBehaviour{
     private void seekWeapon() {
         bool foundWeapon = false;
 
-        foreach (Item item in currentRoom.items) {
-            if (item is Weapon) {
+        foreach (GameObject item in currentRoom.items) {
+            if (item.GetComponent<Item>() is Weapon) {
                 foundWeapon = true;
-                pickupItem(item);
+                pickupItem(item.GetComponent<Item>());
                 hasWeapon = true;
                 break;
             }

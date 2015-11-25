@@ -54,7 +54,7 @@ public class NPCLog {
     public Rect rect;
     public Rect nameRect;
     public Npc npc;
-    public int maxLines = 9;
+    public int maxLines = 7;
     private Queue<string> queue = new Queue<string>();
     public string Mytext = "";
 
