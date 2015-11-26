@@ -209,6 +209,7 @@ MonoBehaviour:
   motive: 0
   victim: {fileID: 0}
   murderer: {fileID: 0}
+  murderWeapon: {fileID: 0}
   families: []
   npcs: []
 --- !u!4 &1723004281

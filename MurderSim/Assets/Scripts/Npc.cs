@@ -63,6 +63,7 @@ public class Npc : MonoBehaviour{
         inventory.Add(item);
         
         log.NewActivity("Picked up " + item.name);
+        Timeline.addEvent(new PickupItem(Time.time, this, currentRoom, item));
     }
 
     private void dropItem(Item item) {
@@ -70,6 +71,7 @@ public class Npc : MonoBehaviour{
         item.held = false;
         item.room = currentRoom;
         currentRoom.items.Add(item.gameObject);
+        Timeline.addEvent(new PickupItem(Time.time, this, currentRoom, item));
     }
 
     private bool victimInRoom() {
@@ -117,7 +119,9 @@ public class Npc : MonoBehaviour{
     //TODO - high - Create permanent event for killings, including time, location, weapon
     public void kill(Npc npc, Weapon weapon){
         log.NewActivity("Killed " + npc.firstname + " " + npc.surname + " with a " + weapon.name);
+        Timeline.addEvent(new Murder(Time.time, this, npc, currentRoom, weapon));
         npc.die();
+        pg.murderWeapon = weapon;
         SoundManager.instance.PlayMusic();
     }
 
@@ -131,6 +135,7 @@ public class Npc : MonoBehaviour{
             lastRoom = currentRoom;
         }
         room.npcs.Add(this);
+        Timeline.addEvent(new SwitchRooms(Time.time, this, currentRoom, room));
         currentRoom = room;
         log.NewActivity("Moved to " + currentRoom.roomName);
     }

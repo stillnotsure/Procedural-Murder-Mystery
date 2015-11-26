@@ -4,7 +4,7 @@ using System;
 
 public interface Event {
 
-    Time time { get; set; }
+    float time { get; set; }
 
     string toString();
 
@@ -12,68 +12,98 @@ public interface Event {
 
 public class SwitchRooms : Event {
 
-    public Time time { get; set; }
+    public float time { get; set; }
     public Npc npc;
     public Room origRoom;
     public Room newRoom;
 
-    public SwitchRooms(Time time, Npc npc, Room origRoom, Room newRoom) {
+    public SwitchRooms(float time, Npc npc, Room origRoom, Room newRoom) {
         this.time = time; this.npc = npc; this.origRoom = origRoom; this.newRoom = newRoom;
     }
 
     public string toString() {
-        return String.Format("{0} moved from {1} to {2} ", npc, origRoom, newRoom);
+        return String.Format("{0} moved from {1} to {2} ", npc.name, origRoom.roomName, newRoom.roomName);
     }
 }
 
 public class Encounter : Event {
 
-    public Time time { get; set; }
+    public float time { get; set; }
     public Npc npc1;
     public Npc npc2;
     public Room room;
 
-    public Encounter(Time time, Npc npc1, Npc npc2, Room room) {
+    public Encounter(float time, Npc npc1, Npc npc2, Room room) {
         this.time = time; this.npc1 = npc1; this.npc2 = npc2; this.room = room;
     }
 
     public string toString() {
-        return String.Format("{0} encountered {1} in {2} ", npc1, npc2, room);
+        return String.Format("{0} encountered {1} in {2} ", npc1.firstname, npc2.firstname, room.roomName);
     }
 }
 
 public class Murder : Event {
 
-    public Time time { get; set; }
+    public float time { get; set; }
     public Npc npc1;
     public Npc npc2;
     public Room room;
     public Weapon weapon;
 
-    public Murder(Time time, Npc npc1, Npc npc2, Room room, Weapon weapon) {
+    public Murder(float time, Npc npc1, Npc npc2, Room room, Weapon weapon) {
         this.time = time; this.npc1 = npc1; this.npc2 = npc2; this.room = room; this.weapon = weapon;
     }
 
     public string toString() {
-        return String.Format("{0} murdererd {1} in {2} using a {3} ", npc1, npc2, room, weapon);
+        return String.Format("{0} murderered {1} in {2} using a {3} ", npc1.firstname, npc2.firstname, room.roomName, weapon.name);
     }
 }
 
-public class Timeline : MonoBehaviour {
+public class PickupItem : Event {
 
-    public List<Event> events;
+    public float time { get; set; }
+    public Npc npc;
+    public Room room;
+    public Item item;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public PickupItem(float time, Npc npc, Room room, Item item) {
+        this.time = time; this.npc = npc; this.room = room; this.item = item;
+    }
 
-    void addEvent(Event e){
+    public string toString() {
+        return String.Format("{0} picked up {1} in {2}", npc.firstname, item.name, room.roomName);
+    }
+
+}
+
+public class DropItem : Event {
+
+    public float time { get; set; }
+    public Npc npc;
+    public Room room;
+    public Item item;
+
+    public DropItem(float time, Npc npc, Room room, Item item) {
+        this.time = time; this.npc = npc; this.room = room; this.item = item;
+    }
+
+    public string toString() {
+        return String.Format("{0} dropped {1} in {2}", npc.firstname, item.name, room.roomName);
+    }
+
+}
+
+public static class Timeline {
+
+    public static List<Event> events;
+
+    public static void addEvent(Event e){
+        events = new List<Event>();
         events.Add(e);
+        printLast();
+    }
+
+    public static void printLast() {
+        Debug.Log(events[events.Count-1].toString());
     }
 }

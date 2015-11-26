@@ -32,9 +32,11 @@ public class PlotGenerator : MonoBehaviour {
     public int max_families = 2;
     public int max_family_size = 3;
 
+    //Vars directly related to the murder
     public enum Motives {none, revenge, loverRevenge, jealousLove, inheritance}
     public Motives motive;
     public Npc victim, murderer;
+    public Weapon murderWeapon;
 
     public List<Family> families;
     public List<Npc> npcs;
@@ -68,6 +70,7 @@ public class PlotGenerator : MonoBehaviour {
 
         victim = null; murderer = null;
 
+
         loadNames();
         generateCharacters();
         createFamilies();
@@ -77,7 +80,6 @@ public class PlotGenerator : MonoBehaviour {
         placeNPCs();
         //placeWeaponAtMurderer();
         distributeWeapons();
-        
     }
 	
 	// Update is called once per frame
