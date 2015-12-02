@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: de50fc6cf12c3434791a0abe8551f0f1
+labels:
+- SpriteTile
+- sprite
+- tile
+- grid
+- 2D
+- tileset
+- engine
+TextScriptImporter:
+  userData: 

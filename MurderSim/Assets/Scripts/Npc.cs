@@ -17,7 +17,9 @@ public class Npc : MonoBehaviour{
     public bool isAlive = true;
 
     public List<Item> inventory;
+
     private bool hasWeapon = false;
+    private bool hasMurderWeapon = false;
 
     [System.NonSerialized]
     public Room currentRoom;
@@ -38,22 +40,41 @@ public class Npc : MonoBehaviour{
     }
 
     public void act() {
-        //If Murderer
-        if (isMurderer) {
-            if (pg.victim.GetComponent<Npc>().isAlive) {
-                if (hasWeapon) {
-                    log.NewActivity("Looking for " + pg.victim.GetComponent<Npc>().firstname);
-                    if (!victimInRoom()) seekVictim();
-                    else kill(pg.victim, randomWeapon());
 
-                } else {
-                    log.NewActivity("Looking for a weapon");
-                    seekWeapon();
+        if (isAlive) {
+            //If Murderer
+            if (isMurderer) {
+                if (pg.victim.GetComponent<Npc>().isAlive) {
+                    if (hasWeapon) {
+                        log.NewActivity("Looking for " + pg.victim.GetComponent<Npc>().firstname);
+                        if (!victimInRoom()) seekVictim();
+                        else kill(pg.victim, randomWeapon());
+
+                    }
+                    else {
+                        log.NewActivity("Looking for a weapon");
+                        seekWeapon();
+                    }
+                }
+                else {
+                    //If already killed the victim
+                    if (hasMurderWeapon) {
+                        hideWeapon();
+                    }
+                }
+            }
+
+            //If not murderer
+            else {
+                //Random chance to meander
+                float r = Random.Range(0f, 1f);
+
+                if (r > 0.8f) {
+                    moveToRandomRoom();
                 }
             }
         }
 
-        //If not murderer
     }
 
     private void pickupItem(Item item) {
@@ -71,6 +92,10 @@ public class Npc : MonoBehaviour{
         item.held = false;
         item.room = currentRoom;
         currentRoom.items.Add(item.gameObject);
+        if (item = pg.murderWeapon)
+            hasMurderWeapon = false;
+
+        log.NewActivity("Dropped " + item.name);
         Timeline.addEvent(new PickupItem(Time.time, this, currentRoom, item));
     }
 
@@ -108,25 +133,43 @@ public class Npc : MonoBehaviour{
         }
 
         if (!foundWeapon) {
-            //Select a room to move into randomly
             //TODO - v. low - pathfinding for weapon search
-            int r = Random.Range(0, currentRoom.neighbouringRooms.Count);
-            enterRoom(currentRoom.neighbouringRooms[r]);
+            moveToRandomRoom();
         }
 
     }
 
-    //TODO - high - Create permanent event for killings, including time, location, weapon
+    //Conditions for hiding a weapon so far are only that there is no one to see it happen
+    private void hideWeapon() {
+        bool roomEmpty = true;
+        foreach (Npc npc in currentRoom.npcs) {
+            if (npc != this) roomEmpty = false;
+        }
+        //TODO - High - Hide weapon in containers etc. rather than just dropping
+        if (roomEmpty) {
+            dropItem(pg.murderWeapon);
+        }
+        else {
+            moveToRandomRoom();
+        }
+    }
+
     public void kill(Npc npc, Weapon weapon){
         log.NewActivity("Killed " + npc.firstname + " " + npc.surname + " with a " + weapon.name);
         Timeline.addEvent(new Murder(Time.time, this, npc, currentRoom, weapon));
         npc.die();
         pg.murderWeapon = weapon;
+        hasMurderWeapon = true;
         SoundManager.instance.PlayMusic();
     }
 
     public void die() {
         isAlive = false;
+    }
+
+    private void moveToRandomRoom() {
+        int r = Random.Range(0, currentRoom.neighbouringRooms.Count);
+        enterRoom(currentRoom.neighbouringRooms[r]);
     }
 
     public void enterRoom(Room room) {
@@ -138,6 +181,14 @@ public class Npc : MonoBehaviour{
         Timeline.addEvent(new SwitchRooms(Time.time, this, currentRoom, room));
         currentRoom = room;
         log.NewActivity("Moved to " + currentRoom.roomName);
+
+        //If there are any other NPCs, log that they were seen
+        foreach (Npc npc in currentRoom.npcs) {
+            if (npc != this) {
+                log.NewActivity("Saw " + npc.firstname);
+                Timeline.addEvent(new Encounter(Time.time, this, npc, currentRoom));
+            }
+        }
     }
 
     public Weapon randomWeapon() {

@@ -20,7 +20,6 @@ public class Family
 
 public class PlotGenerator : MonoBehaviour {
 
-
     //todo: turn the neccesary variables static so there won't be hundreds of PG references floating around
     private Transform npcHolder;
 
@@ -177,8 +176,6 @@ public class PlotGenerator : MonoBehaviour {
             setMurderer(npcs[Random.Range(0, npcs.Count)]);
             Npc stalkee = findPotentialLover(murderer);
             setVictim(findPotentialLover(stalkee));
-
-            Debug.Log(murderer.firstname + " killed " + victim.firstname + " because they were both in love with " + stalkee.firstname);
 
             //Now manipulate the m & v's affections for eachother
             int m = npcs.IndexOf(murderer);
