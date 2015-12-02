@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="46" height="46" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="castle" tilewidth="32" tileheight="32">
+  <image source="../Resources/Sprites/castle.png" trans="a4bbcc" width="256" height="608"/>
+ </tileset>
+ <tileset firstgid="153" name="stairs" tilewidth="32" tileheight="32">
+  <image source="../Resources/Sprites/stairs.png" trans="a4bbcc" width="256" height="352"/>
+ </tileset>
+ <tileset firstgid="241" name="victoria" tilewidth="32" tileheight="32">
+  <image source="../Resources/Sprites/victoria.png" trans="a4bbcc" width="352" height="160"/>
+ </tileset>
+ <layer name="Floors" width="46" height="46">
+  <data encoding="base64" compression="zlib">
+   eJztl0EOhCAMRbsw3sNxpa5mvP/dhAVJQ1QK1sLof8nfGfpiSkOJAHgv/UFaJ+XdCWMNvG2p4b1XJ/duwTv9vaZ3ijd5Dy4flvGCd2k/lnhPLjPLIvCW1r/T++vyY1kreOdS2t/S8ziabxNt7zOs31T/6K1Z66nevEf9bB6p/I7X8vazeSF9b+nMkCTXW6sGvOFtObu4o397rHT8fwAA7RHvaGFPa514Rwt7WuvA25Z4Jw57MQAAAAD02QDGChJJ
+  </data>
+ </layer>
+ <layer name="Walls" width="46" height="46">
+  <data encoding="base64" compression="zlib">
+   eJztmMlOw0AMhgcuREgVhUIplOV5AImlvAvceqCPxXJheSU44ohYsix77AlpFml+6VeriSf+MpnJOAlB1xZ4pLiI9OtaO+B98AHzFDwOf9e17XSb12lxl8d3wXuGJ1V8m9wn4FPmswFwa0LuI/Cx4Xnwc/M1VSht/+VeOVhWwc9N5yadj3yOWufQNDaOS/HWOi4UxnVyf4MvwJeVr8A/Qry2HiYkRlpHvK0p7iBwS/EebisPckv7SyHEx87nHW9tHc9DOjd/Tk+VeOt8nvFGXYNvwLcOxlTuQ/Cm4lmoN94x1eGm+wud+9ocwn5Ud+BF5ftI/gfwo/C/DjeXdS+0fppo/qUjhrbx+z7riBu1ZL+xsZVkcWtzKDb/rfUgqWlu7VgpTy1L18P5hsxQtqdyS+PmmUN4PFYT0lrQuj/SPcH6QHouxN5rRgI335s83FYOLV+sPtHeD9Bc2O6pZek+GMtBudrifgW/sZgn8DP4pSFu6bmgvdegubAdz/kJ/hLi3sEfJC6Wg3JJ3LwtCO1eeWvw1Frd6pu5m4nz9h0Kt1afpOzXqXu3ljslxzrk4cHcsZqg79/tpL217e9CqRoyt1QTpHzP6kLWe3ZflbnbVeZuV9Z3pKysrKysrL7qF+IvP0s=
+  </data>
+ </layer>
+ <layer name="Deco 1" width="46" height="46">
+  <data encoding="base64" compression="zlib">
+   eJzt1kEOgjAQhWGuJSTKSjyMSoK4gbjRcAVPovdzFiVBwgLMpNPK/yUvlDJpZ9OGJEGMbjPnQnFxz27iWzeqCUmrVOPbQ6nG0kaSumTGveDbVrKT5MZ9LLWXFJKDdSMrcJaUE2PE7yg5WTfxg1pyVVjnuXAe/6k/B5V1IzO8B+P+HDTu/eVhf8074+5xL607I7S9AAB61v5fDAAAAMTkA0B5Feg=
+  </data>
+ </layer>
+ <layer name="Deco 2" width="46" height="46">
+  <data encoding="base64" compression="zlib">
+   eJztzrENACAMA8FMCZmKmUlNR5UUd9LLrSMA6LCqXWX3kU/nWQAAAAAAAJjoAv1LAiI=
+  </data>
+ </layer>
+</map>

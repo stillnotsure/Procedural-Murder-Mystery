@@ -14,10 +14,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Floors
+  - Collisions
+  - Decoration 1
+  - Decoration 2
   - 
   - 
   - 
@@ -42,12 +42,24 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Wall
+  - name: Floors
     uniqueID: 533121115
+    locked: 0
+  - name: Collisions
+    uniqueID: 3832149459
+    locked: 0
+  - name: Decoration 1
+    uniqueID: 2154676861
+    locked: 0
+  - name: Decoration 2
+    uniqueID: 342485607
     locked: 0
   - name: Characters
     uniqueID: 3226123173
     locked: 0
   - name: GUI
     uniqueID: 749057171
+    locked: 0
+  - name: New Layer
+    uniqueID: 2252336593
     locked: 0
