@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--Tiled2Unity generated xml data-->
 <!--Do not modify by hand-->
-<!--Last exported: 05/12/2015 20:41:02-->
+<!--Last exported: 05/12/2015 22:24:16-->
 <Tiled2Unity version="0.9.13.1">
   <AssignMaterial mesh="mesh_[00]_[03]" material="interior" sortingLayerName="Background" sortingOrder="0" alphaColorKey="#a4bbcc" />
   <AssignMaterial mesh="mesh_[00]_[00]" material="castle" sortingLayerName="Background" sortingOrder="0" alphaColorKey="#a4bbcc" />
@@ -262,13 +262,13 @@
       </GameObject>
     </GameObject>
     <GameObject name="Rooms" x="0" y="0">
-      <GameObject name="EntranceHall" x="19.583999633789062" y="-23.039999008178711" rotation="0">
+      <GameObject name="Entrance Hall" x="19.583999633789062" y="-23.039999008178711" rotation="0">
         <BoxCollider2D width="9.216" height="8.063999" />
       </GameObject>
-      <GameObject name="LivingRoom" x="32.255996704101562" y="-11.519999504089356" rotation="0">
+      <GameObject name="Living Room" x="32.255996704101562" y="-11.519999504089356" rotation="0">
         <BoxCollider2D width="8.063999" height="8.063999" />
       </GameObject>
-      <GameObject name="EastWashroom" x="48.383998870849609" y="-9.2159996032714844" rotation="0">
+      <GameObject name="East Washroom" x="48.383998870849609" y="-9.2159996032714844" rotation="0">
         <BoxCollider2D width="3.45599985" height="5.75999975" />
       </GameObject>
       <GameObject name="Storage" x="48.383998870849609" y="-24.191999435424805" rotation="0">
@@ -277,21 +277,21 @@
       <GameObject name="Study" x="32.255996704101562" y="-35.711997985839844" rotation="0">
         <BoxCollider2D width="6.9119997" height="5.75999975" />
       </GameObject>
-      <GameObject name="DiningRoom" x="18.431999206542969" y="-5.7599997520446777" rotation="0">
+      <GameObject name="Dining Room" x="18.431999206542969" y="-5.7599997520446777" rotation="0">
         <BoxCollider2D width="11.5199995" height="11.5199995" />
       </GameObject>
       <GameObject name="Kitchen" x="9.2159996032714844" y="-4.6079998016357422" rotation="0">
         <BoxCollider2D width="6.9119997" height="8.063999" />
       </GameObject>
-      <GameObject name="WestWashroom" x="2.3039999008178711" y="-14.97599983215332" rotation="0">
+      <GameObject name="West Washroom" x="2.3039999008178711" y="-14.97599983215332" rotation="0">
         <BoxCollider2D width="4.608" height="4.608" />
       </GameObject>
-      <GameObject name="EastHall" x="31.1039981842041" y="-25.343997955322266" rotation="0">
+      <GameObject name="East Hall" x="31.1039981842041" y="-25.343997955322266" rotation="0">
         <PolygonCollider2D>
           <Path>11.5199995040894,0 11.5199995040894,16.1279983520508 14.9759998321533,16.1279983520508 14.9759998321533,-4.60799980163574 0,-4.60799980163574 0,0</Path>
         </PolygonCollider2D>
       </GameObject>
-      <GameObject name="WestHall" x="17.279998779296875" y="-29.951999664306641" rotation="0">
+      <GameObject name="West Hall" x="17.279998779296875" y="-29.951999664306641" rotation="0">
         <PolygonCollider2D>
           <Path>0,0 -14.9759998321533,0 -14.9759998321533,4.60799980163574 -6.91199970245361,4.60799980163574 -6.91199970245361,11.5199995040894 -2.30399990081787,11.5199995040894 -2.30399990081787,4.60799980163574 0,4.60799980163574</Path>
         </PolygonCollider2D>

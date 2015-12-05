@@ -32,10 +32,13 @@ public class PlotGenerator : MonoBehaviour {
     public int max_family_size = 3;
 
     //Vars directly related to the murder
+    public int timeSteps;
     public enum Motives {none, revenge, loverRevenge, jealousLove, inheritance}
     public Motives motive;
     public Npc victim, murderer;
     public Weapon murderWeapon;
+    public bool bodyFound;
+    public bool weaponHidden;
 
     public List<Family> families;
     public List<Npc> npcs;
@@ -77,15 +80,26 @@ public class PlotGenerator : MonoBehaviour {
         prepareMotive();
         createRelationships();
         placeNPCs();
-        //placeWeaponAtMurderer();
         distributeWeapons();
+        bodyFound = false;
+        weaponHidden = false;
+        timeSteps = 0;
     }
-	
-	// Update is called once per frame
-	void Update () {
 
+    void Update() {
+        if (!weaponHidden)
+            Debug.Log(timeSteps++);
     }
-    
+
+    public void bodyWasFound() {
+        bodyFound = true;
+    }
+
+    public void weaponWasHidden() {
+        weaponHidden = true;
+        gameObject.GetComponent<BoardManager>().placeNPCs();
+    }
+
     void placeWeaponAtMurderer() {
         itemManager.createItem(0, murderer.currentRoom);
     }

@@ -15,22 +15,20 @@ public class Mansion : MonoBehaviour {
         Room livingRoom = (new Room("Living Room"));
         Room eastWashroom = (new Room("East Washroom"));
         Room westWashroom = (new Room("West Washroom"));
-        Room sewingRoom = (new Room("Sewing Room"));
-        Room utilityCloset = (new Room("Utility Closet"));
+        Room storage = (new Room("Storage"));
 
-        rooms.AddRange(new List<Room> { entranceHall, eastHall, westHall, diningRoom, study, kitchen, livingRoom, eastWashroom, westWashroom, sewingRoom, utilityCloset});
+        rooms.AddRange(new List<Room> { entranceHall, eastHall, westHall, diningRoom, study, kitchen, livingRoom, eastWashroom, westWashroom, storage});
 
         entranceHall.setNeighbouringRooms(new List<Room> {diningRoom, eastHall, westHall });
-        eastHall.setNeighbouringRooms(new List<Room> { entranceHall, study, eastWashroom, livingRoom, utilityCloset});
-        westHall.setNeighbouringRooms(new List<Room> {entranceHall, sewingRoom, kitchen, westWashroom });
+        eastHall.setNeighbouringRooms(new List<Room> { entranceHall, study, eastWashroom, livingRoom, storage});
+        westHall.setNeighbouringRooms(new List<Room> {entranceHall, kitchen, westWashroom });
         diningRoom.setNeighbouringRooms(new List<Room> {entranceHall, kitchen });
         study.setNeighbouringRooms(new List<Room> {eastHall});
         kitchen.setNeighbouringRooms(new List<Room> {diningRoom, westHall});
         livingRoom.setNeighbouringRooms(new List<Room> {eastHall});
         eastWashroom.setNeighbouringRooms(new List<Room> {eastHall });
         westWashroom.setNeighbouringRooms(new List<Room> {westHall});
-        sewingRoom.setNeighbouringRooms(new List<Room> {westHall});
-        utilityCloset.setNeighbouringRooms(new List<Room> {eastHall});
+        storage.setNeighbouringRooms(new List<Room> {eastHall});
 
     }
 

@@ -515,18 +515,18 @@
   <object id="84" x="768" y="128" width="32" height="64"/>
  </objectgroup>
  <objectgroup name="Rooms">
-  <object id="106" name="EntranceHall" x="544" y="640" width="256" height="224"/>
-  <object id="107" name="LivingRoom" x="896" y="320" width="224" height="224"/>
-  <object id="108" name="EastWashroom" x="1344" y="256" width="96" height="160"/>
+  <object id="106" name="Entrance Hall" x="544" y="640" width="256" height="224"/>
+  <object id="107" name="Living Room" x="896" y="320" width="224" height="224"/>
+  <object id="108" name="East Washroom" x="1344" y="256" width="96" height="160"/>
   <object id="109" name="Storage" x="1344" y="672" width="96" height="128"/>
   <object id="110" name="Study" x="896" y="992" width="192" height="160"/>
-  <object id="111" name="DiningRoom" x="512" y="160" width="320" height="320"/>
+  <object id="111" name="Dining Room" x="512" y="160" width="320" height="320"/>
   <object id="112" name="Kitchen" x="256" y="128" width="192" height="224"/>
-  <object id="113" name="WestWashroom" x="64" y="416" width="128" height="128"/>
-  <object id="118" name="EastHall" x="864" y="704">
+  <object id="113" name="West Washroom" x="64" y="416" width="128" height="128"/>
+  <object id="118" name="East Hall" x="864" y="704">
    <polygon points="0,0 0,128 416,128 416,-448 320,-448 320,0"/>
   </object>
-  <object id="120" name="WestHall" x="480" y="832">
+  <object id="120" name="West Hall" x="480" y="832">
    <polygon points="0,0 -416,0 -416,-128 -192,-128 -192,-320 -64,-320 -64,-128 0,-128"/>
   </object>
  </objectgroup>

@@ -21,7 +21,6 @@ public class Npc : MonoBehaviour{
     private bool hasWeapon = false;
     private bool hasMurderWeapon = false;
 
-    [System.NonSerialized]
     public Room currentRoom;
     private Room lastRoom;
 
@@ -33,26 +32,27 @@ public class Npc : MonoBehaviour{
         pg = GameObject.Find("GameManager").GetComponent<PlotGenerator>();
         //mansion = GameObject.Find("GameManager").GetComponent<Mansion>();
 
-        InvokeRepeating("act", 1.5f, 0.9f);
+        //InvokeRepeating("act", 1.5f, 0.9f);
     }
 
     void Update() {
+        if (!pg.weaponHidden)
+            act();
     }
 
     public void act() {
+       // pg.timeSteps++;
 
         if (isAlive) {
             //If Murderer
             if (isMurderer) {
                 if (pg.victim.GetComponent<Npc>().isAlive) {
                     if (hasWeapon) {
-                        log.NewActivity("Looking for " + pg.victim.GetComponent<Npc>().firstname);
                         if (!victimInRoom()) seekVictim();
                         else kill(pg.victim, randomWeapon());
 
                     }
                     else {
-                        log.NewActivity("Looking for a weapon");
                         seekWeapon();
                     }
                 }
@@ -77,13 +77,13 @@ public class Npc : MonoBehaviour{
 
     }
 
+
     private void pickupItem(Item item) {
         item.room.items.Remove(item.gameObject);
         item.room = null;
         item.held = true;
         inventory.Add(item);
         
-        log.NewActivity("Picked up " + item.name);
         Timeline.addEvent(new PickupItem(Time.time, this, currentRoom, item));
     }
 
@@ -92,11 +92,13 @@ public class Npc : MonoBehaviour{
         item.held = false;
         item.room = currentRoom;
         currentRoom.items.Add(item.gameObject);
-        if (item = pg.murderWeapon)
+        if (item = pg.murderWeapon) {
             hasMurderWeapon = false;
+            pg.weaponWasHidden();
+        }
+            
 
-        log.NewActivity("Dropped " + item.name);
-        Timeline.addEvent(new PickupItem(Time.time, this, currentRoom, item));
+        Timeline.addEvent(new DropItem(Time.time, this, currentRoom, item));
     }
 
     private bool victimInRoom() {
@@ -155,7 +157,6 @@ public class Npc : MonoBehaviour{
     }
 
     public void kill(Npc npc, Weapon weapon){
-        log.NewActivity("Killed " + npc.firstname + " " + npc.surname + " with a " + weapon.name);
         Timeline.addEvent(new Murder(Time.time, this, npc, currentRoom, weapon));
         npc.die();
         pg.murderWeapon = weapon;
@@ -180,13 +181,15 @@ public class Npc : MonoBehaviour{
         room.npcs.Add(this);
         Timeline.addEvent(new SwitchRooms(Time.time, this, currentRoom, room));
         currentRoom = room;
-        log.NewActivity("Moved to " + currentRoom.roomName);
 
         //If there are any other NPCs, log that they were seen
         foreach (Npc npc in currentRoom.npcs) {
             if (npc != this) {
-                log.NewActivity("Saw " + npc.firstname);
-                Timeline.addEvent(new Encounter(Time.time, this, npc, currentRoom));
+                if (npc.isAlive) Timeline.addEvent(new Encounter(Time.time, this, npc, currentRoom));
+                else {
+                    Timeline.addEvent(new FoundBody(Time.time, this, npc, currentRoom));
+                    pg.bodyWasFound();
+                }
             }
         }
     }

@@ -26,6 +26,22 @@ public class SwitchRooms : Event {
     }
 }
 
+public class FoundBody : Event {
+
+    public float time { get; set; }
+    public Npc npc1;
+    public Npc body;
+    public Room room;
+
+    public FoundBody(float time, Npc npc1, Npc body, Room room) {
+        this.time = time; this.npc1 = npc1; this.body = body; this.room = room;
+    }
+
+    public string toString() {
+        return String.Format("{0} found {1}'s corpse in {2} ", npc1.firstname, body.firstname, room.roomName);
+    }
+}
+
 public class Encounter : Event {
 
     public float time { get; set; }
