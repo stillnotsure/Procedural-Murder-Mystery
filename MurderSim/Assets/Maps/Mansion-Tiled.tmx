@@ -1,32 +1,533 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="46" height="46" tilewidth="32" tileheight="32" nextobjectid="1">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="46" height="46" tilewidth="32" tileheight="32" nextobjectid="121">
  <tileset firstgid="1" name="castle" tilewidth="32" tileheight="32">
   <image source="../Resources/Sprites/castle.png" trans="a4bbcc" width="256" height="608"/>
+  <tile id="1">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="6">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="7">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="12">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="14">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="15">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="16">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="17">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="18">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="19">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="20">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="21">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="22">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="23">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="24">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="25">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="26">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="27">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="28">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="29">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="72">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="73">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="74">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="77">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="78">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="79">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="80">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="81">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="82">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="117">
+   <objectgroup draworder="index">
+    <object id="0" x="-0.1875" y="-0.1875" width="32.0625" height="16.3125"/>
+   </objectgroup>
+  </tile>
+  <tile id="118">
+   <objectgroup draworder="index">
+    <object id="0" x="-0.0625" y="-0.0625" width="32.0625" height="15.875"/>
+   </objectgroup>
+  </tile>
+  <tile id="125">
+   <objectgroup draworder="index">
+    <object id="0" x="3.6875" y="-0.3125" width="24.4375" height="22.5625"/>
+   </objectgroup>
+  </tile>
+  <tile id="129">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="32">
+     <polyline points="0,0"/>
+    </object>
+    <object id="0" x="6.75" y="-0.125" width="18.4375" height="19"/>
+   </objectgroup>
+  </tile>
+  <tile id="130">
+   <objectgroup draworder="index">
+    <object id="0" x="8.5" y="-0.375" width="14.375" height="14.4375"/>
+   </objectgroup>
+  </tile>
  </tileset>
  <tileset firstgid="153" name="stairs" tilewidth="32" tileheight="32">
   <image source="../Resources/Sprites/stairs.png" trans="a4bbcc" width="256" height="352"/>
+  <tile id="10">
+   <objectgroup draworder="index">
+    <object id="0" x="-0.125" y="25" width="32.0625" height="7.0625"/>
+   </objectgroup>
+  </tile>
+  <tile id="34">
+   <objectgroup draworder="index">
+    <object id="0" x="0.0625" y="24.8125" width="31.9375" height="7.1875"/>
+   </objectgroup>
+  </tile>
+  <tile id="37">
+   <objectgroup draworder="index">
+    <object id="0" x="-0.0625" y="24.5625" width="32" height="7.375"/>
+   </objectgroup>
+  </tile>
+  <tile id="42">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="43">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="44">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="45">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
  </tileset>
  <tileset firstgid="241" name="victoria" tilewidth="32" tileheight="32">
   <image source="../Resources/Sprites/victoria.png" trans="a4bbcc" width="352" height="160"/>
+  <tile id="6">
+   <objectgroup draworder="index">
+    <object id="0" x="5.375" y="11" width="22.625" height="21.25"/>
+   </objectgroup>
+  </tile>
+  <tile id="7">
+   <objectgroup draworder="index">
+    <object id="0" x="3.625" y="10.8125" width="22.375" height="21.125"/>
+   </objectgroup>
+  </tile>
+  <tile id="46">
+   <objectgroup draworder="index">
+    <object id="0" x="1.5" y="-0.1875" width="28.625" height="20.25"/>
+   </objectgroup>
+  </tile>
+  <tile id="47">
+   <objectgroup draworder="index">
+    <object id="0" x="2.66667" y="0" width="26.6667" height="19.3333"/>
+   </objectgroup>
+  </tile>
+ </tileset>
+ <tileset firstgid="296" name="interior" tilewidth="32" tileheight="32">
+  <image source="../Resources/Sprites/interior.png" trans="a4bbcc" width="512" height="512"/>
+  <tile id="13">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="29">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="45">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="50">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="53">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="4.66667" width="30.6667" height="27.3333"/>
+   </objectgroup>
+  </tile>
+  <tile id="54">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="66">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0.666667" width="31.3333" height="26"/>
+   </objectgroup>
+  </tile>
+  <tile id="67">
+   <objectgroup draworder="index">
+    <object id="0" x="-1.33333" y="-0.666667" width="34" height="26.6667"/>
+   </objectgroup>
+  </tile>
+  <tile id="68">
+   <objectgroup draworder="index">
+    <object id="0" x="-0.666667" y="0" width="32" height="24.6667"/>
+   </objectgroup>
+  </tile>
+  <tile id="69">
+   <objectgroup draworder="index">
+    <object id="0" x="0.666667" y="0" width="30.6667" height="32.6667"/>
+   </objectgroup>
+  </tile>
+  <tile id="70">
+   <objectgroup draworder="index">
+    <object id="0" x="-1.33333" y="-1.33333" width="32" height="30.6667"/>
+   </objectgroup>
+  </tile>
+  <tile id="85">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="-0.666667" width="30.6667" height="33.3333"/>
+   </objectgroup>
+  </tile>
+  <tile id="112">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="113">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="114">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="115">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="116">
+   <objectgroup draworder="index">
+    <object id="0" x="-1.33333" y="-2" width="33.3333" height="26"/>
+   </objectgroup>
+  </tile>
+  <tile id="117">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="-1.33333" width="32" height="26.6667"/>
+   </objectgroup>
+  </tile>
+  <tile id="118">
+   <objectgroup draworder="index">
+    <object id="0" x="1.33333" y="-2" width="30.6667" height="27.3333"/>
+   </objectgroup>
+  </tile>
+  <tile id="145">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="146">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="147">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32" height="32"/>
+   </objectgroup>
+  </tile>
  </tileset>
  <layer name="Floors" width="46" height="46">
+  <properties>
+   <property name="unity:sortingLayerName" value="Background"/>
+  </properties>
   <data encoding="base64" compression="zlib">
-   eJztl0EOhCAMRbsw3sNxpa5mvP/dhAVJQ1QK1sLof8nfGfpiSkOJAHgv/UFaJ+XdCWMNvG2p4b1XJ/duwTv9vaZ3ijd5Dy4flvGCd2k/lnhPLjPLIvCW1r/T++vyY1kreOdS2t/S8ziabxNt7zOs31T/6K1Z66nevEf9bB6p/I7X8vazeSF9b+nMkCTXW6sGvOFtObu4o397rHT8fwAA7RHvaGFPa514Rwt7WuvA25Z4Jw57MQAAAAD02QDGChJJ
+   eJztl8EOwjAIhlli9h66k+6keyl9/xfQHoiErC1dWdfo/yWcVuHLBo0QAfC/PIf16J2c98kYrVlzPovnU8K1N++7eL4kXI/0Hql9n4wimNfwDQtH9Lend+jpieq9LWfYWc9RiXeOPb31HB3tHd7jRcRE696WPtnaj1u8r5+4iZgN3tb6W715DlLe4fs/RCzU3ruUkv62est3JeEZWYy5cnVi30XWs3qnGMkvV2k9rzx7e3vW+lXv3H3iWcszl3QMd/NM/t6xfPrOsESpt/yttZbFuyRiu4P21uc8atR4x3YH7a3PedSo8a7tE55fa409kI7cty3+MwAAfNA7Gu9pvaN3NN7TegfebdE7Me/FAAAAAPDnDRvyKrg=
   </data>
  </layer>
  <layer name="Walls" width="46" height="46">
+  <properties>
+   <property name="unity:sortingLayerName" value="Collisions"/>
+  </properties>
   <data encoding="base64" compression="zlib">
-   eJztmMlOw0AMhgcuREgVhUIplOV5AImlvAvceqCPxXJheSU44ohYsix77AlpFml+6VeriSf+MpnJOAlB1xZ4pLiI9OtaO+B98AHzFDwOf9e17XSb12lxl8d3wXuGJ1V8m9wn4FPmswFwa0LuI/Cx4Xnwc/M1VSht/+VeOVhWwc9N5yadj3yOWufQNDaOS/HWOi4UxnVyf4MvwJeVr8A/Qry2HiYkRlpHvK0p7iBwS/EebisPckv7SyHEx87nHW9tHc9DOjd/Tk+VeOt8nvFGXYNvwLcOxlTuQ/Cm4lmoN94x1eGm+wud+9ocwn5Ud+BF5ftI/gfwo/C/DjeXdS+0fppo/qUjhrbx+z7riBu1ZL+xsZVkcWtzKDb/rfUgqWlu7VgpTy1L18P5hsxQtqdyS+PmmUN4PFYT0lrQuj/SPcH6QHouxN5rRgI335s83FYOLV+sPtHeD9Bc2O6pZek+GMtBudrifgW/sZgn8DP4pSFu6bmgvdegubAdz/kJ/hLi3sEfJC6Wg3JJ3LwtCO1eeWvw1Frd6pu5m4nz9h0Kt1afpOzXqXu3ljslxzrk4cHcsZqg79/tpL217e9CqRoyt1QTpHzP6kLWe3ZflbnbVeZuV9Z3pKysrKysrL7qF+IvP0s=
+   eJztmLlOw0AQhndpsJAijnAEAjEvQwFUgGh5AIIooUtBKuAJOF4EAjQcrwQlY8Ujhs3Mzto4wZb8S78I6/XOZ3v2NEbWNLghOPLc99+aBS+Clxwvg+fM8LlmAj3J59S4k+vz4AXFzbT+JLnXwRuOOxXgPrLGnIC7qfE3cq+Cr+D/NcM7udbOwO32qUgoC+HmhNx98K1Qx6TX+hm4aW7SfHRzVGvjVOEOVUg/jgTGPNw+Dnr9E7wN3km9C/5i6kv9oUnqcP3ILdO4tTyhcrm5+iHcUpxjYNm0P9zc/ILfzM2TQ8tzh77vpB9z/bdtdG5aZszoOL0s1NfaC3nfPhXFvQKeEtwy+d530dx0fqG5L+UQ3ke1B95PfeCJfwY+Z37n4Y7TvO3a0Wvct+C4faLxewF1aJn73Vue+OPkRvWcv753y0njlnLIl/9af+BUNHdMxsLY/m4rZC0bCW1RxTY7N/feQnIIr/vWhHQtqH0f7pvg+oAbF3z7mgbD7c5NIdxaDCmeb30i7Q/QrrBcmwPdedAXg3Jx3O4asQjuZ/CLU+cCPAA/FcSNYwMdF6R9DdoVlmOb7+APpt4r+I2J7XNH4H6AfvsIHlj/OIz1fMI2pTHCGHmcCI2nzZd5FLp3yLrH0O6tIveWkid52vxrPeleaX2SZb7OOndLsbPEGIdCeDC2b01Q9nM7bm6d9LlQViXcl7aa3DfO2da1HT5LFbjvyfxyZ4dlZeeWVCVuPANI9v5V4k6UnAEke/+qcaPKzK2dI9WqVatWrVpl1TeLJFJT
   </data>
  </layer>
  <layer name="Deco 1" width="46" height="46">
+  <properties>
+   <property name="unity:sortingLayerName" value="Foreground 1"/>
+  </properties>
   <data encoding="base64" compression="zlib">
-   eJzt1kEOgjAQhWGuJSTKSjyMSoK4gbjRcAVPovdzFiVBwgLMpNPK/yUvlDJpZ9OGJEGMbjPnQnFxz27iWzeqCUmrVOPbQ6nG0kaSumTGveDbVrKT5MZ9LLWXFJKDdSMrcJaUE2PE7yg5WTfxg1pyVVjnuXAe/6k/B5V1IzO8B+P+HDTu/eVhf8074+5xL607I7S9AAB61v5fDAAAAMTkA0B5Feg=
+   eJxjYBgFQxHUEilGLxDNyMAQwwihQbgGSsNAMZRuxaK3FU3NYALVVFIzXAA905glEFtBsTWFZmFLdyAwgUJzBwJEAfPVDCLV+jESVkMOsANieyB2oI3xNANuQOwOxB4D7RASgR8Q+wNxABXMaqOCGcSAPCDOx8ImB4hA03E0jdLzKCAN5ABx7kA7gkQASkMlQLqUAZGeyAXTSBQfBcMLpENpWD4oGkC3EAu2IrFh+aAKyt9CpBn1QNxAQE0fDnFyywx8bTRscn1IdsHc0g7EHXjMWQksD1YB8Wos5QIsrJDVEQPwtdFwySHbRap9o4B+wHQ0TkbBKBgFSABbvTMUQA8jZr0zFMDsYVAGg8a4KB3bGgWjYBSMglEwCkbBKBgF5AMA3TAplQ==
   </data>
  </layer>
  <layer name="Deco 2" width="46" height="46">
+  <properties>
+   <property name="unity:sortingLayerName" value="Foreground 2"/>
+  </properties>
   <data encoding="base64" compression="zlib">
-   eJztzrENACAMA8FMCZmKmUlNR5UUd9LLrSMA6LCqXWX3kU/nWQAAAAAAAJjoAv1LAiI=
+   eJzt17EJgDAQBdBkBYdTyRIO4A6xdF0DWohgYWMSeA8+l8AV1x0XAi3ZSvLtn98aG7NfNcUQlni+11htHOjCWDKVzLUH+Sg/Kvwh2SkAAAB0anDTAgBUcwBK4gYZ
   </data>
  </layer>
+ <objectgroup name="Doorways">
+  <object id="3" name="EntranceHall - DiningRoom" x="640.25" y="639.75" width="63.25" height="19.25">
+   <properties>
+    <property name="TargetDoor" value="DiningRoom - EntranceHall"/>
+   </properties>
+  </object>
+  <object id="4" name="EastHall - LivingRoom" x="960" y="704" width="64" height="32">
+   <properties>
+    <property name="TargetDoor" value="LivingRoom - EastHall"/>
+   </properties>
+  </object>
+  <object id="8" name="Study - EastHall" x="960" y="992" width="63.25" height="19.25">
+   <properties>
+    <property name="TargetDoor" value="EastHall - Study"/>
+   </properties>
+  </object>
+  <object id="9" name="WestHall - Kitchen" x="320" y="512" width="64" height="32">
+   <properties>
+    <property name="TargetDoor" value="Kitchen - WestHall"/>
+   </properties>
+  </object>
+  <object id="10" name="WestHall - WestWashroom" x="96" y="704" width="64" height="32">
+   <properties>
+    <property name="TargetDoor" value="WestWashroom - WestHall"/>
+   </properties>
+  </object>
+  <object id="11" name="LivingRoom - EastHall" x="960" y="512" width="64" height="32">
+   <properties>
+    <property name="TargetDoor" value="EastHall - LivingRoom"/>
+   </properties>
+  </object>
+  <object id="12" name="DiningRoom - EntranceHall" x="640" y="448" width="64" height="32">
+   <properties>
+    <property name="TargetDoor" value="EntranceHall - DiningRoom"/>
+   </properties>
+  </object>
+  <object id="13" name="Kitchen - WestHall" x="320" y="320" width="64" height="32">
+   <properties>
+    <property name="TargetDoor" value="WestHall - Kitchen"/>
+   </properties>
+  </object>
+  <object id="14" name="WestWashroom - WestHall" x="96" y="512" width="64" height="32">
+   <properties>
+    <property name="TargetDoor" value="WestHall - WestWashroom"/>
+   </properties>
+  </object>
+  <object id="15" name="WestHall - EntranceHall" x="480" y="736" width="64" height="32" rotation="90">
+   <properties>
+    <property name="TargetDoor" value="EntranceHall - WestHall"/>
+   </properties>
+  </object>
+  <object id="16" name="EntranceHall - WestHall" x="576" y="736" width="64" height="32" rotation="90">
+   <properties>
+    <property name="TargetDoor" value="WestHall - EntranceHall"/>
+   </properties>
+  </object>
+  <object id="17" name="EntranceHall - EastHall" x="799.583" y="734" width="64" height="32" rotation="90">
+   <properties>
+    <property name="TargetDoor" value="EastHall - EntranceHall"/>
+   </properties>
+  </object>
+  <object id="18" name="EastHall - EntranceHall" x="896" y="736" width="64" height="32" rotation="90">
+   <properties>
+    <property name="TargetDoor" value="EntranceHall - EastHall"/>
+   </properties>
+  </object>
+  <object id="19" name="EastHall - Storage" x="1280" y="736" width="64" height="32" rotation="90">
+   <properties>
+    <property name="TargetDoor" value="Storage - EastHall"/>
+   </properties>
+  </object>
+  <object id="20" name="Storage - EastHall" x="1376" y="736" width="64" height="32" rotation="90">
+   <properties>
+    <property name="TargetDoor" value="EastHall - Storage"/>
+   </properties>
+  </object>
+  <object id="21" name="EastWashroom - EastHall" x="1376" y="320" width="64" height="32" rotation="90">
+   <properties>
+    <property name="TargetDoor" value="EastHall - EastWashroom"/>
+   </properties>
+  </object>
+  <object id="22" name="EastHall - EastWashroom" x="1280" y="320" width="63.25" height="19.25" rotation="90">
+   <properties>
+    <property name="TargetDoor" value="EastWashroom - EastHall"/>
+   </properties>
+  </object>
+  <object id="23" name="DiningRoom - Kitchen" x="544" y="192" width="64" height="32" rotation="90">
+   <properties>
+    <property name="TargetDoor" value="Kitchen - DiningRoom"/>
+   </properties>
+  </object>
+  <object id="24" name="Kitchen - DiningRoom" x="448" y="192" width="64" height="32" rotation="90">
+   <properties>
+    <property name="TargetDoor" value="DiningRoom - Kitchen"/>
+   </properties>
+  </object>
+  <object id="26" name="EastHall - Study" x="960" y="800" width="64" height="32">
+   <properties>
+    <property name="TargetDoor" value="Study - EastHall"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="Containers">
+  <object id="28" name="Fireplace" x="960" y="320" width="96" height="32"/>
+  <object id="32" x="896" y="928" width="32" height="96"/>
+  <object id="40" x="1024" y="960" width="32" height="64"/>
+  <object id="41" x="1056" y="960" width="32" height="64"/>
+  <object id="45" x="1032" y="1056" width="15" height="31.5"/>
+  <object id="47" x="928" y="976.5" width="31.5" height="46.5"/>
+  <object id="48" x="1090.5" y="491.5" width="26.5" height="36"/>
+  <object id="49" x="898" y="491" width="27.5" height="38"/>
+  <object id="50" x="1412" y="735.5" width="26.5" height="59"/>
+  <object id="54" x="383" y="108" width="33" height="39.5"/>
+  <object id="55" x="287.5" y="107" width="31.5" height="39.5"/>
+  <object id="61" x="319" y="107.5" width="33" height="38.5"/>
+  <object id="62" x="351.5" y="107.5" width="32" height="38.5"/>
+  <object id="64" x="256.5" y="256" width="31" height="60"/>
+  <object id="68" x="1377" y="239" width="32" height="35"/>
+  <object id="69" x="1409" y="243" width="30" height="30"/>
+  <object id="72" x="1345" y="648" width="59" height="49"/>
+  <object id="73" x="1408" y="640" width="32" height="64"/>
+  <object id="74" x="1090" y="680" width="59" height="46"/>
+  <object id="76" x="768" y="688" width="30" height="33"/>
+  <object id="77" x="545" y="689" width="28" height="32"/>
+  <object id="78" x="384" y="493" width="29" height="34"/>
+  <object id="79" x="289" y="493" width="28" height="34"/>
+  <object id="80" x="192" y="679" width="62" height="47"/>
+  <object id="81" x="63" y="394" width="29" height="36"/>
+  <object id="82" x="129" y="395" width="30" height="42"/>
+  <object id="83" x="544" y="128" width="32" height="64"/>
+  <object id="84" x="768" y="128" width="32" height="64"/>
+ </objectgroup>
+ <objectgroup name="Rooms">
+  <object id="106" name="EntranceHall" x="544" y="640" width="256" height="224"/>
+  <object id="107" name="LivingRoom" x="896" y="320" width="224" height="224"/>
+  <object id="108" name="EastWashroom" x="1344" y="256" width="96" height="160"/>
+  <object id="109" name="Storage" x="1344" y="672" width="96" height="128"/>
+  <object id="110" name="Study" x="896" y="992" width="192" height="160"/>
+  <object id="111" name="DiningRoom" x="512" y="160" width="320" height="320"/>
+  <object id="112" name="Kitchen" x="256" y="128" width="192" height="224"/>
+  <object id="113" name="WestWashroom" x="64" y="416" width="128" height="128"/>
+  <object id="118" name="EastHall" x="864" y="704">
+   <polygon points="0,0 0,128 416,128 416,-448 320,-448 320,0"/>
+  </object>
+  <object id="120" name="WestHall" x="480" y="832">
+   <polygon points="0,0 -416,0 -416,-128 -192,-128 -192,-320 -64,-320 -64,-128 0,-128"/>
+  </object>
+ </objectgroup>
 </map>

@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: castle
+  m_Name: interior
   m_Shader: {fileID: 4800000, guid: 4fa37a82238b5ac4fafff7138fe8c42e, type: 3}
   m_ShaderKeywords: PIXELSNAP_ON
   m_LightmapFlags: 5
@@ -19,7 +19,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: d1b5c537ccd160047807a5a6b85a4b3b, type: 3}
+          m_Texture: {fileID: 2800000, guid: cfa076f4bc6c7ab4d8d768e9c5acb80e, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:

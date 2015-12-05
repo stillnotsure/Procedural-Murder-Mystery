@@ -3,12 +3,10 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour {
 
-    public BoardManager boardScript;
     public ConversationScript conversationScript;
 
 	// Use this for initialization
 	void Start () {
-        boardScript = GetComponent<BoardManager>();
         conversationScript = GetComponent<ConversationScript>();
         InitGame();
 	}
