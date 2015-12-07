@@ -4,7 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Door
+  - NPC
   layers:
   - Default
   - TransparentFX
@@ -17,9 +17,9 @@ TagManager:
   - 
   - Background
   - Collisions
+  - NPCs
+  - Containers
   - 
-  - Foreground 2
-  - Foreground 1
   - 
   - 
   - 

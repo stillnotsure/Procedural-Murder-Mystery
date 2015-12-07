@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 411962}
   - 212: {fileID: 21209066}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Player-Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,9 +28,9 @@ GameObject:
   - 50: {fileID: 5097670}
   - 61: {fileID: 6139198}
   - 114: {fileID: 11473742}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: NPC Placeholder
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -187,6 +187,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_SortingOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: NPC
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

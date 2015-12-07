@@ -6,13 +6,15 @@ public enum dialog {greeting, alibi};
 
 public class ConversationScript : MonoBehaviour {
 
+    public GUISkin guiSkin;
     public GameObject textbox;
     public bool speechHappening;
     public float letterDelay = 0.1f;
+    private GameObject activeNpc;
 
     private string fullString;
     private string shownString;
-
+    private List<string> buttons;
     
     private Dictionary<dialog, List<string>> dialogs;
 
@@ -20,6 +22,7 @@ public class ConversationScript : MonoBehaviour {
 	void Start () {
         fullString = "";
         shownString = "";
+        buttons = new List<string>();
         speechHappening = false;
         textbox = GameObject.Find("Textbox");
         dialogs = new Dictionary<dialog, List<string>>();
@@ -33,18 +36,42 @@ public class ConversationScript : MonoBehaviour {
 
     void OnGUI()
     {
+        GUI.skin = guiSkin;
         if (speechHappening)
         {
-            GUI.Box(new Rect(10, 10, Screen.width / 2, Screen.height / 4), shownString);
+            Rect dialogue = new Rect(10, 10, Screen.width / 2, 50);
+            GUI.Box(dialogue, shownString);
 
             if (shownString.Equals(fullString))
             {
-                GUI.Box(new Rect(10, 15 + Screen.height / 4, Screen.width / 2, 40), "Debug");
-            }
+                int yOffsetAmount = 5;
+                int buttonHeight = 20;
 
+                for (int i = 0; i < buttons.Count; i++) {
+                    Rect button = new Rect(dialogue.x, dialogue.yMax + ( i * buttonHeight) + yOffsetAmount, dialogue.width, buttonHeight);
+                    if (GUI.Button(button, buttons[i])) {
+                        //Where were they at time of murder
+                        if (i == 0) {
+                            List<Event> history = Timeline.fullNPCHistory(activeNpc.GetComponent<Npc>());
+                            displayText(history[0].toString());
+                        }
+                        if (i == 1) {
+                            
+                        }
+                        if (i == 2) {
+
+                        }
+                    }
+                }
+            }
         } 
-        
-       // GUI.Label(new Rect (10,60,400,50), shownString);
+    }
+
+    void setUpButtons() {
+        buttons.Clear();
+        buttons.Add("Where were you at the time of the murder?");
+        buttons.Add("What did you see around the time of the murder?");
+        buttons.Add("Is there anyone you suspect?");
     }
 
     IEnumerator RevealString()
@@ -82,6 +109,7 @@ public class ConversationScript : MonoBehaviour {
 
     public void startConversationWith(GameObject NPC)
 	{
+        activeNpc = NPC;
         List<string> outputs;
         string text = "";
         if (dialogs.TryGetValue(dialog.greeting, out outputs)) // Returns true.
@@ -95,6 +123,7 @@ public class ConversationScript : MonoBehaviour {
             else text = outputs[0];
         }
 
+        setUpButtons();
         displayText(text);
     }
 
