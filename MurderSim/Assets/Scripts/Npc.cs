@@ -30,9 +30,6 @@ public class Npc : MonoBehaviour{
     void Start() {
         inventory = new List<Item>();
         pg = GameObject.Find("GameManager").GetComponent<PlotGenerator>();
-        //mansion = GameObject.Find("GameManager").GetComponent<Mansion>();
-
-        //InvokeRepeating("act", 1.5f, 0.9f);
     }
 
     void Update() {

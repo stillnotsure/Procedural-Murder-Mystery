@@ -22,7 +22,7 @@ public class playerControl : MonoBehaviour {
 
     void FixedUpdate() {
         checkCollisions();
-        if (!conversationScript.speechHappening)
+        if (conversationScript.state == conversationState.none)
             Move();
     }
 
@@ -62,26 +62,32 @@ public class playerControl : MonoBehaviour {
         int layerMaskCombined = layerMask1 | layerMask2;
 
         RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, 1.0f, layerMaskCombined);
-        Debug.DrawRay(ray.origin, ray.direction, Color.green, 1.0f, true); //Maybe set to false later
+        //Debug.DrawRay(ray.origin, ray.direction, Color.green, 1.0f, true); //Maybe set to false later
 
 
         if (hit) {
             if (hit.transform.CompareTag("NPC")) {
                 facingNPC = hit.transform.gameObject;
-                if (Input.GetKeyDown(KeyCode.LeftShift)) {
-                    conversationScript.startConversationWith(facingNPC);
+
+                //If player isn't already in a conversation and presses shift
+                if (Input.GetKeyDown(KeyCode.LeftShift) && conversationScript.state == conversationState.none) {
+
+                    if (facingNPC.GetComponent<Npc>().isAlive)
+                        conversationScript.startConversationWith(facingNPC.GetComponent<Npc>());
+                    else
+                        //TODO - Examine corpse - Could work with the conversation script, responses are different examinations, e.g. time of death, type of wound
+                        Debug.Log("Examining the corpse");
                 }
             }
         }
         else {
             facingNPC = null;
-            conversationScript.speechHappening = false;
         }
     }
 
     void OnTriggerStay2D(Collider2D other) {
         if (other.transform.parent.name == "Doorways") {
-            if (Input.GetKeyDown(KeyCode.LeftShift)) {
+            if (Input.GetKeyDown(KeyCode.LeftShift) ) {
                 other.GetComponent<MurderMystery.DoorwayScript>().Travel();
             }
                 

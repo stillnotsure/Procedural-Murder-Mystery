@@ -28,6 +28,7 @@ GameObject:
   - 50: {fileID: 5097670}
   - 61: {fileID: 6139198}
   - 114: {fileID: 11473742}
+  - 61: {fileID: 6193570}
   m_Layer: 11
   m_Name: NPC Placeholder
   m_TagString: NPC
@@ -89,6 +90,19 @@ BoxCollider2D:
   m_Offset: {x: 0, y: -.258451462}
   serializedVersion: 2
   m_Size: {x: 1, y: .483100653}
+--- !u!61 &6193570
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145940}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!114 &11473742
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -195,6 +209,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Layer
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

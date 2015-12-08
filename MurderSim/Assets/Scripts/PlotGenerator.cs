@@ -87,8 +87,7 @@ public class PlotGenerator : MonoBehaviour {
     }
 
     void Update() {
-        if (!weaponHidden)
-            Debug.Log(timeSteps++);
+
     }
 
     public void bodyWasFound() {
@@ -97,6 +96,7 @@ public class PlotGenerator : MonoBehaviour {
 
     public void weaponWasHidden() {
         weaponHidden = true;
+        Timeline.printTimeline();
         gameObject.GetComponent<BoardManager>().placeNPCs();
     }
 

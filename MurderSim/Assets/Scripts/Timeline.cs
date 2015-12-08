@@ -4,22 +4,21 @@ using System;
 
 public static class Timeline {
 
-    public static List<Event> events;
+    public static List<Event> events = new List<Event>();
 
     public static void addEvent(Event e) {
-        events = new List<Event>();
         events.Add(e);
-        printLast();
     }
 
-    public static void printLast() {
-        Debug.Log(events[events.Count - 1].toString());
+    public static Event getLast() {
+        return events[events.Count - 1];
     }
 
     public static List<Event> fullNPCHistory(Npc npc) {
         List<Event> history = new List<Event>();
 
         foreach (Event e in events) {
+            Debug.Log("Checking event : " + e.toString());
             if (e.npc == npc) {
                 history.Add(e);
             }
@@ -28,6 +27,11 @@ public static class Timeline {
         return history;
     }
 
+    public static void printTimeline() {
+        foreach (Event e in events) {
+            Debug.Log(e.toString());
+        }
+    }
 }
 
 public interface Event {

@@ -20,8 +20,6 @@ public class BoardManager : MonoBehaviour {
             string targetRoomName = npc.currentRoom.roomName;
             GameObject targetRoom = GameObject.Find(targetRoomName);
 
-            Debug.Log(targetRoomName + " : " + targetRoom.ToString());
-
             if (targetRoom.GetComponent<BoxCollider2D>() != null) {
                 BoxCollider2D collider = targetRoom.GetComponent<BoxCollider2D>();
                 Bounds bounds = collider.bounds;
@@ -44,6 +42,7 @@ public class BoardManager : MonoBehaviour {
 
                 npc.transform.Translate(new Vector3(x, y, 0));
             }
+            if (!npc.isAlive) { npc.gameObject.transform.localEulerAngles = new Vector3(0, 0, 90); }
         }
     }
 
