@@ -39,6 +39,7 @@ public class PlotGenerator : MonoBehaviour {
     public Weapon murderWeapon;
     public bool bodyFound;
     public bool weaponHidden;
+    public int timeOfDeathLeeway = 30; //The amount of time either side of the t.o.d estimate, so 30 means the estimate will be in the range of an hour
 
     public List<Family> families;
     public List<Npc> npcs;
@@ -87,7 +88,7 @@ public class PlotGenerator : MonoBehaviour {
     }
 
     void Update() {
-
+        if (!weaponHidden) timeSteps++;
     }
 
     public void bodyWasFound() {

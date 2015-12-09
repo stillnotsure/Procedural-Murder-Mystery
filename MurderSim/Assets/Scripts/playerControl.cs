@@ -71,12 +71,7 @@ public class playerControl : MonoBehaviour {
 
                 //If player isn't already in a conversation and presses shift
                 if (Input.GetKeyDown(KeyCode.LeftShift) && conversationScript.state == conversationState.none) {
-
-                    if (facingNPC.GetComponent<Npc>().isAlive)
-                        conversationScript.startConversationWith(facingNPC.GetComponent<Npc>());
-                    else
-                        //TODO - Examine corpse - Could work with the conversation script, responses are different examinations, e.g. time of death, type of wound
-                        Debug.Log("Examining the corpse");
+                    conversationScript.handleInteractionWith(facingNPC.GetComponent<Npc>());
                 }
             }
         }

@@ -97,12 +97,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 129420}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55124a0bf2bfbe34fb927104aedd6a38, type: 3}
+  m_Script: {fileID: 11500000, guid: 19b5be788a2f21a4ea025f0ba6809ab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  conversationScript: {fileID: 0}
   playerSpeed: 2
-  box: {fileID: 6141782}
-  facingNPC: {fileID: 0}
+  box: {fileID: 0}
 --- !u!212 &21277336
 SpriteRenderer:
   m_ObjectHideFlags: 1

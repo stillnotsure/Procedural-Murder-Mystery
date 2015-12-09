@@ -74,6 +74,9 @@ public class Npc : MonoBehaviour{
 
     }
 
+    public string getFullName() {
+        return (firstname + " " + surname);
+    }
 
     private void pickupItem(Item item) {
         item.room.items.Remove(item.gameObject);
@@ -81,7 +84,7 @@ public class Npc : MonoBehaviour{
         item.held = true;
         inventory.Add(item);
         
-        Timeline.addEvent(new PickupItem(Time.time, this, currentRoom, item));
+        Timeline.addEvent(new PickupItem(pg.timeSteps, this, currentRoom, item));
     }
 
     private void dropItem(Item item) {
@@ -95,7 +98,7 @@ public class Npc : MonoBehaviour{
         }
             
 
-        Timeline.addEvent(new DropItem(Time.time, this, currentRoom, item));
+        Timeline.addEvent(new DropItem(pg.timeSteps, this, currentRoom, item));
     }
 
     private bool victimInRoom() {
@@ -154,7 +157,7 @@ public class Npc : MonoBehaviour{
     }
 
     public void kill(Npc npc, Weapon weapon){
-        Timeline.addEvent(new Murder(Time.time, this, npc, currentRoom, weapon));
+        Timeline.addEvent(new Murder(pg.timeSteps, this, npc, currentRoom, weapon));
         npc.die();
         pg.murderWeapon = weapon;
         hasMurderWeapon = true;
@@ -176,15 +179,15 @@ public class Npc : MonoBehaviour{
             lastRoom = currentRoom;
         }
         room.npcs.Add(this);
-        Timeline.addEvent(new SwitchRooms(Time.time, this, currentRoom, room));
+        Timeline.addEvent(new SwitchRooms(pg.timeSteps, this, currentRoom, room));
         currentRoom = room;
 
         //If there are any other NPCs, log that they were seen
         foreach (Npc npc in currentRoom.npcs) {
             if (npc != this) {
-                if (npc.isAlive) Timeline.addEvent(new Encounter(Time.time, this, npc, currentRoom));
+                if (npc.isAlive) Timeline.addEvent(new Encounter(pg.timeSteps, this, npc, currentRoom));
                 else {
-                    Timeline.addEvent(new FoundBody(Time.time, this, npc, currentRoom));
+                    Timeline.addEvent(new FoundBody(pg.timeSteps, this, npc, currentRoom));
                     pg.bodyWasFound();
                 }
             }

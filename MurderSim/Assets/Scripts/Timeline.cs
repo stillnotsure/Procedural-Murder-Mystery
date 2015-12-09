@@ -5,6 +5,9 @@ using System;
 public static class Timeline {
 
     public static List<Event> events = new List<Event>();
+    public static DateTime startTime = Convert.ToDateTime("17:00");
+    public static int timeIncrements = 5; //minutes
+    public static Murder murderEvent;
 
     public static void addEvent(Event e) {
         events.Add(e);
@@ -18,7 +21,6 @@ public static class Timeline {
         List<Event> history = new List<Event>();
 
         foreach (Event e in events) {
-            Debug.Log("Checking event : " + e.toString());
             if (e.npc == npc) {
                 history.Add(e);
             }
@@ -32,26 +34,65 @@ public static class Timeline {
             Debug.Log(e.toString());
         }
     }
+
+    public static List<Event> locationDuringTimeframe(Npc npc,int timeStep1, int timeStep2) {
+        List<Event> alibi = new List<Event>();
+
+        foreach (Event e in events) {
+            if (e is SwitchRooms && e.npc == npc && e.time >= timeStep1 && e.time <= timeStep2) {
+                alibi.Add(e);
+            }
+        }
+
+        return alibi;
+    }
+
+    public static List<Event> EventsWitnessedDuringTimeframe(Npc npc, int timeStep1, int timeStep2) {
+        List<Event> eventsWitnessed = new List<Event>();
+
+        foreach (Event e in events) {
+            if (e.npc != npc && e.time >= timeStep1 && e.time <= timeStep2) {
+
+                foreach (Npc witness in e.witnesses) {
+                    if (witness == npc) {
+                        eventsWitnessed.Add(e);
+                    }
+                }
+                
+            }
+        }
+
+        return eventsWitnessed;
+    }
+
+    //Takes a timestep and returns the datetime in relation to what time the game's events begin
+    public static String convertTime(int timeStep) {
+        return String.Format("{0:t}", startTime.AddMinutes(timeStep * timeIncrements)); 
+    }
+
 }
 
 public interface Event {
 
-    float time { get; set; }
+    int time { get; set; }
     Npc npc { get; set; }
-
+    List<Npc> witnesses { get; set; }
     string toString();
 
 }
 
 public class SwitchRooms : Event {
 
-    public float time { get; set; }
+    public int time { get; set; }
     public Npc npc { get; set; }
+    public List<Npc> witnesses { get; set; }
     public Room origRoom;
     public Room newRoom;
 
-    public SwitchRooms(float time, Npc npc, Room origRoom, Room newRoom) {
+    public SwitchRooms(int time, Npc npc, Room origRoom, Room newRoom) {
         this.time = time; this.npc = npc; this.origRoom = origRoom; this.newRoom = newRoom;
+        witnesses = new List<Npc>(origRoom.npcs);
+        witnesses.AddRange(newRoom.npcs);
     }
 
     public string toString() {
@@ -61,13 +102,15 @@ public class SwitchRooms : Event {
 
 public class FoundBody : Event {
 
-    public float time { get; set; }
+    public int time { get; set; }
     public Npc npc { get; set; }
+    public List<Npc> witnesses { get; set; }
     public Npc body;
     public Room room;
 
-    public FoundBody(float time, Npc npc, Npc body, Room room) {
+    public FoundBody(int time, Npc npc, Npc body, Room room) {
         this.time = time; this.npc = npc; this.body = body; this.room = room;
+        witnesses = new List<Npc>(room.npcs);
     }
 
     public string toString() {
@@ -77,13 +120,15 @@ public class FoundBody : Event {
 
 public class Encounter : Event {
 
-    public float time { get; set; }
+    public int time { get; set; }
     public Npc npc { get; set; }
+    public List<Npc> witnesses { get; set; }
     public Npc npc2;
     public Room room;
 
-    public Encounter(float time, Npc npc, Npc npc2, Room room) {
+    public Encounter(int time, Npc npc, Npc npc2, Room room) {
         this.time = time; this.npc = npc; this.npc2 = npc2; this.room = room;
+        witnesses = new List<Npc>(room.npcs);
     }
 
     public string toString() {
@@ -93,14 +138,17 @@ public class Encounter : Event {
 
 public class Murder : Event {
 
-    public float time { get; set; }
+    public int time { get; set; }
     public Npc npc { get; set; }
+    public List<Npc> witnesses { get; set; }
     public Npc npc2;
     public Room room;
     public Weapon weapon;
 
-    public Murder(float time, Npc npc, Npc npc2, Room room, Weapon weapon) {
+    public Murder(int time, Npc npc, Npc npc2, Room room, Weapon weapon) {
         this.time = time; this.npc = npc; this.npc2 = npc2; this.room = room; this.weapon = weapon;
+        witnesses = new List<Npc>(room.npcs);
+        Timeline.murderEvent = this;
     }
 
     public string toString() {
@@ -110,13 +158,15 @@ public class Murder : Event {
 
 public class PickupItem : Event {
 
-    public float time { get; set; }
+    public int time { get; set; }
     public Npc npc { get; set; }
+    public List<Npc> witnesses { get; set; }
     public Room room;
     public Item item;
 
-    public PickupItem(float time, Npc npc, Room room, Item item) {
+    public PickupItem(int time, Npc npc, Room room, Item item) {
         this.time = time; this.npc = npc; this.room = room; this.item = item;
+        witnesses = new List<Npc>(room.npcs);
     }
 
     public string toString() {
@@ -127,13 +177,15 @@ public class PickupItem : Event {
 
 public class DropItem : Event {
 
-    public float time { get; set; }
+    public int time { get; set; }
     public Npc npc { get; set; }
+    public List<Npc> witnesses { get; set; }
     public Room room;
     public Item item;
 
-    public DropItem(float time, Npc npc, Room room, Item item) {
+    public DropItem(int time, Npc npc, Room room, Item item) {
         this.time = time; this.npc = npc; this.room = room; this.item = item;
+        witnesses = new List<Npc>(room.npcs);
     }
 
     public string toString() {
