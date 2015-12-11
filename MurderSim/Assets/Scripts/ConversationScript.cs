@@ -113,8 +113,10 @@ public class ConversationScript : MonoBehaviour {
             NPCAlibi();
         }
         else if (selectedText.Equals("What did you see around the time of the murder?")) {
-            Debug.Log("Selected witness");
             NPCWitnessed();
+        }
+        else if (selectedText.Equals("Examine the injuries")) {
+            ExamineInjuries();
         }
         else if (selectedText.Equals("Cancel")) {
             setStateNone();
@@ -157,12 +159,30 @@ public class ConversationScript : MonoBehaviour {
             responses.Add("Is there anyone you suspect?");
         } 
         else {
-            Debug.Log("npc is dead");
             responses.Add("Examine the injuries");
             responses.Add("Estimate the time of death");
         }
         
         responses.Add("Cancel");
+    }
+    
+    void ExamineInjuries() {
+        Murder murderInfo = Timeline.murderEvent;
+
+        switch (murderInfo.weapon.damageType) {
+            case (Weapon.DamageType.blunt):
+                displayText("From the bruising and broken bones you deduce that the murder was committed using a blunt weapon");
+                break;
+            case (Weapon.DamageType.poison):
+                displayText("From the skin discoloration and lack of any other physical marks, you deduce that the murder was committed using some kind of poison");
+                break;
+            case (Weapon.DamageType.shot):
+                displayText("The body has several gunshot wounds, clearly indicating that this murder was committed using a firearm");
+                break;
+            case (Weapon.DamageType.stab):
+                displayText("The body is riddled with stab marks, indicating that the murder was committed using some kind of sharp, pointed weapon");
+                break;
+        }
     }
 
     void NPCAlibi() {
