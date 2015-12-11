@@ -99,6 +99,7 @@ public class PlotGenerator : MonoBehaviour {
         weaponHidden = true;
         Timeline.printTimeline();
         gameObject.GetComponent<BoardManager>().placeNPCs();
+        gameObject.GetComponent<ItemManager>().placeItemsOnBoard();
     }
 
     void placeWeaponAtMurderer() {

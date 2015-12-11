@@ -13,7 +13,6 @@ public class BoardManager : MonoBehaviour {
 	}
 	
     public void placeNPCs() {
-        Debug.Log("placing NPCS");
         npcs = pg.npcs;   
 
         foreach (Npc npc in npcs) {

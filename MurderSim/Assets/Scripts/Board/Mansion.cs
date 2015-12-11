@@ -45,12 +45,14 @@ public class Room {
     public List<Npc> npcs;
     public List<GameObject> items;
     public List<Room> neighbouringRooms;
+    public List<GameObject> containers;
 
     public Room(string roomName) {
         this.roomName = roomName;
         neighbouringRooms = new List<Room>();
         npcs = new List<Npc>();
         items = new List<GameObject>();
+        containers = new List<GameObject>();
     }
 
     public void setNeighbouringRooms(List<Room> rooms) {
