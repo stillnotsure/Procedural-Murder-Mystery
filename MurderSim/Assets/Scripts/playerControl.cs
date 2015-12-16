@@ -5,6 +5,7 @@ public class playerControl : MonoBehaviour {
 
     //References
     public ConversationScript conversationScript;
+    public InventoryManager inventoryManager;
 
     //Movement Vars
     public float playerSpeed = 2.0f;
@@ -22,7 +23,7 @@ public class playerControl : MonoBehaviour {
 
     void FixedUpdate() {
         checkCollisions();
-        if (conversationScript.state == conversationState.none)
+        if (conversationScript.state == conversationState.none && inventoryManager.state == inventoryState.none)
             Move();
     }
 
@@ -72,6 +73,12 @@ public class playerControl : MonoBehaviour {
                 //If player isn't already in a conversation and presses shift
                 if (Input.GetKeyDown(KeyCode.LeftShift) && conversationScript.state == conversationState.none) {
                     conversationScript.handleInteractionWith(facingNPC.GetComponent<Npc>());
+                }
+            }
+            else if (hit.transform.CompareTag("Container")) {
+                //If player isn't already in a menu and presses shift
+                if (Input.GetKeyDown(KeyCode.LeftShift) && inventoryManager.state == inventoryState.none) {
+                    inventoryManager.showContainerItems(hit.transform.gameObject.GetComponent<MurderMystery.ContainerScript>());
                 }
             }
         }

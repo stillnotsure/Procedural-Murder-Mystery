@@ -55,11 +55,12 @@ public class PlotGenerator : MonoBehaviour {
     // Use this for initialization
     [ContextMenu("Reset")]
     void Start () {
+        Debug.Log("pg starting");
         npcHolder = new GameObject("NPCS").transform;
         itemManager = GetComponent<ItemManager>();
         display = GetComponent<DebugRoomDisplay>();
         mansion = GetComponent<Mansion>();
-        mansion.setupRooms();
+        //mansion.setupRooms();
 
         families = new List<Family>();
         npcs = new List<Npc>();

@@ -12,9 +12,4 @@ public class Weapon : Item {
         this.damageType = damageType;
     }
 
-    void Update() {
-        //TODO - Mid : Set this to toggle rather than updating it every frame for no reason
-        if (held) gameObject.GetComponent<Renderer>().enabled = false;
-        else gameObject.GetComponent<Renderer>().enabled = true;
-    }
 }

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--Tiled2Unity generated xml data-->
 <!--Do not modify by hand-->
-<!--Last exported: 05/12/2015 22:24:16-->
+<!--Last exported: 16/12/2015 22:50:59-->
 <Tiled2Unity version="0.9.13.1">
   <AssignMaterial mesh="mesh_[00]_[03]" material="interior" sortingLayerName="Background" sortingOrder="0" alphaColorKey="#a4bbcc" />
   <AssignMaterial mesh="mesh_[00]_[00]" material="castle" sortingLayerName="Background" sortingOrder="0" alphaColorKey="#a4bbcc" />
@@ -176,88 +176,116 @@
       </GameObject>
     </GameObject>
     <GameObject name="Containers" x="0" y="0">
-      <GameObject name="Fireplace" x="34.55999755859375" y="-11.519999504089356" rotation="0">
+      <GameObject name="Living Room - Fireplace" x="34.55999755859375" y="-11.519999504089356" rotation="0">
+        <Property name="Room" value="Living Room" />
         <BoxCollider2D width="3.45599985" height="1.152" />
       </GameObject>
-      <GameObject name="RectangleObject" x="32.255996704101562" y="-33.407997131347656" rotation="0">
+      <GameObject name="Study - Bookshelves 1" x="32.255996704101562" y="-33.407997131347656" rotation="0">
+        <Property name="Room" value="Study" />
         <BoxCollider2D width="1.152" height="3.45599985" />
       </GameObject>
-      <GameObject name="RectangleObject" x="36.863998413085938" y="-34.55999755859375" rotation="0">
-        <BoxCollider2D width="1.152" height="2.304" />
+      <GameObject name="Study - Desk" x="37.199878692626953" y="-38.027877807617188" rotation="0">
+        <Property name="Room" value="Study" />
+        <BoxCollider2D width="0.8399987" height="1.12799871" />
       </GameObject>
-      <GameObject name="RectangleObject" x="38.015998840332031" y="-34.55999755859375" rotation="0">
-        <BoxCollider2D width="1.152" height="2.304" />
-      </GameObject>
-      <GameObject name="RectangleObject" x="37.151996612548828" y="-38.015998840332031" rotation="0">
-        <BoxCollider2D width="0.539999962" height="1.134" />
-      </GameObject>
-      <GameObject name="RectangleObject" x="33.407997131347656" y="-35.153999328613281" rotation="0">
+      <GameObject name="Study - Cabinet 1" x="33.407997131347656" y="-35.153999328613281" rotation="0">
+        <Property name="Room" value="Study" />
         <BoxCollider2D width="1.134" height="1.67399991" />
       </GameObject>
-      <GameObject name="RectangleObject" x="39.257999420166016" y="-17.693998336791992" rotation="0">
-        <BoxCollider2D width="0.953999937" height="1.296" />
-      </GameObject>
-      <GameObject name="RectangleObject" x="32.327999114990234" y="-17.675998687744141" rotation="0">
+      <GameObject name="Living Room - Vase 1" x="32.327999114990234" y="-17.675998687744141" rotation="0">
+        <Property name="Room" value="Living Room" />
         <BoxCollider2D width="0.98999995" height="1.36799991" />
       </GameObject>
-      <GameObject name="RectangleObject" x="50.831996917724609" y="-26.477998733520508" rotation="0">
+      <GameObject name="Storage - Chest" x="50.831996917724609" y="-26.477998733520508" rotation="0">
+        <Property name="Room" value="Storage" />
         <BoxCollider2D width="0.953999937" height="2.12399983" />
       </GameObject>
-      <GameObject name="RectangleObject" x="13.787999153137207" y="-3.8879997730255127" rotation="0">
-        <BoxCollider2D width="1.188" height="1.42199993" />
-      </GameObject>
-      <GameObject name="RectangleObject" x="10.34999942779541" y="-3.8519997596740723" rotation="0">
+      <GameObject name="Kitchen - Stove 1" x="10.34999942779541" y="-3.8519997596740723" rotation="0">
+        <Property name="Room" value="Kitchen" />
         <BoxCollider2D width="1.134" height="1.42199993" />
       </GameObject>
-      <GameObject name="RectangleObject" x="11.483999252319336" y="-3.869999885559082" rotation="0">
-        <BoxCollider2D width="1.188" height="1.38599992" />
-      </GameObject>
-      <GameObject name="RectangleObject" x="12.653999328613281" y="-3.869999885559082" rotation="0">
-        <BoxCollider2D width="1.152" height="1.38599992" />
-      </GameObject>
-      <GameObject name="RectangleObject" x="9.2339992523193359" y="-9.2159996032714844" rotation="0">
-        <BoxCollider2D width="1.11599994" height="2.15999985" />
-      </GameObject>
-      <GameObject name="RectangleObject" x="49.571998596191406" y="-8.6040000915527344" rotation="0">
+      <GameObject name="East Washroom - Sink" x="49.571998596191406" y="-8.6040000915527344" rotation="0">
+        <Property name="Room" value="East Washroom" />
         <BoxCollider2D width="1.152" height="1.26" />
       </GameObject>
-      <GameObject name="RectangleObject" x="50.7239990234375" y="-8.74799919128418" rotation="0">
+      <GameObject name="East Washroom - Vase" x="50.7239990234375" y="-8.74799919128418" rotation="0">
+        <Property name="Room" value="East Washroom" />
         <BoxCollider2D width="1.07999992" height="1.07999992" />
       </GameObject>
-      <GameObject name="RectangleObject" x="48.419998168945312" y="-23.327999114990234" rotation="0">
+      <GameObject name="Storage - Barrels" x="48.419998168945312" y="-23.327999114990234" rotation="0">
+        <Property name="Room" value="Storage" />
         <BoxCollider2D width="2.12399983" height="1.76399994" />
       </GameObject>
-      <GameObject name="RectangleObject" x="50.687995910644531" y="-23.039999008178711" rotation="0">
+      <GameObject name="Storage - Stacked Chests" x="50.687995910644531" y="-23.039999008178711" rotation="0">
+        <Property name="Room" value="Storage" />
         <BoxCollider2D width="1.152" height="2.304" />
       </GameObject>
-      <GameObject name="RectangleObject" x="39.239997863769531" y="-24.479999542236328" rotation="0">
+      <GameObject name="East Hall - Barrels" x="39.239997863769531" y="-24.479999542236328" rotation="0">
+        <Property name="Room" value="East Hall" />
         <BoxCollider2D width="2.12399983" height="1.6559999" />
       </GameObject>
-      <GameObject name="RectangleObject" x="27.647998809814453" y="-24.767999649047852" rotation="0">
+      <GameObject name="EntranceHall-Vase1" x="27.647998809814453" y="-24.767999649047852" rotation="0">
+        <Property name="Room" value="Entrance Hall" />
         <BoxCollider2D width="1.07999992" height="1.188" />
       </GameObject>
-      <GameObject name="RectangleObject" x="19.619998931884766" y="-24.803998947143555" rotation="0">
+      <GameObject name="EntranceHall-Vase1" x="19.619998931884766" y="-24.803998947143555" rotation="0">
+        <Property name="Room" value="Entrance Hall" />
         <BoxCollider2D width="1.0079999" height="1.152" />
       </GameObject>
-      <GameObject name="RectangleObject" x="13.823999404907227" y="-17.74799919128418" rotation="0">
-        <BoxCollider2D width="1.04399991" height="1.224" />
-      </GameObject>
-      <GameObject name="RectangleObject" x="10.403999328613281" y="-17.74799919128418" rotation="0">
+      <GameObject name="West Hall - Vase 2" x="13.848011016845703" y="-17.808010101318359" rotation="0">
+        <Property name="Room" value="West Hall" />
         <BoxCollider2D width="1.0079999" height="1.224" />
       </GameObject>
-      <GameObject name="RectangleObject" x="6.9119997024536133" y="-24.443998336791992" rotation="0">
+      <GameObject name="West Hall - Barrels" x="6.9119997024536133" y="-24.443998336791992" rotation="0">
+        <Property name="Room" value="West Hall" />
         <BoxCollider2D width="2.23199987" height="1.69199991" />
       </GameObject>
-      <GameObject name="RectangleObject" x="2.2679998874664307" y="-14.183999061584473" rotation="0">
+      <GameObject name="West Washroom - Vase" x="2.2679998874664307" y="-14.183999061584473" rotation="0">
+        <Property name="Room" value="West Washroom" />
         <BoxCollider2D width="1.04399991" height="1.296" />
       </GameObject>
-      <GameObject name="RectangleObject" x="4.6439995765686035" y="-14.219999313354492" rotation="0">
+      <GameObject name="West Washroom - Sink" x="4.6439995765686035" y="-14.219999313354492" rotation="0">
+        <Property name="Room" value="West Washroom" />
         <BoxCollider2D width="1.07999992" height="1.512" />
       </GameObject>
-      <GameObject name="RectangleObject" x="19.583999633789062" y="-4.6079998016357422" rotation="0">
+      <GameObject name="Dining Room - Cabinet 1" x="19.583999633789062" y="-4.6079998016357422" rotation="0">
+        <Property name="Room" value="Dining Room" />
         <BoxCollider2D width="1.152" height="2.304" />
       </GameObject>
-      <GameObject name="RectangleObject" x="27.647998809814453" y="-4.6079998016357422" rotation="0">
+      <GameObject name="Dining Room - Cabinet 2" x="27.647998809814453" y="-4.6079998016357422" rotation="0">
+        <Property name="Room" value="Dining Room" />
+        <BoxCollider2D width="1.152" height="2.304" />
+      </GameObject>
+      <GameObject name="Kitchen - Counter 1" x="11.513987541198731" y="-3.876011848449707" rotation="0">
+        <Property name="Room" value="Kitchen" />
+        <BoxCollider2D width="1.134" height="1.42199993" />
+      </GameObject>
+      <GameObject name="Kitchen - Counter 2" x="12.665987968444824" y="-3.876011848449707" rotation="0">
+        <Property name="Room" value="Kitchen" />
+        <BoxCollider2D width="1.134" height="1.42199993" />
+      </GameObject>
+      <GameObject name="Kitchen - Stove 2" x="13.817987442016602" y="-3.876011848449707" rotation="0">
+        <Property name="Room" value="Kitchen" />
+        <BoxCollider2D width="1.134" height="1.42199993" />
+      </GameObject>
+      <GameObject name="Kitchen - Counter 3" x="9.2159996032714844" y="-9.2159996032714844" rotation="0">
+        <Property name="Room" value="Kitchen" />
+        <BoxCollider2D width="1.152" height="2.304" />
+      </GameObject>
+      <GameObject name="West Hall - Vase 2" x="13.848011016845703" y="-17.808010101318359" rotation="0">
+        <Property name="Room" value="West Hall" />
+        <BoxCollider2D width="1.0079999" height="1.224" />
+      </GameObject>
+      <GameObject name="Living Room - Vase 1" x="39.236759185791016" y="-17.626893997192383" rotation="0">
+        <Property name="Room" value="Living Room" />
+        <BoxCollider2D width="0.98999995" height="1.36799991" />
+      </GameObject>
+      <GameObject name="Study - Bookshelves 2" x="38.015998840332031" y="-34.55999755859375" rotation="0">
+        <Property name="Room" value="Study" />
+        <BoxCollider2D width="1.152" height="2.304" />
+      </GameObject>
+      <GameObject name="Study - Cabinet 2" x="36.863998413085938" y="-34.55999755859375" rotation="0">
+        <Property name="Room" value="Study" />
         <BoxCollider2D width="1.152" height="2.304" />
       </GameObject>
     </GameObject>
@@ -295,6 +323,10 @@
         <PolygonCollider2D>
           <Path>0,0 -14.9759998321533,0 -14.9759998321533,4.60799980163574 -6.91199970245361,4.60799980163574 -6.91199970245361,11.5199995040894 -2.30399990081787,11.5199995040894 -2.30399990081787,4.60799980163574 0,4.60799980163574</Path>
         </PolygonCollider2D>
+      </GameObject>
+      <GameObject name="West Hall - Vase 1" x="10.428010940551758" y="-17.8485107421875" rotation="0">
+        <Property name="Room" value="West Hall" />
+        <BoxCollider2D width="1.0079999" height="1.224" />
       </GameObject>
     </GameObject>
   </Prefab>

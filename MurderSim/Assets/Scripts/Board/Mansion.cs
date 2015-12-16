@@ -5,7 +5,7 @@ public class Mansion : MonoBehaviour {
 
     public List<Room> rooms;
 	
-    public void setupRooms() {
+    void Start() {
         Room entranceHall = new Room("Entrance Hall");
         Room eastHall = (new Room("East Hall"));
         Room westHall = (new Room("West Hall"));

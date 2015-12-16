@@ -81,7 +81,7 @@ public class Npc : MonoBehaviour{
     private void pickupItem(Item item) {
         item.room.items.Remove(item.gameObject);
         item.room = null;
-        item.held = true;
+        item.setState(Item.ItemState.held);
         inventory.Add(item);
         
         Timeline.addEvent(new PickupItem(pg.timeSteps, this, currentRoom, item));
@@ -89,7 +89,7 @@ public class Npc : MonoBehaviour{
 
     private void dropItem(Item item) {
         inventory.Remove(item);
-        item.held = false;
+        item.setState(Item.ItemState.dropped);
         item.room = currentRoom;
         currentRoom.items.Add(item.gameObject);
         if (item = pg.murderWeapon) {
