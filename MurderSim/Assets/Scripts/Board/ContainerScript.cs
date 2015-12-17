@@ -12,7 +12,7 @@ namespace MurderMystery {
         public string roomName;
 
         void Start() {
-            items = new List<GameObject>();
+            //items = new List<GameObject>();
             Mansion mansion = GameObject.Find("GameManager").GetComponent<Mansion>();
             
             //TODO - Fix this! This is horrible and ineffecient. Room scripts should be added to the gameObject as it's imported from Tiled, then the import script can simply gameobject.find(roomname) to add containers toi t

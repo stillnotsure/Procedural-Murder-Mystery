@@ -12,13 +12,13 @@ public class playerControl : MonoBehaviour {
     public BoxCollider2D box;
     private string lastDirection;
 
-    private GameObject facingNPC;
+    public GameObject facing;
 
 	// Use this for initialization
 	void Start () {
         box = GetComponent<BoxCollider2D>();
         lastDirection = "up";
-        facingNPC = null;
+        facing = null;
 	}
 
     void FixedUpdate() {
@@ -67,23 +67,25 @@ public class playerControl : MonoBehaviour {
 
 
         if (hit) {
+            facing = hit.transform.gameObject;
             if (hit.transform.CompareTag("NPC")) {
-                facingNPC = hit.transform.gameObject;
 
                 //If player isn't already in a conversation and presses shift
                 if (Input.GetKeyDown(KeyCode.LeftShift) && conversationScript.state == conversationState.none) {
-                    conversationScript.handleInteractionWith(facingNPC.GetComponent<Npc>());
+                    conversationScript.handleInteractionWith(facing.GetComponent<Npc>());
                 }
             }
             else if (hit.transform.CompareTag("Container")) {
                 //If player isn't already in a menu and presses shift
                 if (Input.GetKeyDown(KeyCode.LeftShift) && inventoryManager.state == inventoryState.none) {
-                    inventoryManager.showContainerItems(hit.transform.gameObject.GetComponent<MurderMystery.ContainerScript>());
+                    Debug.Log(facing);
+                    inventoryManager.showContainerItems(facing.GetComponent<MurderMystery.ContainerScript>());
+                    inventoryManager.justOpened = true;
                 }
             }
         }
         else {
-            facingNPC = null;
+            facing = null;
         }
     }
 

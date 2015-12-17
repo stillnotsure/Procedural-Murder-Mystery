@@ -443,6 +443,26 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11491716, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
+      propertyPath: items.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11465204, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
+      propertyPath: items.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11465626, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
+      propertyPath: items.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11453378, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
+      propertyPath: items.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400572, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
+      propertyPath: items.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 407482, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_LocalPosition.x
       value: 1.24528313
@@ -687,6 +707,34 @@ Prefab:
       propertyPath: m_TagString
       value: Container
       objectReference: {fileID: 0}
+    - target: {fileID: 11491716, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
+      propertyPath: items.Array.data[0]
+      value: 
+      objectReference: {fileID: 110612, guid: e0b6340d1f07a654abbf46423beaf5cb, type: 2}
+    - target: {fileID: 11465204, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
+      propertyPath: items.Array.data[0]
+      value: 
+      objectReference: {fileID: 110612, guid: e0b6340d1f07a654abbf46423beaf5cb, type: 2}
+    - target: {fileID: 11465626, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
+      propertyPath: items.Array.data[0]
+      value: 
+      objectReference: {fileID: 110612, guid: e0b6340d1f07a654abbf46423beaf5cb, type: 2}
+    - target: {fileID: 11453378, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
+      propertyPath: items.Array.data[0]
+      value: 
+      objectReference: {fileID: 151332, guid: c89d18b4e1dfc064e9ba2a6b08061c50, type: 2}
+    - target: {fileID: 11400572, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
+      propertyPath: items.Array.data[0]
+      value: 
+      objectReference: {fileID: 122574, guid: 07ede85c03619f04cba5348ec4bd2948, type: 2}
+    - target: {fileID: 11465204, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
+      propertyPath: items.Array.data[1]
+      value: 
+      objectReference: {fileID: 110612, guid: e0b6340d1f07a654abbf46423beaf5cb, type: 2}
+    - target: {fileID: 11465204, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
+      propertyPath: items.Array.data[2]
+      value: 
+      objectReference: {fileID: 110612, guid: e0b6340d1f07a654abbf46423beaf5cb, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
   m_IsPrefabParent: 0
@@ -797,6 +845,7 @@ MonoBehaviour:
   inventoryManager: {fileID: 1359466625}
   playerSpeed: 2
   box: {fileID: 0}
+  facing: {fileID: 0}
 --- !u!61 &1315873842
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -847,9 +896,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -1075,6 +1122,9 @@ MonoBehaviour:
   selected: 0
   inventoryPanel: {fileID: 1920942311}
   selectedItemText: {fileID: 2088528403}
+  justOpened: 0
+  facing: {fileID: 0}
+  playerInventory: []
 --- !u!1 &1447379573
 GameObject:
   m_ObjectHideFlags: 0
@@ -1441,9 +1491,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}

@@ -17,17 +17,24 @@ public class InventoryManager : MonoBehaviour {
     public GameObject inventoryPanel;
     public Text selectedItemText;
 
+    //Player Specific
+    public bool justOpened = false;
+    public GameObject facing;
+    public List<GameObject> playerInventory;
+
 
     void Start () {
         items = new List<GameObject>();
         images = new List<Image>();
+        playerInventory = new List<GameObject>();
 	}
 	
 	void Update () {
+
         if (Input.GetKeyDown(KeyCode.LeftControl)) {
             setStateNone();
         }
-        if (state != inventoryState.none) {
+        if (state != inventoryState.none && items.Count > 0) {
             if (Input.GetKeyDown("a")) {
                 deSelect();
                 selected = Math.Max(0, selected - 1);
@@ -38,10 +45,17 @@ public class InventoryManager : MonoBehaviour {
                 selected = Math.Min(images.Count - 1, selected + 1);
                 highlightSelected();
             }
-            if (Input.GetKeyDown(KeyCode.LeftShift)) {
+            if (Input.GetKeyDown(KeyCode.LeftShift) && !justOpened) {
                 selectItem(selected);
             }
         }
+        else {
+            if (Input.GetKeyDown("i")) {
+                OpenInventory();
+            }
+        }
+
+        if (justOpened) justOpened = false;
     }
 
     void OnGUI() {
@@ -56,10 +70,20 @@ public class InventoryManager : MonoBehaviour {
     }
 
     private void selectItem(int selected) {
+        if (state == inventoryState.container ||  state == inventoryState.npcInventory) {
 
+            if (selected > images.Count - 1) selected = images.Count - 1;
+
+            playerInventory.Add(items[selected]);
+            facing.GetComponent<MurderMystery.ContainerScript>().items.Remove(items[selected]);
+            StopAllCoroutines();
+            showContainerItems(facing.GetComponent<MurderMystery.ContainerScript>());
+
+        }
     }
 
     private void setStateNone() {
+        facing = null;
         state = inventoryState.none;
         deSelect();
         selected = 0;
@@ -77,7 +101,8 @@ public class InventoryManager : MonoBehaviour {
     private void deSelect() {
         StopAllCoroutines();
         selectedItemText.text = "";
-        images[selected].color = new Color(1f, 1f, 1f, 1f);
+        if (images.Count > 0)
+             images[selected].color = new Color(1f, 1f, 1f, 1f);
     }
 
     private void highlightSelected() {
@@ -88,21 +113,39 @@ public class InventoryManager : MonoBehaviour {
     private void displayItems() {
         images.Clear();
         clearPanel();
+        
+        if (items.Count > 0) {
+            foreach (GameObject item in items) {
+                GameObject go = new GameObject(item.GetComponent<Item>().name);
+                Image image = go.AddComponent<Image>();
+                image.preserveAspect = true;
+                image.sprite = item.GetComponent<SpriteRenderer>().sprite;
+                go.transform.SetParent(inventoryPanel.transform, false);
+                images.Add(image);
+            }
 
-        foreach (GameObject item in items) {
-            GameObject go = new GameObject(item.GetComponent<Item>().name);
-            Image image = go.AddComponent<Image>();
-            image.sprite = item.GetComponent<SpriteRenderer>().sprite;
-            go.transform.SetParent(inventoryPanel.transform, false);
-            images.Add(image);
+            selected = 0;
+            deSelect();
+            highlightSelected();
         }
 
-        selected = 0;
-        deSelect();
-        highlightSelected();
+        else {
+            selectedItemText.text = "Empty";
+        }
+        
+    }
+
+    private void OpenInventory() {
+        state = inventoryState.playerInventory;
+        items.Clear();
+        foreach(GameObject item in playerInventory) {
+            items.Add(item);
+        }
+        displayItems();
     }
 
     public void showContainerItems(MurderMystery.ContainerScript container) {
+        facing = container.gameObject;
         state = inventoryState.container;
         List<GameObject> containerItems = container.items;
         items.Clear();
