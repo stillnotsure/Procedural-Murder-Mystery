@@ -463,30 +463,6 @@ Prefab:
       propertyPath: items.Array.size
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11461286, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
-      propertyPath: items.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11459126, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
-      propertyPath: items.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11426504, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
-      propertyPath: items.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11455946, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
-      propertyPath: items.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11464746, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
-      propertyPath: items.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11404342, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
-      propertyPath: items.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 407482, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_LocalPosition.x
       value: 1.24528313
@@ -759,42 +735,6 @@ Prefab:
       propertyPath: items.Array.data[2]
       value: 
       objectReference: {fileID: 110612, guid: e0b6340d1f07a654abbf46423beaf5cb, type: 2}
-    - target: {fileID: 11461286, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
-      propertyPath: items.Array.data[0]
-      value: 
-      objectReference: {fileID: 105504, guid: 2ca83ba8f0271d54a915f0ef482c83cb, type: 2}
-    - target: {fileID: 11461286, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
-      propertyPath: items.Array.data[1]
-      value: 
-      objectReference: {fileID: 105504, guid: 2ca83ba8f0271d54a915f0ef482c83cb, type: 2}
-    - target: {fileID: 11459126, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
-      propertyPath: items.Array.data[0]
-      value: 
-      objectReference: {fileID: 105504, guid: 2ca83ba8f0271d54a915f0ef482c83cb, type: 2}
-    - target: {fileID: 11459126, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
-      propertyPath: items.Array.data[1]
-      value: 
-      objectReference: {fileID: 105504, guid: 2ca83ba8f0271d54a915f0ef482c83cb, type: 2}
-    - target: {fileID: 11426504, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
-      propertyPath: items.Array.data[0]
-      value: 
-      objectReference: {fileID: 133174, guid: fa4d5c93c64e7eb459ec6cd47c4cf902, type: 2}
-    - target: {fileID: 11455946, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
-      propertyPath: items.Array.data[0]
-      value: 
-      objectReference: {fileID: 133174, guid: fa4d5c93c64e7eb459ec6cd47c4cf902, type: 2}
-    - target: {fileID: 11455946, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
-      propertyPath: items.Array.data[1]
-      value: 
-      objectReference: {fileID: 122574, guid: 07ede85c03619f04cba5348ec4bd2948, type: 2}
-    - target: {fileID: 11464746, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
-      propertyPath: items.Array.data[0]
-      value: 
-      objectReference: {fileID: 137460, guid: 56d68eac4935f1848a4326514f9d0125, type: 2}
-    - target: {fileID: 11404342, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
-      propertyPath: items.Array.data[0]
-      value: 
-      objectReference: {fileID: 137460, guid: 56d68eac4935f1848a4326514f9d0125, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
   m_IsPrefabParent: 0
@@ -956,9 +896,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -1553,9 +1491,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
