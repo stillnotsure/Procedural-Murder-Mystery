@@ -21,6 +21,14 @@ class CustomImporterAddComponent : Tiled2Unity.ICustomTiledImporter {
             gameObject.layer = LayerMask.NameToLayer("Containers");
         }
         
+        if (props.ContainsKey("Ceiling")) {
+            gameObject.layer = LayerMask.NameToLayer("Ceilings");
+            gameObject.tag = "Ceiling";
+            Ceiling ceiling = gameObject.AddComponent<Ceiling>();
+            ceiling.roomName = props["Ceiling"];
+        }
+        
+
     }
 
     public void CustomizePrefab(GameObject prefab) {

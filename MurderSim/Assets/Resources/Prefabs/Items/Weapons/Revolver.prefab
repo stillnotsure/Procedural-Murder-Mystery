@@ -40,13 +40,3939 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa4afbcc175dc17448b7766d92b677d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 0
+  state: 1
   room:
-    roomName: 
-    npcs: []
-    items: []
-    neighbouringRooms: []
-    containers: []
+    roomName: Dining Room
+    npcs:
+    - {fileID: 0}
+    items:
+    - {fileID: 151332}
+    neighbouringRooms:
+    - roomName: Entrance Hall
+      npcs:
+      - {fileID: 0}
+      - {fileID: 0}
+      items: []
+      neighbouringRooms:
+      - roomName: Dining Room
+        npcs:
+        - {fileID: 0}
+        items:
+        - {fileID: 151332}
+        neighbouringRooms:
+        - roomName: Entrance Hall
+          npcs:
+          - {fileID: 0}
+          - {fileID: 0}
+          items: []
+          neighbouringRooms:
+          - roomName: Dining Room
+            npcs:
+            - {fileID: 0}
+            items:
+            - {fileID: 151332}
+            neighbouringRooms:
+            - roomName: Entrance Hall
+              npcs:
+              - {fileID: 0}
+              - {fileID: 0}
+              items: []
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Kitchen
+              npcs:
+              - {fileID: 0}
+              items:
+              - {fileID: 0}
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            containers:
+            - {fileID: 0}
+            - {fileID: 0}
+            ceiling: {fileID: 0}
+          - roomName: East Hall
+            npcs:
+            - {fileID: 0}
+            items: []
+            neighbouringRooms:
+            - roomName: Entrance Hall
+              npcs:
+              - {fileID: 0}
+              - {fileID: 0}
+              items: []
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Study
+              npcs: []
+              items:
+              - {fileID: 0}
+              neighbouringRooms:
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: East Washroom
+              npcs: []
+              items: []
+              neighbouringRooms:
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Living Room
+              npcs: []
+              items:
+              - {fileID: 0}
+              neighbouringRooms:
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Storage
+              npcs: []
+              items: []
+              neighbouringRooms:
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            containers:
+            - {fileID: 0}
+            ceiling: {fileID: 0}
+          - roomName: West Hall
+            npcs:
+            - {fileID: 0}
+            - {fileID: 0}
+            - {fileID: 0}
+            items: []
+            neighbouringRooms:
+            - roomName: Entrance Hall
+              npcs:
+              - {fileID: 0}
+              - {fileID: 0}
+              items: []
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Kitchen
+              npcs:
+              - {fileID: 0}
+              items:
+              - {fileID: 0}
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: West Washroom
+              npcs: []
+              items: []
+              neighbouringRooms:
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            containers:
+            - {fileID: 0}
+            - {fileID: 0}
+            - {fileID: 0}
+            - {fileID: 0}
+            ceiling: {fileID: 0}
+          containers:
+          - {fileID: 0}
+          - {fileID: 0}
+          ceiling: {fileID: 0}
+        - roomName: Kitchen
+          npcs:
+          - {fileID: 0}
+          items:
+          - {fileID: 0}
+          neighbouringRooms:
+          - roomName: Dining Room
+            npcs:
+            - {fileID: 0}
+            items:
+            - {fileID: 151332}
+            neighbouringRooms:
+            - roomName: Entrance Hall
+              npcs:
+              - {fileID: 0}
+              - {fileID: 0}
+              items: []
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Kitchen
+              npcs:
+              - {fileID: 0}
+              items:
+              - {fileID: 0}
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            containers:
+            - {fileID: 0}
+            - {fileID: 0}
+            ceiling: {fileID: 0}
+          - roomName: West Hall
+            npcs:
+            - {fileID: 0}
+            - {fileID: 0}
+            - {fileID: 0}
+            items: []
+            neighbouringRooms:
+            - roomName: Entrance Hall
+              npcs:
+              - {fileID: 0}
+              - {fileID: 0}
+              items: []
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Kitchen
+              npcs:
+              - {fileID: 0}
+              items:
+              - {fileID: 0}
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: West Washroom
+              npcs: []
+              items: []
+              neighbouringRooms:
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            containers:
+            - {fileID: 0}
+            - {fileID: 0}
+            - {fileID: 0}
+            - {fileID: 0}
+            ceiling: {fileID: 0}
+          containers:
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          ceiling: {fileID: 0}
+        containers:
+        - {fileID: 0}
+        - {fileID: 0}
+        ceiling: {fileID: 0}
+      - roomName: East Hall
+        npcs:
+        - {fileID: 0}
+        items: []
+        neighbouringRooms:
+        - roomName: Entrance Hall
+          npcs:
+          - {fileID: 0}
+          - {fileID: 0}
+          items: []
+          neighbouringRooms:
+          - roomName: Dining Room
+            npcs:
+            - {fileID: 0}
+            items:
+            - {fileID: 151332}
+            neighbouringRooms:
+            - roomName: Entrance Hall
+              npcs:
+              - {fileID: 0}
+              - {fileID: 0}
+              items: []
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Kitchen
+              npcs:
+              - {fileID: 0}
+              items:
+              - {fileID: 0}
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            containers:
+            - {fileID: 0}
+            - {fileID: 0}
+            ceiling: {fileID: 0}
+          - roomName: East Hall
+            npcs:
+            - {fileID: 0}
+            items: []
+            neighbouringRooms:
+            - roomName: Entrance Hall
+              npcs:
+              - {fileID: 0}
+              - {fileID: 0}
+              items: []
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Study
+              npcs: []
+              items:
+              - {fileID: 0}
+              neighbouringRooms:
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: East Washroom
+              npcs: []
+              items: []
+              neighbouringRooms:
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Living Room
+              npcs: []
+              items:
+              - {fileID: 0}
+              neighbouringRooms:
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Storage
+              npcs: []
+              items: []
+              neighbouringRooms:
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            containers:
+            - {fileID: 0}
+            ceiling: {fileID: 0}
+          - roomName: West Hall
+            npcs:
+            - {fileID: 0}
+            - {fileID: 0}
+            - {fileID: 0}
+            items: []
+            neighbouringRooms:
+            - roomName: Entrance Hall
+              npcs:
+              - {fileID: 0}
+              - {fileID: 0}
+              items: []
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Kitchen
+              npcs:
+              - {fileID: 0}
+              items:
+              - {fileID: 0}
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: West Washroom
+              npcs: []
+              items: []
+              neighbouringRooms:
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            containers:
+            - {fileID: 0}
+            - {fileID: 0}
+            - {fileID: 0}
+            - {fileID: 0}
+            ceiling: {fileID: 0}
+          containers:
+          - {fileID: 0}
+          - {fileID: 0}
+          ceiling: {fileID: 0}
+        - roomName: Study
+          npcs: []
+          items:
+          - {fileID: 0}
+          neighbouringRooms:
+          - roomName: East Hall
+            npcs:
+            - {fileID: 0}
+            items: []
+            neighbouringRooms:
+            - roomName: Entrance Hall
+              npcs:
+              - {fileID: 0}
+              - {fileID: 0}
+              items: []
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Study
+              npcs: []
+              items:
+              - {fileID: 0}
+              neighbouringRooms:
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: East Washroom
+              npcs: []
+              items: []
+              neighbouringRooms:
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Living Room
+              npcs: []
+              items:
+              - {fileID: 0}
+              neighbouringRooms:
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Storage
+              npcs: []
+              items: []
+              neighbouringRooms:
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            containers:
+            - {fileID: 0}
+            ceiling: {fileID: 0}
+          containers:
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          ceiling: {fileID: 0}
+        - roomName: East Washroom
+          npcs: []
+          items: []
+          neighbouringRooms:
+          - roomName: East Hall
+            npcs:
+            - {fileID: 0}
+            items: []
+            neighbouringRooms:
+            - roomName: Entrance Hall
+              npcs:
+              - {fileID: 0}
+              - {fileID: 0}
+              items: []
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Study
+              npcs: []
+              items:
+              - {fileID: 0}
+              neighbouringRooms:
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: East Washroom
+              npcs: []
+              items: []
+              neighbouringRooms:
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Living Room
+              npcs: []
+              items:
+              - {fileID: 0}
+              neighbouringRooms:
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Storage
+              npcs: []
+              items: []
+              neighbouringRooms:
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            containers:
+            - {fileID: 0}
+            ceiling: {fileID: 0}
+          containers:
+          - {fileID: 0}
+          - {fileID: 0}
+          ceiling: {fileID: 0}
+        - roomName: Living Room
+          npcs: []
+          items:
+          - {fileID: 0}
+          neighbouringRooms:
+          - roomName: East Hall
+            npcs:
+            - {fileID: 0}
+            items: []
+            neighbouringRooms:
+            - roomName: Entrance Hall
+              npcs:
+              - {fileID: 0}
+              - {fileID: 0}
+              items: []
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Study
+              npcs: []
+              items:
+              - {fileID: 0}
+              neighbouringRooms:
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: East Washroom
+              npcs: []
+              items: []
+              neighbouringRooms:
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Living Room
+              npcs: []
+              items:
+              - {fileID: 0}
+              neighbouringRooms:
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Storage
+              npcs: []
+              items: []
+              neighbouringRooms:
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            containers:
+            - {fileID: 0}
+            ceiling: {fileID: 0}
+          containers:
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          ceiling: {fileID: 0}
+        - roomName: Storage
+          npcs: []
+          items: []
+          neighbouringRooms:
+          - roomName: East Hall
+            npcs:
+            - {fileID: 0}
+            items: []
+            neighbouringRooms:
+            - roomName: Entrance Hall
+              npcs:
+              - {fileID: 0}
+              - {fileID: 0}
+              items: []
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Study
+              npcs: []
+              items:
+              - {fileID: 0}
+              neighbouringRooms:
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: East Washroom
+              npcs: []
+              items: []
+              neighbouringRooms:
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Living Room
+              npcs: []
+              items:
+              - {fileID: 0}
+              neighbouringRooms:
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Storage
+              npcs: []
+              items: []
+              neighbouringRooms:
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            containers:
+            - {fileID: 0}
+            ceiling: {fileID: 0}
+          containers:
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          ceiling: {fileID: 0}
+        containers:
+        - {fileID: 0}
+        ceiling: {fileID: 0}
+      - roomName: West Hall
+        npcs:
+        - {fileID: 0}
+        - {fileID: 0}
+        - {fileID: 0}
+        items: []
+        neighbouringRooms:
+        - roomName: Entrance Hall
+          npcs:
+          - {fileID: 0}
+          - {fileID: 0}
+          items: []
+          neighbouringRooms:
+          - roomName: Dining Room
+            npcs:
+            - {fileID: 0}
+            items:
+            - {fileID: 151332}
+            neighbouringRooms:
+            - roomName: Entrance Hall
+              npcs:
+              - {fileID: 0}
+              - {fileID: 0}
+              items: []
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Kitchen
+              npcs:
+              - {fileID: 0}
+              items:
+              - {fileID: 0}
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            containers:
+            - {fileID: 0}
+            - {fileID: 0}
+            ceiling: {fileID: 0}
+          - roomName: East Hall
+            npcs:
+            - {fileID: 0}
+            items: []
+            neighbouringRooms:
+            - roomName: Entrance Hall
+              npcs:
+              - {fileID: 0}
+              - {fileID: 0}
+              items: []
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Study
+              npcs: []
+              items:
+              - {fileID: 0}
+              neighbouringRooms:
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: East Washroom
+              npcs: []
+              items: []
+              neighbouringRooms:
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Living Room
+              npcs: []
+              items:
+              - {fileID: 0}
+              neighbouringRooms:
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Storage
+              npcs: []
+              items: []
+              neighbouringRooms:
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            containers:
+            - {fileID: 0}
+            ceiling: {fileID: 0}
+          - roomName: West Hall
+            npcs:
+            - {fileID: 0}
+            - {fileID: 0}
+            - {fileID: 0}
+            items: []
+            neighbouringRooms:
+            - roomName: Entrance Hall
+              npcs:
+              - {fileID: 0}
+              - {fileID: 0}
+              items: []
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Kitchen
+              npcs:
+              - {fileID: 0}
+              items:
+              - {fileID: 0}
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: West Washroom
+              npcs: []
+              items: []
+              neighbouringRooms:
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            containers:
+            - {fileID: 0}
+            - {fileID: 0}
+            - {fileID: 0}
+            - {fileID: 0}
+            ceiling: {fileID: 0}
+          containers:
+          - {fileID: 0}
+          - {fileID: 0}
+          ceiling: {fileID: 0}
+        - roomName: Kitchen
+          npcs:
+          - {fileID: 0}
+          items:
+          - {fileID: 0}
+          neighbouringRooms:
+          - roomName: Dining Room
+            npcs:
+            - {fileID: 0}
+            items:
+            - {fileID: 151332}
+            neighbouringRooms:
+            - roomName: Entrance Hall
+              npcs:
+              - {fileID: 0}
+              - {fileID: 0}
+              items: []
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Kitchen
+              npcs:
+              - {fileID: 0}
+              items:
+              - {fileID: 0}
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            containers:
+            - {fileID: 0}
+            - {fileID: 0}
+            ceiling: {fileID: 0}
+          - roomName: West Hall
+            npcs:
+            - {fileID: 0}
+            - {fileID: 0}
+            - {fileID: 0}
+            items: []
+            neighbouringRooms:
+            - roomName: Entrance Hall
+              npcs:
+              - {fileID: 0}
+              - {fileID: 0}
+              items: []
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Kitchen
+              npcs:
+              - {fileID: 0}
+              items:
+              - {fileID: 0}
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: West Washroom
+              npcs: []
+              items: []
+              neighbouringRooms:
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            containers:
+            - {fileID: 0}
+            - {fileID: 0}
+            - {fileID: 0}
+            - {fileID: 0}
+            ceiling: {fileID: 0}
+          containers:
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          ceiling: {fileID: 0}
+        - roomName: West Washroom
+          npcs: []
+          items: []
+          neighbouringRooms:
+          - roomName: West Hall
+            npcs:
+            - {fileID: 0}
+            - {fileID: 0}
+            - {fileID: 0}
+            items: []
+            neighbouringRooms:
+            - roomName: Entrance Hall
+              npcs:
+              - {fileID: 0}
+              - {fileID: 0}
+              items: []
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Kitchen
+              npcs:
+              - {fileID: 0}
+              items:
+              - {fileID: 0}
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: West Washroom
+              npcs: []
+              items: []
+              neighbouringRooms:
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            containers:
+            - {fileID: 0}
+            - {fileID: 0}
+            - {fileID: 0}
+            - {fileID: 0}
+            ceiling: {fileID: 0}
+          containers:
+          - {fileID: 0}
+          - {fileID: 0}
+          ceiling: {fileID: 0}
+        containers:
+        - {fileID: 0}
+        - {fileID: 0}
+        - {fileID: 0}
+        - {fileID: 0}
+        ceiling: {fileID: 0}
+      containers:
+      - {fileID: 0}
+      - {fileID: 0}
+      ceiling: {fileID: 0}
+    - roomName: Kitchen
+      npcs:
+      - {fileID: 0}
+      items:
+      - {fileID: 0}
+      neighbouringRooms:
+      - roomName: Dining Room
+        npcs:
+        - {fileID: 0}
+        items:
+        - {fileID: 151332}
+        neighbouringRooms:
+        - roomName: Entrance Hall
+          npcs:
+          - {fileID: 0}
+          - {fileID: 0}
+          items: []
+          neighbouringRooms:
+          - roomName: Dining Room
+            npcs:
+            - {fileID: 0}
+            items:
+            - {fileID: 151332}
+            neighbouringRooms:
+            - roomName: Entrance Hall
+              npcs:
+              - {fileID: 0}
+              - {fileID: 0}
+              items: []
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Kitchen
+              npcs:
+              - {fileID: 0}
+              items:
+              - {fileID: 0}
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            containers:
+            - {fileID: 0}
+            - {fileID: 0}
+            ceiling: {fileID: 0}
+          - roomName: East Hall
+            npcs:
+            - {fileID: 0}
+            items: []
+            neighbouringRooms:
+            - roomName: Entrance Hall
+              npcs:
+              - {fileID: 0}
+              - {fileID: 0}
+              items: []
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Study
+              npcs: []
+              items:
+              - {fileID: 0}
+              neighbouringRooms:
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: East Washroom
+              npcs: []
+              items: []
+              neighbouringRooms:
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Living Room
+              npcs: []
+              items:
+              - {fileID: 0}
+              neighbouringRooms:
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Storage
+              npcs: []
+              items: []
+              neighbouringRooms:
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            containers:
+            - {fileID: 0}
+            ceiling: {fileID: 0}
+          - roomName: West Hall
+            npcs:
+            - {fileID: 0}
+            - {fileID: 0}
+            - {fileID: 0}
+            items: []
+            neighbouringRooms:
+            - roomName: Entrance Hall
+              npcs:
+              - {fileID: 0}
+              - {fileID: 0}
+              items: []
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Kitchen
+              npcs:
+              - {fileID: 0}
+              items:
+              - {fileID: 0}
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: West Washroom
+              npcs: []
+              items: []
+              neighbouringRooms:
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            containers:
+            - {fileID: 0}
+            - {fileID: 0}
+            - {fileID: 0}
+            - {fileID: 0}
+            ceiling: {fileID: 0}
+          containers:
+          - {fileID: 0}
+          - {fileID: 0}
+          ceiling: {fileID: 0}
+        - roomName: Kitchen
+          npcs:
+          - {fileID: 0}
+          items:
+          - {fileID: 0}
+          neighbouringRooms:
+          - roomName: Dining Room
+            npcs:
+            - {fileID: 0}
+            items:
+            - {fileID: 151332}
+            neighbouringRooms:
+            - roomName: Entrance Hall
+              npcs:
+              - {fileID: 0}
+              - {fileID: 0}
+              items: []
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Kitchen
+              npcs:
+              - {fileID: 0}
+              items:
+              - {fileID: 0}
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            containers:
+            - {fileID: 0}
+            - {fileID: 0}
+            ceiling: {fileID: 0}
+          - roomName: West Hall
+            npcs:
+            - {fileID: 0}
+            - {fileID: 0}
+            - {fileID: 0}
+            items: []
+            neighbouringRooms:
+            - roomName: Entrance Hall
+              npcs:
+              - {fileID: 0}
+              - {fileID: 0}
+              items: []
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Kitchen
+              npcs:
+              - {fileID: 0}
+              items:
+              - {fileID: 0}
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: West Washroom
+              npcs: []
+              items: []
+              neighbouringRooms:
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            containers:
+            - {fileID: 0}
+            - {fileID: 0}
+            - {fileID: 0}
+            - {fileID: 0}
+            ceiling: {fileID: 0}
+          containers:
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          ceiling: {fileID: 0}
+        containers:
+        - {fileID: 0}
+        - {fileID: 0}
+        ceiling: {fileID: 0}
+      - roomName: West Hall
+        npcs:
+        - {fileID: 0}
+        - {fileID: 0}
+        - {fileID: 0}
+        items: []
+        neighbouringRooms:
+        - roomName: Entrance Hall
+          npcs:
+          - {fileID: 0}
+          - {fileID: 0}
+          items: []
+          neighbouringRooms:
+          - roomName: Dining Room
+            npcs:
+            - {fileID: 0}
+            items:
+            - {fileID: 151332}
+            neighbouringRooms:
+            - roomName: Entrance Hall
+              npcs:
+              - {fileID: 0}
+              - {fileID: 0}
+              items: []
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Kitchen
+              npcs:
+              - {fileID: 0}
+              items:
+              - {fileID: 0}
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            containers:
+            - {fileID: 0}
+            - {fileID: 0}
+            ceiling: {fileID: 0}
+          - roomName: East Hall
+            npcs:
+            - {fileID: 0}
+            items: []
+            neighbouringRooms:
+            - roomName: Entrance Hall
+              npcs:
+              - {fileID: 0}
+              - {fileID: 0}
+              items: []
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Study
+              npcs: []
+              items:
+              - {fileID: 0}
+              neighbouringRooms:
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: East Washroom
+              npcs: []
+              items: []
+              neighbouringRooms:
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Living Room
+              npcs: []
+              items:
+              - {fileID: 0}
+              neighbouringRooms:
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Storage
+              npcs: []
+              items: []
+              neighbouringRooms:
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            containers:
+            - {fileID: 0}
+            ceiling: {fileID: 0}
+          - roomName: West Hall
+            npcs:
+            - {fileID: 0}
+            - {fileID: 0}
+            - {fileID: 0}
+            items: []
+            neighbouringRooms:
+            - roomName: Entrance Hall
+              npcs:
+              - {fileID: 0}
+              - {fileID: 0}
+              items: []
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Kitchen
+              npcs:
+              - {fileID: 0}
+              items:
+              - {fileID: 0}
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: West Washroom
+              npcs: []
+              items: []
+              neighbouringRooms:
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            containers:
+            - {fileID: 0}
+            - {fileID: 0}
+            - {fileID: 0}
+            - {fileID: 0}
+            ceiling: {fileID: 0}
+          containers:
+          - {fileID: 0}
+          - {fileID: 0}
+          ceiling: {fileID: 0}
+        - roomName: Kitchen
+          npcs:
+          - {fileID: 0}
+          items:
+          - {fileID: 0}
+          neighbouringRooms:
+          - roomName: Dining Room
+            npcs:
+            - {fileID: 0}
+            items:
+            - {fileID: 151332}
+            neighbouringRooms:
+            - roomName: Entrance Hall
+              npcs:
+              - {fileID: 0}
+              - {fileID: 0}
+              items: []
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Kitchen
+              npcs:
+              - {fileID: 0}
+              items:
+              - {fileID: 0}
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            containers:
+            - {fileID: 0}
+            - {fileID: 0}
+            ceiling: {fileID: 0}
+          - roomName: West Hall
+            npcs:
+            - {fileID: 0}
+            - {fileID: 0}
+            - {fileID: 0}
+            items: []
+            neighbouringRooms:
+            - roomName: Entrance Hall
+              npcs:
+              - {fileID: 0}
+              - {fileID: 0}
+              items: []
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Kitchen
+              npcs:
+              - {fileID: 0}
+              items:
+              - {fileID: 0}
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: West Washroom
+              npcs: []
+              items: []
+              neighbouringRooms:
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            containers:
+            - {fileID: 0}
+            - {fileID: 0}
+            - {fileID: 0}
+            - {fileID: 0}
+            ceiling: {fileID: 0}
+          containers:
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          - {fileID: 0}
+          ceiling: {fileID: 0}
+        - roomName: West Washroom
+          npcs: []
+          items: []
+          neighbouringRooms:
+          - roomName: West Hall
+            npcs:
+            - {fileID: 0}
+            - {fileID: 0}
+            - {fileID: 0}
+            items: []
+            neighbouringRooms:
+            - roomName: Entrance Hall
+              npcs:
+              - {fileID: 0}
+              - {fileID: 0}
+              items: []
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: East Hall
+                npcs:
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Study
+                - roomName: East Washroom
+                - roomName: Living Room
+                - roomName: Storage
+                containers:
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: Kitchen
+              npcs:
+              - {fileID: 0}
+              items:
+              - {fileID: 0}
+              neighbouringRooms:
+              - roomName: Dining Room
+                npcs:
+                - {fileID: 0}
+                items:
+                - {fileID: 151332}
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            - roomName: West Washroom
+              npcs: []
+              items: []
+              neighbouringRooms:
+              - roomName: West Hall
+                npcs:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                items: []
+                neighbouringRooms:
+                - roomName: Entrance Hall
+                - roomName: Kitchen
+                - roomName: West Washroom
+                containers:
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                - {fileID: 0}
+                ceiling: {fileID: 0}
+              containers:
+              - {fileID: 0}
+              - {fileID: 0}
+              ceiling: {fileID: 0}
+            containers:
+            - {fileID: 0}
+            - {fileID: 0}
+            - {fileID: 0}
+            - {fileID: 0}
+            ceiling: {fileID: 0}
+          containers:
+          - {fileID: 0}
+          - {fileID: 0}
+          ceiling: {fileID: 0}
+        containers:
+        - {fileID: 0}
+        - {fileID: 0}
+        - {fileID: 0}
+        - {fileID: 0}
+        ceiling: {fileID: 0}
+      containers:
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      ceiling: {fileID: 0}
+    containers:
+    - {fileID: 0}
+    - {fileID: 0}
+    ceiling: {fileID: 0}
   damageType: 3
 --- !u!212 &21282132
 SpriteRenderer:

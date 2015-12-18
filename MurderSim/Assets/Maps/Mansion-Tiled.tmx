@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="46" height="46" tilewidth="32" tileheight="32" nextobjectid="135">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="46" height="46" tilewidth="32" tileheight="32" nextobjectid="136">
  <tileset firstgid="1" name="castle" tilewidth="32" tileheight="32">
   <image source="../Resources/Sprites/castle.png" trans="a4bbcc" width="256" height="608"/>
   <tile id="1">
@@ -625,6 +625,11 @@
     <property name="Room" value="Study"/>
    </properties>
   </object>
+  <object id="135" name="West Hall - Vase 1" x="289.667" y="493.334" width="28" height="34">
+   <properties>
+    <property name="Room" value="West Hall"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="Rooms">
   <object id="106" name="Entrance Hall" x="544" y="640" width="256" height="224"/>
@@ -641,10 +646,85 @@
   <object id="120" name="West Hall" x="480" y="832">
    <polygon points="0,0 -416,0 -416,-128 -192,-128 -192,-320 -64,-320 -64,-128 0,-128"/>
   </object>
-  <object id="134" name="West Hall - Vase 1" x="289.667" y="495.792" width="28" height="34">
-   <properties>
-    <property name="Room" value="West Hall"/>
-   </properties>
-  </object>
  </objectgroup>
+ <layer name="West Washroom Ceiling" width="46" height="46">
+  <properties>
+   <property name="Ceiling" value="West Washroom"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzrENADAIBDGYi/33ygJpeVHY0vVXBQBZ0/+u853lO8t3lm8AAAAAgH0Pse8MqQ==
+  </data>
+ </layer>
+ <layer name="WestHall Ceiling" width="46" height="46">
+  <properties>
+   <property name="Ceiling" value="West Hall"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzsEJADAIADGdq/vv1QUq9CUKCdz/IgAAdjn5bjrfvXz3mvxdvf3k27dv3759AwAAsNcFyRooFQ==
+  </data>
+ </layer>
+ <layer name="Kitchen Ceiling" width="46" height="46">
+  <properties>
+   <property name="Ceiling" value="Kitchen"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzsEJACAMBMGkLvvvywoUX0eEGdj/Vp2tvjeV7yzfWb6zfGf5zvr1GwAAAAAA4MUGi9UWgQ==
+  </data>
+ </layer>
+ <layer name="Dining Room Ceiling" width="46" height="46">
+  <properties>
+   <property name="Ceiling" value="Dining Room"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzsEJACAQwLBzLvffyxn8FMEE+u/Mf/a66xW+W75bvlu+W75bvlu+AQAAAAB41QEeuSox
+  </data>
+ </layer>
+ <layer name="Entrance Hall Ceiling" width="46" height="46">
+  <properties>
+   <property name="Ceiling" value="Entrance Hall"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzsEJAEAIBDGty/77uhbutSgkMP+pAgAArpj+axvfWb6zfGf5zvKddfUbAABgqwd+Uhwh
+  </data>
+ </layer>
+ <layer name="East Hall Ceiling" width="46" height="46">
+  <properties>
+   <property name="Ceiling" value="East Hall"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzrEJACAQBMG3LvvvywI0MPlDYQY23yogZY69H/jO8p3lO8t3lu8s31mvfZ9+bvPt27dv374BAADosQCziTAN
+  </data>
+ </layer>
+ <layer name="Living Room Ceiling" width="46" height="46">
+  <properties>
+   <property name="Ceiling" value="Living Room"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzsEJAEAIBDGty/77uhLutygkMP+pArhn+t9GvrN8Z/nO8p3lO+vqNwAAAACwywOtrRlR
+  </data>
+ </layer>
+ <layer name="Study Ceiling" width="46" height="46">
+  <properties>
+   <property name="Ceiling" value="Study"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzsEJAEAIBDGt6/rvyw58LickMP+pAgAAAAAueb33K99ZvrN8Z/nOuvoNAAOlJhLB
+  </data>
+ </layer>
+ <layer name="East Washroom Ceiling" width="46" height="46">
+  <properties>
+   <property name="Ceiling" value="East Washroom"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzrEJADAMBDF7ruy/VwZwleaDQYLrrwr46fRsA99ZvrN8Z/nO2voNAAAAAACvLi6qC7k=
+  </data>
+ </layer>
+ <layer name="Storage Ceiling" width="46" height="46">
+  <properties>
+   <property name="Ceiling" value="Storage"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzrEJADAMBDF7ruy/V0oX6Z8YJLj+qgAAAMbptw18Z/nO8p3lO2vrNwAAAP+7Fb8LuQ==
+  </data>
+ </layer>
 </map>

@@ -301,7 +301,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
+  m_BackGroundColor: {r: .0196078438, g: .0196078438, b: .0196078438, a: .0196078438}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -436,6 +436,10 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -9.20000458}
   m_SizeDelta: {x: 0, y: 18.3999996}
   m_Pivot: {x: .5, y: .5}
+--- !u!1 &1189765149 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 127918, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
+  m_PrefabInternal: {fileID: 1223566374}
 --- !u!1001 &1223566374
 Prefab:
   m_ObjectHideFlags: 0
@@ -735,6 +739,58 @@ Prefab:
       propertyPath: items.Array.data[2]
       value: 
       objectReference: {fileID: 110612, guid: e0b6340d1f07a654abbf46423beaf5cb, type: 2}
+    - target: {fileID: 11400198, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
+      propertyPath: room
+      value: 
+      objectReference: {fileID: 1189765149}
+    - target: {fileID: 2386932, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
+      propertyPath: m_SortingLayerID
+      value: -2042630703
+      objectReference: {fileID: 0}
+    - target: {fileID: 2309048, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
+      propertyPath: m_SortingLayerID
+      value: -2042630703
+      objectReference: {fileID: 0}
+    - target: {fileID: 2315448, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
+      propertyPath: m_SortingLayerID
+      value: -2042630703
+      objectReference: {fileID: 0}
+    - target: {fileID: 2386932, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2386932, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354724, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
+      propertyPath: m_SortingLayerID
+      value: -2042630703
+      objectReference: {fileID: 0}
+    - target: {fileID: 2339836, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
+      propertyPath: m_SortingLayerID
+      value: -2042630703
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330964, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
+      propertyPath: m_SortingLayerID
+      value: -2042630703
+      objectReference: {fileID: 0}
+    - target: {fileID: 2392322, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
+      propertyPath: m_SortingLayerID
+      value: -2042630703
+      objectReference: {fileID: 0}
+    - target: {fileID: 2399978, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
+      propertyPath: m_SortingLayerID
+      value: -2042630703
+      objectReference: {fileID: 0}
+    - target: {fileID: 2317966, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
+      propertyPath: m_SortingLayerID
+      value: -2042630703
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307250, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
+      propertyPath: m_SortingLayerID
+      value: -2042630703
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
   m_IsPrefabParent: 0
@@ -843,6 +899,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   conversationScript: {fileID: 1359466624}
   inventoryManager: {fileID: 1359466625}
+  room: {fileID: 0}
   playerSpeed: 2
   box: {fileID: 0}
   facing: {fileID: 0}
@@ -896,7 +953,9 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -1491,7 +1550,9 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}

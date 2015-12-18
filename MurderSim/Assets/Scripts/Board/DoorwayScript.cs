@@ -22,9 +22,11 @@ namespace MurderMystery {
 
         public void Travel() {
             GameObject door = GameObject.Find(targetDoor);
-            GameObject.Find("Player").GetComponent<Rigidbody2D>().isKinematic = true;
-            GameObject.Find("Player").transform.position = (Vector2)door.GetComponent<DoorwayScript>().center;
-            GameObject.Find("Player").GetComponent<Rigidbody2D>().isKinematic = false;
+            GameObject player = GameObject.Find("Player");
+            player.GetComponent<Rigidbody2D>().isKinematic = true;
+            player.transform.position = (Vector2)door.GetComponent<DoorwayScript>().center;
+            player.GetComponent<Rigidbody2D>().isKinematic = false;
+            
         }
 
         /*
