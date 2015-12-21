@@ -186,7 +186,7 @@ namespace MurderMystery {
                         placeItemInContainer(pg.murderWeapon, containerScript);
                         hasMurderWeapon = false;
                         pg.weaponWasHidden();
-                        Debug.Log(pg.murderWeapon + " was hidden in " + containerScript.gameObject);
+                        //Debug.Log(pg.murderWeapon + " was hidden in " + containerScript.gameObject);
                         break;
                     }
                     containers.RemoveAt(r);
