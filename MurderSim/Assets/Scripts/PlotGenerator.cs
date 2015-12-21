@@ -87,6 +87,7 @@ namespace MurderMystery {
             bodyFound = false;
             weaponHidden = false;
             timeSteps = 0;
+            Ceilings.makeRoomVisible(GameObject.Find("Player").GetComponent<playerControl>().currentRoom);
         }
 
         void Update() {

@@ -8,6 +8,7 @@ namespace MurderMystery {
     public class ContainerScript : MonoBehaviour {
 
         public List<GameObject> items;
+        public int capacity = 4;
         public Room room;
         public string roomName;
 
@@ -26,8 +27,13 @@ namespace MurderMystery {
         }
 
         public void addItem(GameObject item) {
-            items.Add(item);
-            item.GetComponent<Item>().setState(Item.ItemState.contained);
+            if (items.Count < capacity) {
+                items.Add(item);
+                item.GetComponent<Item>().setState(Item.ItemState.contained);
+            } else {
+                Debug.Log(this + " : Too full to add " + item);
+            }
+
         }
 
         public void removeItem(GameObject item) {

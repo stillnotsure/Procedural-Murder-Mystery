@@ -147,7 +147,7 @@ namespace MurderMystery {
 
                     int i = Random.Range(0, items.Count);
                     Item itemscript = items[i].GetComponent<Item>();
-                    Debug.Log(itemscript.name + " : " + containers[r].name);
+                    Debug.Log("Weapon found - " + itemscript.name + " : " + containers[r].name);
 
                     if (itemscript is Weapon) {
                         foundWeapon = true;
@@ -174,9 +174,25 @@ namespace MurderMystery {
             foreach (Npc npc in currentRoom.npcs) {
                 if (npc != this) roomEmpty = false;
             }
-            //TODO - High - Hide weapon in containers etc. rather than just dropping
+
             if (roomEmpty) {
-                dropItem(pg.murderWeapon);
+                bool hidWeapon = false;
+                //Create list of all containers and check each randomly
+                List<GameObject> containers = new List<GameObject>(currentRoom.containers);
+
+                while (hidWeapon == false && containers.Count > 0) {
+                    int r = Random.Range(0, containers.Count);
+                    ContainerScript containerScript = containers[r].GetComponent<ContainerScript>();
+
+                    if (containerScript.capacity > containerScript.items.Count) {
+                        placeItemInContainer(pg.murderWeapon, containerScript);
+                        hasMurderWeapon = false;
+                        pg.weaponWasHidden();
+                        Debug.Log(pg.murderWeapon + " was hidden in " + containerScript.gameObject);
+                        break;
+                    }
+                    containers.RemoveAt(r);
+                }
             }
             else {
                 moveToRandomRoom();
@@ -234,5 +250,10 @@ namespace MurderMystery {
             return weapons[r];
         }
 
+        private void placeItemInContainer(Item item, ContainerScript container) {
+            container.addItem(item.gameObject);
+            item.setState(Item.ItemState.contained);
+            inventory.Remove(item.gameObject);
+        }
     }
 }

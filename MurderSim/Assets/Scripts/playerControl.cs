@@ -5,6 +5,7 @@ namespace MurderMystery {
     public class playerControl : MonoBehaviour {
 
         //References
+        public GameObject currentRoom;
         public ConversationScript conversationScript;
         public InventoryManager inventoryManager;
         public GameObject room;
@@ -21,6 +22,7 @@ namespace MurderMystery {
             box = GetComponent<BoxCollider2D>();
             lastDirection = "up";
             facing = null;
+            
         }
 
         void FixedUpdate() {
@@ -100,12 +102,14 @@ namespace MurderMystery {
             }
 
             if (other.transform.parent.name == "Rooms") {
-                room = other.gameObject;
-                Ceilings.makeRoomVisible(room);
+                currentRoom = other.gameObject;
             }
 
         }
 
+
     }
+
+    
 
 }

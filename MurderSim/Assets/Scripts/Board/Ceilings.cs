@@ -14,7 +14,6 @@ namespace MurderMystery {
         public static void makeRoomVisible(GameObject room) {
             foreach (GameObject ceiling in ceilings) {
                 Ceiling ceilingScript = ceiling.GetComponent<Ceiling>();
-                Debug.Log(ceilingScript.room + " : " + room);
                 if (ceilingScript.room == room) ceilingScript.makeInvisible();
                 else ceilingScript.makeVisible();
             }

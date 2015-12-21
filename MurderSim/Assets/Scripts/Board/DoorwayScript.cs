@@ -26,7 +26,31 @@ namespace MurderMystery {
             player.GetComponent<Rigidbody2D>().isKinematic = true;
             player.transform.position = (Vector2)door.GetComponent<DoorwayScript>().center;
             player.GetComponent<Rigidbody2D>().isKinematic = false;
-            
+            if (player.transform.position == door.GetComponent<DoorwayScript>().center) {
+                Debug.Log("player moved");
+                Ceilings.makeRoomVisible(getTargetRoom());
+            }            
+        }
+
+        private GameObject getTargetRoom() {
+            GameObject door = GameObject.Find(targetDoor);
+            GameObject roomscontainer = GameObject.Find("Rooms");
+            for (int i = 0; i < roomscontainer.transform.childCount; i++) {
+                Bounds doorBounds = door.GetComponent<BoxCollider2D>().bounds;
+                GameObject room = roomscontainer.transform.GetChild(i).gameObject;
+
+                if (room.GetComponent<BoxCollider2D>() != null) {
+                    if (doorBounds.Intersects(room.GetComponent<BoxCollider2D>().bounds)) {
+                        return room;
+                    }
+                }
+                else {
+                    if (doorBounds.Intersects(room.GetComponent<PolygonCollider2D>().bounds)) {
+                        return room;
+                    }
+                }
+            }
+            return null;
         }
 
         /*
