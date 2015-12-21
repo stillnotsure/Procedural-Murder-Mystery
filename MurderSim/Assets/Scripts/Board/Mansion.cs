@@ -8,7 +8,6 @@ namespace MurderMystery {
         public List<Room> rooms;
 
         void Start() {
-            Debug.Log("Mansion started");
             Room entranceHall = new Room("Entrance Hall");
             Room eastHall = (new Room("East Hall"));
             Room westHall = (new Room("West Hall"));

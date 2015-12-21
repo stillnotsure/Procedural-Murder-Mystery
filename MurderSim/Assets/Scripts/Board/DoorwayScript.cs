@@ -27,7 +27,6 @@ namespace MurderMystery {
             player.transform.position = (Vector2)door.GetComponent<DoorwayScript>().center;
             player.GetComponent<Rigidbody2D>().isKinematic = false;
             if (player.transform.position == door.GetComponent<DoorwayScript>().center) {
-                Debug.Log("player moved");
                 Ceilings.makeRoomVisible(getTargetRoom());
             }            
         }

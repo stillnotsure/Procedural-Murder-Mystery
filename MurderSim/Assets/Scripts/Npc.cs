@@ -30,7 +30,6 @@ namespace MurderMystery {
         public Family family = null;
 
         void Start() {
-            Debug.Log(this.ToString() + " started");
             inventory = new List<GameObject>();
             pg = GameObject.Find("GameManager").GetComponent<PlotGenerator>();
         }
@@ -147,7 +146,6 @@ namespace MurderMystery {
 
                     int i = Random.Range(0, items.Count);
                     Item itemscript = items[i].GetComponent<Item>();
-                    Debug.Log("Weapon found - " + itemscript.name + " : " + containers[r].name);
 
                     if (itemscript is Weapon) {
                         foundWeapon = true;

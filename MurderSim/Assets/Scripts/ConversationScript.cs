@@ -120,6 +120,9 @@ namespace MurderMystery {
             else if (selectedText.Equals("Examine the injuries")) {
                 ExamineInjuries();
             }
+            else if (selectedText.Equals("Estimate the time of death")) {
+                TimeOfDeath();
+            }
             else if (selectedText.Equals("Cancel")) {
                 setStateNone();
             }
@@ -188,6 +191,12 @@ namespace MurderMystery {
             }
         }
 
+        void TimeOfDeath() {
+            string time1 = (Timeline.convertTime(Timeline.murderEvent.time - (pg.timeOfDeathLeeway / Timeline.timeIncrements)));
+            string time2 = (Timeline.convertTime(Timeline.murderEvent.time + (pg.timeOfDeathLeeway / Timeline.timeIncrements)));
+            displayText(String.Format("You ascertain that the murder occurred sometime between {0} and {1}", time1, time2));
+        }
+
         void NPCAlibi() {
             List<Event> events = Timeline.locationDuringTimeframe(speakingNPC, Timeline.murderEvent.time - (pg.timeOfDeathLeeway / Timeline.timeIncrements), Timeline.murderEvent.time + (pg.timeOfDeathLeeway / Timeline.timeIncrements));
             if (events.Count == 0)
@@ -203,7 +212,6 @@ namespace MurderMystery {
         }
 
         void NPCWitnessed() {
-            Debug.Log("Witness running");
             List<Event> events = Timeline.EventsWitnessedDuringTimeframe(speakingNPC, Timeline.murderEvent.time - (pg.timeOfDeathLeeway / Timeline.timeIncrements), Timeline.murderEvent.time + (pg.timeOfDeathLeeway / Timeline.timeIncrements));
             if (events.Count == 0)
                 displayText("I haven't seen anything unusual");

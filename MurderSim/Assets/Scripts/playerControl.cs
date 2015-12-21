@@ -82,7 +82,6 @@ namespace MurderMystery {
                 else if (hit.transform.CompareTag("Container")) {
                     //If player isn't already in a menu and presses shift
                     if (Input.GetKeyDown(KeyCode.LeftShift) && inventoryManager.state == inventoryState.none) {
-                        Debug.Log(facing);
                         inventoryManager.showContainerItems(facing.GetComponent<MurderMystery.ContainerScript>());
                         inventoryManager.justOpened = true;
                     }

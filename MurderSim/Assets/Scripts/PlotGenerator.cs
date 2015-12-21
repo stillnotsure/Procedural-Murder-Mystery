@@ -54,8 +54,7 @@ namespace MurderMystery {
 
         // Use this for initialization
         [ContextMenu("Reset")]
-        void Start() {
-            Debug.Log("pg starting");
+        void Start() {  
             Ceilings.findCeilings();
             npcHolder = new GameObject("NPCS").transform;
             itemManager = GetComponent<ItemManager>();
@@ -382,8 +381,6 @@ namespace MurderMystery {
 
             for (int f = families.Count - 1; f >= 0; f--) {
                 if (families[f].family_members.Count == 1) {
-                    Debug.Log("found a family with one member");
-
                     Npc.Gender searchingFor;
                     if (families[f].wife == null) searchingFor = Npc.Gender.Female;
                     else searchingFor = Npc.Gender.Male;
