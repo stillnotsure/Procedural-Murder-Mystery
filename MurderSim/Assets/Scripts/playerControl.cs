@@ -19,13 +19,20 @@ namespace MurderMystery {
 
         // Use this for initialization
         void Start() {
+
+            //references
+            conversationScript = GameObject.Find("GameManager").GetComponent<ConversationScript>();
+            inventoryManager = GameObject.Find("GameManager").GetComponent<InventoryManager>();
+
             box = GetComponent<BoxCollider2D>();
             lastDirection = "up";
             facing = null;
             
+            
         }
 
         void FixedUpdate() {
+            if (!Ceilings.roomLit) Ceilings.makeRoomVisible(currentRoom);
             checkCollisions();
             if (conversationScript.state == conversationState.none && inventoryManager.state == inventoryState.none)
                 Move();

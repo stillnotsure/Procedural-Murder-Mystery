@@ -82,7 +82,6 @@ namespace MurderMystery {
             prepareMotive();
             createRelationships();
             placeNPCs();
-            distributeWeapons();
             bodyFound = false;
             weaponHidden = false;
             timeSteps = 0;
@@ -105,15 +104,6 @@ namespace MurderMystery {
 
         void placeWeaponAtMurderer() {
             itemManager.createItem(0, murderer.currentRoom);
-        }
-
-        void distributeWeapons() {
-            //Kitchen Knives
-            itemManager.createItem(0, mansion.rooms[5]);
-            //Gun
-            itemManager.createItem(1, mansion.rooms[4]);
-            //Poker
-            itemManager.createItem(2, mansion.rooms[6]);
         }
 
         void selectMotive() {

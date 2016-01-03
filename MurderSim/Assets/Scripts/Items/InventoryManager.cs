@@ -25,6 +25,10 @@ namespace MurderMystery {
 
 
         void Start() {
+            //references
+            selectedItemText = GameObject.Find("SelectedItemText").GetComponent<Text>();
+            inventoryPanel = GameObject.Find("ContainerPanel");
+
             items = new List<GameObject>();
             images = new List<Image>();
             playerInventory = new List<GameObject>();

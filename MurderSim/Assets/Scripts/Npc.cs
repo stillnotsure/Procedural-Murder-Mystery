@@ -9,6 +9,11 @@ namespace MurderMystery {
         public PlotGenerator pg;
         //private Mansion mansion;
 
+        //Memories
+        public Dictionary<Event, Testimony> testimonies;
+        public List<Testimony> fabrications;
+        public int timeBuffer; //Total amount of time to push back events they're recollecting as a result of lies
+
         public NPCLog log;
         public enum Gender { Male, Female };
         public string firstname, surname;
@@ -30,7 +35,9 @@ namespace MurderMystery {
         public Family family = null;
 
         void Start() {
+            timeBuffer = 0;
             inventory = new List<GameObject>();
+            testimonies = new Dictionary<Event, Testimony>();
             pg = GameObject.Find("GameManager").GetComponent<PlotGenerator>();
         }
 

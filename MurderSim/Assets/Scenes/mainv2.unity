@@ -349,7 +349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0827b6fb03368fa4287b4004653d08f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 775920493}
+  target: {fileID: 0}
   dampTime: .150000006
 --- !u!4 &775920493
 Transform:
@@ -871,7 +871,7 @@ GameObject:
   - 222: {fileID: 1227565794}
   - 114: {fileID: 1227565793}
   m_Layer: 10
-  m_Name: Text
+  m_Name: Text Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -929,8 +929,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -37.5}
-  m_SizeDelta: {x: 0, y: 38.2000008}
+  m_AnchoredPosition: {x: 0, y: -30.5}
+  m_SizeDelta: {x: 0, y: 24.2000008}
   m_Pivot: {x: .5, y: .5}
 --- !u!1 &1315873840
 GameObject:
@@ -964,8 +964,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentRoom: {fileID: 0}
-  conversationScript: {fileID: 1359466624}
-  inventoryManager: {fileID: 1359466625}
+  conversationScript: {fileID: 0}
+  inventoryManager: {fileID: 0}
   room: {fileID: 0}
   playerSpeed: 2
   box: {fileID: 0}
@@ -1063,12 +1063,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsPool: []
-  itemPrefabs:
-  - {fileID: 110612, guid: e0b6340d1f07a654abbf46423beaf5cb, type: 2}
-  - {fileID: 151332, guid: c89d18b4e1dfc064e9ba2a6b08061c50, type: 2}
-  - {fileID: 122574, guid: 07ede85c03619f04cba5348ec4bd2948, type: 2}
-  - {fileID: 173198, guid: 7dfd3275c87d26345994b8487e7905e6, type: 2}
-  - {fileID: 102390, guid: 53c451a451de06942803649a0b3c028e, type: 2}
+  itemPrefabs: []
 --- !u!114 &1359466618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1106,7 +1101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number_of_characters: 8
   max_families: 2
-  max_family_size: 4
+  max_family_size: 3
   timeSteps: 0
   motive: 0
   victim: {fileID: 0}
@@ -1128,8 +1123,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 219cd3699c5b7904ba0b1ae311cc5ed8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  efxSource: {fileID: 1359466622}
-  musicSource: {fileID: 1359466622}
+  efxSource: {fileID: 0}
+  musicSource: {fileID: 0}
   lowPitchRange: .949999988
   highPitchRange: 1.04999995
 --- !u!82 &1359466622
@@ -1226,12 +1221,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  letterDelay: .0500000007
+  letterDelay: .0399999991
   speakingNPC: {fileID: 0}
-  textPanel: {fileID: 1603111203}
-  TextArea: {fileID: 1227565793}
-  responseArea: {fileID: 1447379575}
-  nameText: {fileID: 781150318}
+  textPanel: {fileID: 0}
+  TextArea: {fileID: 0}
+  responseArea: {fileID: 0}
+  nameText: {fileID: 0}
   selected: 0
 --- !u!114 &1359466625
 MonoBehaviour:
@@ -1246,8 +1241,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   selected: 0
-  inventoryPanel: {fileID: 1920942311}
-  selectedItemText: {fileID: 2088528403}
+  inventoryPanel: {fileID: 0}
+  selectedItemText: {fileID: 0}
   justOpened: 0
   facing: {fileID: 0}
   playerInventory: []
@@ -1262,7 +1257,7 @@ GameObject:
   - 222: {fileID: 1447379576}
   - 114: {fileID: 1447379575}
   m_Layer: 10
-  m_Name: Reponse Text
+  m_Name: Response Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1282,8 +1277,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: .5, y: 0}
   m_AnchorMax: {x: .5, y: 0}
-  m_AnchoredPosition: {x: -2.5, y: 38.5999985}
-  m_SizeDelta: {x: 437.600006, y: 72.5}
+  m_AnchoredPosition: {x: -2.5, y: 50.2000008}
+  m_SizeDelta: {x: 437.600006, y: 95.5999985}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1447379575
 MonoBehaviour:
@@ -1335,7 +1330,7 @@ GameObject:
   - 114: {fileID: 1603111205}
   - 225: {fileID: 1603111207}
   m_Layer: 10
-  m_Name: Panel
+  m_Name: Text Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

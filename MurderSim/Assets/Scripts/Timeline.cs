@@ -67,7 +67,7 @@ namespace MurderMystery {
         }
 
         //Takes a timestep and returns the datetime in relation to what time the game's events begin
-        public static String convertTime(int timeStep) {
+        public static string convertTime(int timeStep) {
             return String.Format("{0:t}", startTime.AddMinutes(timeStep * timeIncrements));
         }
 

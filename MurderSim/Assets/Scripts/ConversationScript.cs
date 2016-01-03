@@ -34,6 +34,12 @@ namespace MurderMystery {
         void Start() {
             pg = gameObject.GetComponent<PlotGenerator>();
 
+            //Load gameobjects
+            textPanel = GameObject.Find("Text Panel");
+            TextArea = GameObject.Find("Text Area").GetComponent<Text>();
+            responseArea = GameObject.Find("Response Area").GetComponent<Text>();
+            nameText = GameObject.Find("Name Text").GetComponent<Text>();
+
             state = conversationState.none;
             responses = new List<string>();
             dialogueQueue = new Queue<string>();
@@ -160,6 +166,7 @@ namespace MurderMystery {
         void setUpDialogOptions() {
             responses.Clear();
             if (speakingNPC.isAlive) {
+                responses.Add("Who are you?");
                 responses.Add("Where were you at the time of the murder?");
                 responses.Add("What did you see around the time of the murder?");
                 responses.Add("Is there anyone you suspect?");
@@ -204,9 +211,17 @@ namespace MurderMystery {
 
             else {
                 foreach (SwitchRooms e in events) {
-                    string s = String.Format("At {0} I moved to the {1}", Timeline.convertTime(e.time), e.newRoom.roomName);
+                    Testimony t;
+                    if (!speakingNPC.testimonies.TryGetValue(e, out t)) {
+                        t = TestimonyManager.createTestimony(speakingNPC, e);
+                        speakingNPC.testimonies.Add(e, t);
+                    } 
+                    
+                    SwitchRooms switchrooms = t.e as SwitchRooms;
+                    string s = String.Format("At {0} I moved to the {1}", Timeline.convertTime(switchrooms.time), switchrooms.newRoom.roomName);
                     dialogueQueue.Enqueue(s);
                 }
+                speakingNPC.timeBuffer = 0; //reset the timebuffer so the lies don't get further and further from the truth
                 displayText(dialogueQueue.Dequeue());
             }
         }

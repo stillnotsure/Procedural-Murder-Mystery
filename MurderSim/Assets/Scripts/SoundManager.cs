@@ -36,7 +36,7 @@ public class SoundManager : MonoBehaviour {
 
     public void PlayMusic() {
         //Play the clip.
-        musicSource.Play();
+        //musicSource.Play();
     }
 
 }

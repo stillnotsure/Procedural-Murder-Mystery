@@ -5,6 +5,7 @@ using System.Collections.Generic;
 namespace MurderMystery {
 
     public static class Ceilings {
+        public static bool roomLit = false;
         public static GameObject[] ceilings;
 
         public static void findCeilings() {
@@ -14,7 +15,10 @@ namespace MurderMystery {
         public static void makeRoomVisible(GameObject room) {
             foreach (GameObject ceiling in ceilings) {
                 Ceiling ceilingScript = ceiling.GetComponent<Ceiling>();
-                if (ceilingScript.room == room) ceilingScript.makeInvisible();
+                if (ceilingScript.room == room) {
+                    ceilingScript.makeInvisible();
+                    roomLit = true;
+                }
                 else ceilingScript.makeVisible();
             }
         }
