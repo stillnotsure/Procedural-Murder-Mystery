@@ -49,6 +49,12 @@ namespace MurderMystery {
             if (Input.GetKeyDown(KeyCode.LeftControl)) {
                 setStateNone();
             }
+
+            if (state == conversationState.npcSpeaking) {
+                if (Input.GetKeyDown(KeyCode.Space)) {
+                    skipText();
+                }
+            } else
             //More text is set when the current line is finished printing, but there is more dialogue from the NPC waiting to be displayed upon pressing shift
             if (state == conversationState.moreText) {
                 if (Input.GetKeyDown(KeyCode.LeftShift)) {
@@ -163,6 +169,22 @@ namespace MurderMystery {
 
         }
 
+        void skipText() {
+            StopAllCoroutines();
+            shownString = fullString;
+            TextArea.text = shownString;
+
+            if (dialogueQueue.Count > 0) {
+                state = conversationState.moreText;
+            }
+            else {
+                setUpDialogOptions();
+                state = conversationState.playerInput;
+            }
+
+
+        }
+
         void setUpDialogOptions() {
             responses.Clear();
             if (speakingNPC.isAlive) {
@@ -254,7 +276,8 @@ namespace MurderMystery {
                     }
                     else if (events[i] is DropItem) {
                         DropItem e = events[i] as DropItem;
-                        dialogueQueue.Enqueue(String.Format("At {0} I saw {1} drop a {2} in the {3}", Timeline.convertTime(events[i].time), e.npc.getFullName(), e.item.name, e.room.roomName));
+                        //Todo - Particularly shrewd NPCs have a chance of knowing what the item was
+                        dialogueQueue.Enqueue(String.Format("At {0} I saw {1} put something away in the {3}", Timeline.convertTime(events[i].time), e.npc.getFullName(), e.item.name, e.room.roomName));
                     }
                 }
                 displayText(dialogueQueue.Dequeue());
@@ -271,6 +294,7 @@ namespace MurderMystery {
         }
 
         public void handleInteractionWith(Npc npc) {
+            gameObject.GetComponent<UIManager>().setRelationships(npc);
             speakingNPC = npc;
             if (npc.isAlive)
                 NPCGreeting(npc);

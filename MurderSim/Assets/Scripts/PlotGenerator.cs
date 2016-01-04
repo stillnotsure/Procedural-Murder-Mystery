@@ -4,6 +4,11 @@ using System.Collections.Generic;
 namespace MurderMystery {
 
     [System.Serializable]
+    public class relationsArray {
+        public int[,] relations = new int[2, 2] { {1,2 },{ 3, 4 } };
+    }
+
+    [System.Serializable]
     public class Family {
         public string family_name;
         public List<Npc> family_members;
@@ -44,6 +49,7 @@ namespace MurderMystery {
         public List<Family> families;
         public List<Npc> npcs;
 
+        public relationsArray relationships2;
         public int[,] relationships;
         private readonly int nullRelationship = 100;
 
@@ -74,9 +80,10 @@ namespace MurderMystery {
 
             victim = null; murderer = null;
 
-
+            TestimonyManager.pg = this;
             loadNames();
             generateCharacters();
+            gameObject.GetComponent<UIManager>().setupRelationPanel();
             createFamilies();
             if (motive == Motives.none) selectMotive();
             prepareMotive();

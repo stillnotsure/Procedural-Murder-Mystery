@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using UnityEditor;
 
 namespace MurderMystery {
 
@@ -173,8 +174,38 @@ namespace MurderMystery {
 
         }
 
-        //Conditions for hiding a weapon so far are only that there is no one to see it happen
         private void hideWeapon() {
+
+            //Old version of hideWeapon() that needed the room to be empty first
+            //Removed to create more interesting gameplay
+            //Todo - Depending on how smart murderer is, might wait until the coast is clear to hide the weapon
+            //Todo - Smart murderers might try and hide the weapon back where they found it
+
+            if (pg.victim.currentRoom == currentRoom) { moveToRandomRoom(); }
+
+            int hideChance = Random.Range(0, 10);
+            if (hideChance > 7) {
+                bool hidWeapon = false;
+                //Create list of all containers and check each randomly
+                List<GameObject> containers = new List<GameObject>(currentRoom.containers);
+
+                while (hidWeapon == false && containers.Count > 0) {
+                    int r = Random.Range(0, containers.Count);
+                    ContainerScript containerScript = containers[r].GetComponent<ContainerScript>();
+
+                    if (containerScript.capacity > containerScript.items.Count) {
+                        placeItemInContainer(pg.murderWeapon, containerScript);
+                        hasMurderWeapon = false;
+                        pg.weaponWasHidden();
+                        break;
+                    }
+                    containers.RemoveAt(r);
+                }
+            } else {
+                moveToRandomRoom();
+            }
+
+            /*
             bool roomEmpty = true;
             foreach (Npc npc in currentRoom.npcs) {
                 if (npc != this) roomEmpty = false;
@@ -202,6 +233,7 @@ namespace MurderMystery {
             else {
                 moveToRandomRoom();
             }
+            */
         }
 
         public void kill(Npc npc, Weapon weapon) {
@@ -259,6 +291,16 @@ namespace MurderMystery {
             container.addItem(item.gameObject);
             item.setState(Item.ItemState.contained);
             inventory.Remove(item.gameObject);
+            DropItem e = new DropItem(pg.timeSteps, this, currentRoom, item);
+            Debug.Log(e.toString());
+            Timeline.addEvent(new DropItem(pg.timeSteps, this, currentRoom, item));
+        }
+
+        /* Debug */
+        [ContextMenu("Set Relationships")]
+        void setRelationships() {
+            EditorUtility.DisplayPopupMenu(new Rect(Input.mousePosition.x, Input.mousePosition.y, 0, 0), "Assets/", null);
         }
     }
+
 }
