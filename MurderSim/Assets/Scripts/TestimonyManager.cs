@@ -55,7 +55,7 @@ namespace MurderMystery {
                 if (e.npc == npc || pg.relationships[pg.npcs.IndexOf(npc), pg.npcs.IndexOf(e.npc)] == 3) {
                     //If it's the murder weapon, don't tell the detective they ever picked it up
                     if (item == pg.murderWeapon) {
-                        return new Testimony(e, npc, false, false);
+                        return new Testimony(e, npc, false, true);
                     }
                 }
 
@@ -70,7 +70,7 @@ namespace MurderMystery {
                 if (e.npc == npc || pg.relationships[pg.npcs.IndexOf(npc), pg.npcs.IndexOf(e.npc)] == 3) {
                     //If it's the murder weapon, don't tell the detective they ever dropped it
                     if (item == pg.murderWeapon) {
-                        return new Testimony(e, npc, false, false);
+                        return new Testimony(e, npc, false, true);
                     }
                 }
             }

@@ -245,6 +245,26 @@ namespace MurderMystery {
                     
                     SwitchRooms switchrooms = t.e as SwitchRooms;
                     string s = String.Format("At {0} I moved to the {1}", Timeline.convertTime(switchrooms.time), switchrooms.newRoom.roomName);
+
+                    List<Npc> peopleInNewRoom = switchrooms.peopleInNewRoom;
+                    if (peopleInNewRoom.Count > 0) {
+                        if (peopleInNewRoom.Count == 1) {
+                            string npcEncounters = String.Format(", {0} was there too.", peopleInNewRoom[0].firstname);
+                            s += npcEncounters;
+                        } else if (peopleInNewRoom.Count == 2) {
+                            s += String.Format(", {0} and {1} were there too.", peopleInNewRoom[0].firstname, peopleInNewRoom[1].firstname);
+                        } else {
+                            s += ". ";
+                            for (int i = 0; i < peopleInNewRoom.Count; i++) {
+                                if (i < peopleInNewRoom.Count - 1) {
+                                    s += String.Format("{0}, ", peopleInNewRoom[i].firstname);
+                                } else {
+                                    s += String.Format("and {0} were there too.", peopleInNewRoom[i].firstname);
+                                }
+                            }
+                        }
+                    }
+                   
                     dialogueQueue.Enqueue(s);
                 }
                 speakingNPC.timeBuffer = 0; //reset the timebuffer so the lies don't get further and further from the truth
@@ -266,22 +286,42 @@ namespace MurderMystery {
                         FoundBody e = events[i] as FoundBody;
                         dialogueQueue.Enqueue("Witnessed someone finding the dead body?!");
                     }
+                    /*
                     else if (events[i] is Encounter) {
                         Encounter e = events[i] as Encounter;
                         dialogueQueue.Enqueue(String.Format("At {0} I saw {1} meet {2} in the {3}", Timeline.convertTime(events[i].time), e.npc.getFullName(), e.npc2.getFullName(), e.room.roomName));
                     }
+                    */
                     else if (events[i] is Murder) {
                         Murder e = events[i] as Murder;
                         dialogueQueue.Enqueue(String.Format("At {0} I saw {1} murder {2} in the {3}! I swear it's true!", Timeline.convertTime(events[i].time), e.npc.getFullName(), e.npc2.getFullName(), e.room.roomName));
                     }
                     else if (events[i] is PickupItem) {
-                        PickupItem e = events[i] as PickupItem;
-                        dialogueQueue.Enqueue(String.Format("At {0} I saw {1} pick up a {2} in the {3}", Timeline.convertTime(events[i].time), e.npc.getFullName(), e.item.name, e.room.roomName));
+                        Testimony t;
+                        if (!speakingNPC.testimonies.TryGetValue(events[i], out t)) {
+                            t = TestimonyManager.createTestimony(speakingNPC, events[i]);
+                            speakingNPC.testimonies.Add(events[i], t);
+                        }
+
+                        if (!t.omitted) {
+                            PickupItem e = t.e as PickupItem;
+                            dialogueQueue.Enqueue(String.Format("At {0} I saw {1} pick up a {2} in the {3}", Timeline.convertTime(e.time), e.npc.getFullName(), e.item.name, e.room.roomName));
+                        }
+                       
                     }
                     else if (events[i] is DropItem) {
-                        DropItem e = events[i] as DropItem;
+                        Testimony t;
+                        if (!speakingNPC.testimonies.TryGetValue(events[i], out t)) {
+                            t = TestimonyManager.createTestimony(speakingNPC, events[i]);
+                            speakingNPC.testimonies.Add(events[i], t);
+                        }
+
                         //Todo - Particularly shrewd NPCs have a chance of knowing what the item was
-                        dialogueQueue.Enqueue(String.Format("At {0} I saw {1} put something away in the {3}", Timeline.convertTime(events[i].time), e.npc.getFullName(), e.item.name, e.room.roomName));
+                        if (!t.omitted) {
+                            DropItem e = t.e as DropItem;
+                            dialogueQueue.Enqueue(String.Format("At {0} I saw {1} put something away in the {3}", Timeline.convertTime(e.time), e.npc.getFullName(), e.item.name, e.room.roomName));
+                        }
+
                     }
                 }
                 displayText(dialogueQueue.Dequeue());

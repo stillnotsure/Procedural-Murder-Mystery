@@ -89,15 +89,17 @@ namespace MurderMystery {
         public List<Npc> witnesses { get; set; }
         public Room origRoom;
         public Room newRoom;
+        public List<Npc> peopleInNewRoom;
 
         public SwitchRooms(int time, Npc npc, Room origRoom, Room newRoom) {
             this.time = time; this.npc = npc; this.origRoom = origRoom; this.newRoom = newRoom;
             witnesses = new List<Npc>(origRoom.npcs);
+            peopleInNewRoom = new List<Npc>(newRoom.npcs);
             witnesses.AddRange(newRoom.npcs);
         }
 
         public string toString() {
-            return String.Format("{0} moved from {1} to {2} ", npc.name, origRoom.roomName, newRoom.roomName);
+            return String.Format("{3} : {0} moved from {1} to {2} ", npc.name, origRoom.roomName, newRoom.roomName, Timeline.convertTime(time));
         }
     }
 
@@ -115,7 +117,7 @@ namespace MurderMystery {
         }
 
         public string toString() {
-            return String.Format("{0} found {1}'s corpse in {2} ", npc.firstname, body.firstname, room.roomName);
+            return String.Format("{3} : {0} found {1}'s corpse in {2} ", npc.firstname, body.firstname, room.roomName, Timeline.convertTime(time));
         }
     }
 
@@ -133,7 +135,7 @@ namespace MurderMystery {
         }
 
         public string toString() {
-            return String.Format("{0} encountered {1} in {2} ", npc.firstname, npc2.firstname, room.roomName);
+            return String.Format("{3} : {0} encountered {1} in {2} ", npc.firstname, npc2.firstname, room.roomName, Timeline.convertTime(time));
         }
     }
 
@@ -153,7 +155,7 @@ namespace MurderMystery {
         }
 
         public string toString() {
-            return String.Format("{0} murderered {1} in {2} using a {3} ", npc.firstname, npc2.firstname, room.roomName, weapon.name);
+            return String.Format("{4} : {0} murderered {1} in {2} using a {3} ", npc.firstname, npc2.firstname, room.roomName, weapon.name, Timeline.convertTime(time));
         }
     }
 
@@ -171,7 +173,7 @@ namespace MurderMystery {
         }
 
         public string toString() {
-            return String.Format("{0} picked up {1} in {2}", npc.firstname, item.name, room.roomName);
+            return String.Format("{3} : {0} picked up {1} in {2}", npc.firstname, item.name, room.roomName, Timeline.convertTime(time));
         }
 
     }
@@ -190,7 +192,7 @@ namespace MurderMystery {
         }
 
         public string toString() {
-            return String.Format("{0} dropped {1} in {2}", npc.firstname, item.name, room.roomName);
+            return String.Format("{3} : {0} dropped {1} in {2}", npc.firstname, item.name, room.roomName, Timeline.convertTime(time));
         }
 
     }

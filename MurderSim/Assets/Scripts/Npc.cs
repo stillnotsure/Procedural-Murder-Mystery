@@ -56,7 +56,15 @@ namespace MurderMystery {
                     if (pg.victim.GetComponent<Npc>().isAlive) {
                         if (hasWeapon) {
                             if (!victimInRoom()) seekVictim();
-                            else kill(pg.victim, randomWeapon());
+                            else {
+                                //Todo - Brash murderers will murder even when the coast isn't clear
+                                bool coastIsClear = true;
+                                foreach (Npc npc in currentRoom.npcs) {
+                                    if (npc != this && !npc.isVictim) coastIsClear = false;
+                                }
+                                if (coastIsClear) kill(pg.victim, randomWeapon());
+
+                            }
 
                         }
                         else {
@@ -96,6 +104,7 @@ namespace MurderMystery {
             inventory.Add(item.gameObject);
 
             Timeline.addEvent(new PickupItem(pg.timeSteps, this, currentRoom, item));
+            Debug.Log(new PickupItem(pg.timeSteps, this, currentRoom, item).toString());
         }
 
         private void pickupItemFromContainer(Item item, ContainerScript container) {
@@ -258,8 +267,8 @@ namespace MurderMystery {
                 currentRoom.npcs.Remove(this);
                 lastRoom = currentRoom;
             }
-            room.npcs.Add(this);
             Timeline.addEvent(new SwitchRooms(pg.timeSteps, this, currentRoom, room));
+            room.npcs.Add(this);
             currentRoom = room;
 
             //If there are any other NPCs, log that they were seen
@@ -296,11 +305,6 @@ namespace MurderMystery {
             Timeline.addEvent(new DropItem(pg.timeSteps, this, currentRoom, item));
         }
 
-        /* Debug */
-        [ContextMenu("Set Relationships")]
-        void setRelationships() {
-            EditorUtility.DisplayPopupMenu(new Rect(Input.mousePosition.x, Input.mousePosition.y, 0, 0), "Assets/", null);
-        }
     }
 
 }
