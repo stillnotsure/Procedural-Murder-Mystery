@@ -15,6 +15,7 @@ namespace MurderMystery {
         public float letterDelay = 0.04f;
 
         //References
+        public UIManager uiManager;
         public Npc speakingNPC;
         public GameObject textPanel;
         public Text TextArea;
@@ -33,6 +34,7 @@ namespace MurderMystery {
 
         void Start() {
             pg = gameObject.GetComponent<PlotGenerator>();
+            uiManager = gameObject.GetComponent<UIManager>();
 
             //Load gameobjects
             textPanel = GameObject.Find("Text Panel");
@@ -79,6 +81,7 @@ namespace MurderMystery {
         void OnGUI() {
 
             if (state != conversationState.none) {
+                if (pg.debugMode) uiManager.displayRelationManager(true);
                 textPanel.SetActive(true);
                 nameText.text = speakingNPC.firstname + " " + speakingNPC.surname;
             }
@@ -103,6 +106,7 @@ namespace MurderMystery {
                 responseArea.text = responseText;
             }
             else if (state == conversationState.none) {
+                if (pg.debugMode) uiManager.displayRelationManager(false);
                 nameText.text = "";
                 responseArea.text = "";
                 TextArea.text = "";

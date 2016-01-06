@@ -17,6 +17,8 @@ namespace MurderMystery {
             pg = GameObject.Find("GameManager").GetComponent<PlotGenerator>();
             relationPanels = new GameObject[pg.number_of_characters];
             debugPanel = GameObject.Find("DebugPanel");
+
+            displayRelationManager(false);
         }
 
         // Update is called once per frame
@@ -45,6 +47,10 @@ namespace MurderMystery {
                 relationPanel.transform.FindChild("RelationSlider").GetComponent<Slider>().value = relationLevel;
                 relationPanel.transform.FindChild("RelationValue").GetComponent<Text>().text = relationLevel.ToString();
             }
+        }
+
+        public void displayRelationManager(bool visible) {
+            debugPanel.SetActive(visible);
         }
 
     }

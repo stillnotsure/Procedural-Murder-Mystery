@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using UnityEditor;
 
 namespace MurderMystery {
 
@@ -26,6 +27,8 @@ namespace MurderMystery {
     public class PlotGenerator : MonoBehaviour {
 
         //todo: turn the neccesary variables static so there won't be hundreds of PG references floating around
+        public bool debugMode;
+        public int seed;
         private Transform npcHolder;
 
         private ItemManager itemManager;
@@ -61,6 +64,14 @@ namespace MurderMystery {
         // Use this for initialization
         [ContextMenu("Reset")]
         void Start() {  
+
+            if (seed != 0) {
+                Random.seed = seed;
+            } else {
+                seed = (int)System.DateTime.Now.Ticks;
+                Random.seed = seed;
+            }
+
             Ceilings.findCeilings();
             npcHolder = new GameObject("NPCS").transform;
             itemManager = GetComponent<ItemManager>();
