@@ -28,7 +28,6 @@ namespace MurderMystery {
 
         public void setupRelationPanel() {
             for (int i = 0; i < pg.npcs.Count; i++) {
-                Debug.Log("Setting up");
                 GameObject relationPanel = (GameObject)Instantiate(Resources.Load("UI/RelationPanel"));
                 relationPanel.transform.SetParent(debugPanel.transform);
                 relationPanels[i] = relationPanel;

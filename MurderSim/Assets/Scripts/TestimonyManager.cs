@@ -20,6 +20,11 @@ namespace MurderMystery {
         }
     }
 
+    public class Suspect {
+        public Npc npc;
+        public Motives motive;
+    }
+
     public static class TestimonyManager {
 
         public static PlotGenerator pg;
@@ -94,6 +99,16 @@ namespace MurderMystery {
             SwitchRooms s = new SwitchRooms(i, npc, oldRoom, newRoom);
             return new Testimony(s, npc, false, false);
         }
+
+        public static Suspect pickASuspect(Npc npc) {
+            Suspect s = new Suspect();
+
+            //Check if there's anyone who it makes sense to blame
+
+
+            return s;
+        }
+
     }
 
 }

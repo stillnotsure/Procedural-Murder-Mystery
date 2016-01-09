@@ -52,6 +52,9 @@ namespace MurderMystery {
             List<Event> eventsWitnessed = new List<Event>();
 
             foreach (Event e in events) {
+                if (e is FoundBody && e.npc == npc) {
+                    eventsWitnessed.Add(e);
+                }
                 if (e.npc != npc && e.time >= timeStep1 && e.time <= timeStep2) {
 
                     foreach (Npc witness in e.witnesses) {

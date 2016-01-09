@@ -223,7 +223,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11476970, guid: 092a66da12f5e5446a4366168477698e, type: 2}
       propertyPath: seed
-      value: 0
+      value: 144193956
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476970, guid: 092a66da12f5e5446a4366168477698e, type: 2}
+      propertyPath: timeOfDeathLeeway
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 092a66da12f5e5446a4366168477698e, type: 2}
@@ -868,15 +872,15 @@ Prefab:
       objectReference: {fileID: 151332, guid: c89d18b4e1dfc064e9ba2a6b08061c50, type: 2}
     - target: {fileID: 199816, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 197914, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 176902, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 176336, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_IsActive
@@ -884,31 +888,31 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 172960, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 165586, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 155640, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 116104, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 110986, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 108394, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 106934, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c671e2094c1749c409c72d6164c89aad, type: 2}

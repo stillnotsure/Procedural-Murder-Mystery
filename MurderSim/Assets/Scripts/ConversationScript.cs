@@ -139,6 +139,9 @@ namespace MurderMystery {
             else if (selectedText.Equals("Estimate the time of death")) {
                 TimeOfDeath();
             }
+            else if (selectedText.Equals("Is there anyone you suspect?")) {
+                NPCSuspects();
+            }
             else if (selectedText.Equals("Cancel")) {
                 setStateNone();
             }
@@ -284,7 +287,7 @@ namespace MurderMystery {
                     }
                     else if (events[i] is FoundBody) {
                         FoundBody e = events[i] as FoundBody;
-                        dialogueQueue.Enqueue("Witnessed someone finding the dead body?!");
+                        dialogueQueue.Enqueue(String.Format("At {0} I found {1}'s body here", Timeline.convertTime(events[i].time), pg.victim.firstname));
                     }
                     /*
                     else if (events[i] is Encounter) {
@@ -326,6 +329,10 @@ namespace MurderMystery {
                 }
                 displayText(dialogueQueue.Dequeue());
             }
+
+        }
+
+        void NPCSuspects() {
 
         }
 

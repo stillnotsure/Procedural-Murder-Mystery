@@ -21,8 +21,8 @@ namespace MurderMystery {
                 gameObject.transform.FindChild("RelationValue").GetComponent<Text>().text = slider.value.ToString();
                 Npc targetNpc = pg.gameObject.GetComponent<ConversationScript>().speakingNPC;
 
-                Debug.Log("Target NPC: " + pg.npcs.IndexOf(targetNpc) + " Slider NPC : " + npcIndex);
                 pg.relationships[pg.npcs.IndexOf(targetNpc), npcIndex] = (int)slider.value;
+                targetNpc.testimonies.Clear();
             }
             else {
                 changedByUIManager = false;

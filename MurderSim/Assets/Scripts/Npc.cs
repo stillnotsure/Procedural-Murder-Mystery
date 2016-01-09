@@ -11,6 +11,8 @@ namespace MurderMystery {
         //private Mansion mansion;
 
         //Memories
+        public List<History> histories;
+
         public Dictionary<Event, Testimony> testimonies;
         public List<Testimony> fabrications;
         public int timeBuffer; //Total amount of time to push back events they're recollecting as a result of lies
@@ -23,6 +25,7 @@ namespace MurderMystery {
         public bool isMurderer = false;
         public bool isVictim = false;
         public bool isAlive = true;
+        public bool foundBody = false;
 
         public List<GameObject> inventory;
 
@@ -35,15 +38,20 @@ namespace MurderMystery {
 
         public Family family = null;
 
+        void Awake() {
+            pg = GameObject.Find("GameManager").GetComponent<PlotGenerator>();
+            histories = new List<History>();
+        }
         void Start() {
             timeBuffer = 0;
             inventory = new List<GameObject>();
             testimonies = new Dictionary<Event, Testimony>();
-            pg = GameObject.Find("GameManager").GetComponent<PlotGenerator>();
+            
         }
 
         void Update() {
-            if (!pg.weaponHidden)
+            //Will wait with the body
+            if (!pg.weaponHidden && !foundBody)
                 act();
         }
 
@@ -276,8 +284,11 @@ namespace MurderMystery {
                 if (npc != this) {
                     if (npc.isAlive) Timeline.addEvent(new Encounter(pg.timeSteps, this, npc, currentRoom));
                     else {
-                        Timeline.addEvent(new FoundBody(pg.timeSteps, this, npc, currentRoom));
-                        pg.bodyWasFound();
+                        if (!isMurderer) {
+                            Timeline.addEvent(new FoundBody(pg.timeSteps, this, npc, currentRoom));
+                            foundBody = true;
+                            pg.bodyWasFound();
+                        }
                     }
                 }
             }
@@ -305,6 +316,16 @@ namespace MurderMystery {
             Timeline.addEvent(new DropItem(pg.timeSteps, this, currentRoom, item));
         }
 
+        public void addHistory(History history) {
+            histories.Add(history);
+            if (pg.debugMode) {
+                Npc npc;
+                if (history.npc1 == this) { npc = history.npc2; } else { npc = history.npc1; }
+                Debug.Log(getFullName() + " : has a " + history.GetType() + " history with " + npc.getFullName());
+            }
+
+
+        }
     }
 
 }

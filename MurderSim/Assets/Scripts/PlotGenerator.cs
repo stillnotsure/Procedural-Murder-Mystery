@@ -3,11 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 
 namespace MurderMystery {
-
-    [System.Serializable]
-    public class relationsArray {
-        public int[,] relations = new int[2, 2] { {1,2 },{ 3, 4 } };
-    }
+    public enum Motives { none, revenge, loverRevenge, jealousLove, inheritance }
 
     [System.Serializable]
     public class Family {
@@ -41,7 +37,6 @@ namespace MurderMystery {
 
         //Vars directly related to the murder
         public int timeSteps;
-        public enum Motives { none, revenge, loverRevenge, jealousLove, inheritance }
         public Motives motive;
         public Npc victim, murderer;
         public Weapon murderWeapon;
@@ -52,7 +47,6 @@ namespace MurderMystery {
         public List<Family> families;
         public List<Npc> npcs;
 
-        public relationsArray relationships2;
         public int[,] relationships;
         private readonly int nullRelationship = 100;
 
@@ -97,9 +91,10 @@ namespace MurderMystery {
             gameObject.GetComponent<UIManager>().setupRelationPanel();
             createFamilies();
             if (motive == Motives.none) selectMotive();
-            prepareMotive();
+            
             createRelationships();
             placeNPCs();
+            prepareMotive();
             bodyFound = false;
             weaponHidden = false;
             timeSteps = 0;
@@ -173,6 +168,27 @@ namespace MurderMystery {
 
                 //Make murderer hate victim
                 relationships[m, v] = -3;
+                bool historyChosen = false;
+
+                while (!historyChosen) {
+                    int r = Random.Range(0, 2);
+                    if (r == 0) {
+                        History history = new FiredBy(1, npcs[m], npcs[v]);
+                        npcs[m].addHistory(history);
+                        npcs[v].addHistory(history);
+                        historyChosen = true;
+                    }
+                    else if (r == 1) {
+                        //Histories added in the family feud method
+                        if (npcs[m].family != null && npcs[v].family != null) {
+                            createFamilyFeud(npcs[m].family, npcs[v].family);
+                            historyChosen = true;
+                        }
+                        
+                    }
+                }
+                
+                
             }
 
             //inheritance for now just means an NPC killing their sibling to inherit from their (wealthy) parents later. Could later include murdering a spouse
@@ -189,8 +205,22 @@ namespace MurderMystery {
                 //Now manipulate the m & v's affections for eachother
                 int m = npcs.IndexOf(murderer);
                 int v = npcs.IndexOf(victim);
+
                 relationships[m, v] = 3;
-                relationships[v, m] = Random.Range(-3, 3); //Set to anything OTHER than love
+                relationships[v, m] = randomRelationshipValue(-3, 2, 0); //Set to anything OTHER than love
+
+                int r = Random.Range(0, 2);
+                History history;
+                if (r == 0) {
+                    history = new RejectedLove(1, npcs[m], npcs[v]);
+                } else if (r == 1) {
+                    history = new BadBreakup(0, npcs[m], npcs[v]);
+                } else {
+                    history = null;
+                }
+               
+                npcs[m].addHistory(history);
+                npcs[v].addHistory(history);
             }
 
             else if (motive == Motives.jealousLove) {
@@ -207,10 +237,45 @@ namespace MurderMystery {
                 int v = npcs.IndexOf(victim);
 
                 relationships[m, s] = 3;
-                relationships[s, m] = Random.Range(-3, 3); //Set to anything OTHER than love
-                relationships[s, v] = 3;
-                relationships[v, m] = Random.Range(-3, 3); //Set to anything other than love again
-                relationships[m, v] = Random.Range(-3, 0); //Make the murderer at least dislike the victim
+                relationships[s, m] = randomRelationshipValue(-3, 2, 0); //Set to anything OTHER than love
+                relationships[v, s] = 3;
+                relationships[v, m] = randomRelationshipValue(-3, 2, 0); //Set to anything other than love again
+                relationships[m, v] = randomRelationshipValue(-3, -2, -2); //Make the murderer strongly dislike the victim
+
+                int r = Random.Range(0, 2);
+                History history;
+                if (r == 0) {
+                    relationships[s, v] = 3;
+                    history = new StoleLover(1, npcs[m], npcs[v], npcs[s]);
+                    npcs[m].addHistory(history); npcs[v].addHistory(history); npcs[s].addHistory(history);
+                }
+                else if (r == 1) {
+                    history = new CompetingForLove(0, npcs[m], npcs[v], npcs[s]);
+                    npcs[m].addHistory(history); npcs[v].addHistory(history);
+                }
+                else {
+                    history = null;
+                }
+
+            }
+        }
+
+        void createRedHerrings() {
+            int redHerrings = 0;
+
+            float r = Random.Range(0.0f, 1.0f);
+            int requiredRedHerrings = 0;
+            if (r > 0 && r <= 0.5) requiredRedHerrings = 1;
+            else if (r > 0.5  && r < 0.8) requiredRedHerrings = 2;
+            else if (r > 0.8 && r <= 1.0) requiredRedHerrings = 3;
+
+
+            while (redHerrings < requiredRedHerrings) {
+                float f = Random.Range(0f, 1f);
+
+                if (motive == Motives.jealousLove || motive == Motives.loverRevenge) {
+                    
+                }
             }
         }
 
@@ -287,8 +352,8 @@ namespace MurderMystery {
                         relationships[i, i] = nullRelationship;
                     }
                     else if (relationships[i, x] == nullRelationship) {
-                        relationships[i, x] = Random.Range(-3, 4);
-                        relationships[i, x] = Random.Range(-3, 4);
+                        relationships[i, x] = randomRelationshipValue(-3, 3, 0);
+                        relationships[i, x] = randomRelationshipValue(-3, 3, 0);
                     }
                     //Debug.Log(npcs[i].firstname + " " + npcs[i].surname + " an attitude of " + relationships[i, x] + " towards " + npcs[x].firstname + npcs[x].surname);
                 }
@@ -315,7 +380,6 @@ namespace MurderMystery {
                 firstnames_f.RemoveAt(r);
             }
 
-            npcGameobject.name = newNPC.firstname;
             npcGameobject.transform.SetParent(npcHolder);
             return newNPC;
         }
@@ -426,11 +490,60 @@ namespace MurderMystery {
                 int r = Random.Range(0, mansion.rooms.Count);
                 npc.currentRoom = mansion.rooms[r];
                 mansion.rooms[r].npcs.Add(npc);
+                npc.gameObject.name = npc.getFullName();
+            }
+        }
+
+        int randomRelationshipValue(int min, int max, int mostLikely, int minWeight = 20, int maxWeight = 20) {
+
+            int num, weight, randomWeight;
+            do {
+                num = Random.Range(min, max + 1);
+
+                if (num <= mostLikely) {
+                    weight = ((mostLikely - num) * minWeight + (num - min) * 100) / (mostLikely - min);
+                }
+                else {
+                    weight = ((num - mostLikely) * maxWeight + (max - num) * 100) / (max - mostLikely);
+                }
+
+                randomWeight = Random.Range(0, 101);
+            } while (randomWeight > weight);
+
+            return num;    
+        }
+
+        void createFamilyFeud(Family family1, Family family2) {
+
+            for (int x = 0; x < family1.family_members.Count; x++) {
+                for (int y = 0; y < family2.family_members.Count; x++) {
+                    FamilyFeud feudHistory = new FamilyFeud(0, npcs[x], npcs[y]);
+                    //Make them hate eachother if they don't already love eachother (romeo juliet situation)
+                    if (relationships[x,y] != 3) {
+                        relationships[x, y] = randomRelationshipValue(-3, -2, -3);
+                        npcs[x].addHistory(feudHistory);
+                    }
+                        
+                    if (relationships[y, x] != 3) {
+                        npcs[y].addHistory(feudHistory);
+                        relationships[y, x] = randomRelationshipValue(-3, -2, -3);
+                    }
+                        
+                }
             }
         }
 
         void loadNames() {
             firstnames_m = new List<string> {
+            "Quentin",
+            "Bill",
+            "Benedict",
+            "Joseph",
+            "Phillip",
+            "Ralph",
+            "Peter",
+            "Jack",
+            "Sean",
             "Miguel",
             "Osvaldo",
             "Reinaldo",
@@ -439,6 +552,8 @@ namespace MurderMystery {
             "Hugh",
             "Rocky",
             "Austin",
+            "Adam",
+            "Samuel",
             "Walter",
             "Gustavo",
             "Columbus",
@@ -450,10 +565,18 @@ namespace MurderMystery {
             "Jack",
             "Franklin",
             "George",
-            "David"
+            "David",
+            "Harvey",
+            "Charlie",
+            "Jasper"
         };
 
             firstnames_f = new List<string> {
+            "Jazmine",
+            "Phyllis",
+            "Muriel",
+            "Maggie",
+            "Elizabeth",
             "Sally",
             "Lucille",
             "Betsey",
@@ -473,7 +596,14 @@ namespace MurderMystery {
             "Samantha",
             "Beatrice",
             "Edith",
-            "Gloria"
+            "Gloria",
+            "Fran",
+            "Hannah",
+            "Suzie",
+            "Holly",
+            "Amy",
+            "Amelia",
+            "Kirsty"
         };
 
             surnames = new List<string>
@@ -487,7 +617,24 @@ namespace MurderMystery {
             "Davis",
             "Murphy",
             "Price",
-            "Cole"
+            "Cole",
+            "Brown",
+            "White",
+            "Schwartz",
+            "Simpson",
+            "Potts",
+            "Johnson",
+            "Abernathy",
+            "Avidan",
+            "Hanson",
+            "Donovan",
+            "Wade",
+            "Ware",
+            "Stones",
+            "Marshall",
+            "Pickett",
+            "Eliott",
+            "Stockdale"
         };
         }
     }

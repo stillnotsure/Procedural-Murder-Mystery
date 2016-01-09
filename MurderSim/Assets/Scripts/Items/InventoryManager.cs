@@ -150,13 +150,11 @@ namespace MurderMystery {
         }
 
         public void showContainerItems(MurderMystery.ContainerScript container) {
-            Debug.Log("Looking into " + container.name);
             facing = container.gameObject;
             state = inventoryState.container;
             List<GameObject> containerItems = container.items;
             items.Clear();
             foreach (GameObject item in containerItems) {
-                Debug.Log("Adding " + item.name + " to container inventory panel");
                 items.Add(item);
             }
             displayItems();
