@@ -252,7 +252,7 @@ namespace MurderMystery {
                 }
                 else if (r == 1) {
                     history = new CompetingForLove(0, npcs[m], npcs[v], npcs[s]);
-                    npcs[m].addHistory(history); npcs[v].addHistory(history);
+                    npcs[m].addHistory(history); npcs[v].addHistory(history);  npcs[s].addHistory(history);
                 }
                 else {
                     history = null;
@@ -275,12 +275,24 @@ namespace MurderMystery {
             while (redHerrings < requiredRedHerrings && attempts < 100) {
                 float f = Random.Range(0f, 1f);
 
-                if (motive == Motives.jealousLove || motive == Motives.loverRevenge) {
+                if (motive == Motives.jealousLove || motive == Motives.loverRevenge || motive == Motives.inheritance) {
                     List<Npc> tempNpcs = new List<Npc>(npcs);
 
-                   if (victim.family != null && families.Count > 2) {
-                        //Fired By
+                   if (victim.family != null && families.Count >= 2) {
+                        //Family Feud
                         if (f <= 0.7) {
+                            Family targetFamily = null;
+                            for (int i = 0; i < families.Count; i++) {
+                                if (families[i] != victim.family) targetFamily = families[i];
+                            }
+
+                            int disputes = createFamilyFeud(victim.family, targetFamily);
+                            redHerrings += disputes;
+                        }
+                        
+
+                        //Fired By
+                        if (f > 0.7) {
                             bool suitableNPC = false;
                             while (!suitableNPC && tempNpcs.Count > 0) {
                                 Npc npc = randomNPCfromList(tempNpcs);
@@ -292,21 +304,6 @@ namespace MurderMystery {
                                     npc.addHistory(redHerring);
                                     victim.addHistory(redHerring);
                                     redHerrings++;
-                                }
-                            }
-                        }
-
-                        //Family feud
-                        if (f > 0.7) {
-                            bool suitableNPC = false;
-                            while (!suitableNPC && tempNpcs.Count > 0) {
-                                Npc npc = randomNPCfromList(tempNpcs);
-                                tempNpcs.Remove(npc);
-
-                                if (npc != victim && npc != murderer && npc.family != victim.family && npc.family != null) {
-                                    suitableNPC = true;
-                                    int disputes = createFamilyFeud(victim.family, npc.family);
-                                    redHerrings += disputes;
                                 }
                             }
                         }
@@ -567,7 +564,7 @@ namespace MurderMystery {
                 num = Random.Range(min, max + 1);
 
                 if (num <= mostLikely) {
-                    weight = ((mostLikely - num) * minWeight + (num - min) * 100) / (mostLikely - min);
+                    weight = ((mostLikely - num) * minWeight + (num - min) * 100) / Mathf.Max((mostLikely - min), 1);
                 }
                 else {
                     weight = ((num - mostLikely) * maxWeight + (max - num) * 100) / (max - mostLikely);
@@ -583,19 +580,21 @@ namespace MurderMystery {
 
             int victimDisputesCreated = 0;
             for (int x = 0; x < family1.family_members.Count; x++) {
-                for (int y = 0; y < family2.family_members.Count; x++) {
-                    FamilyFeud feudHistory = new FamilyFeud(0, npcs[x], npcs[y]);
+                for (int y = 0; y < family2.family_members.Count; y++) {
 
+                    int a = npcs.IndexOf(family1.family_members[x]);
+                    int b = npcs.IndexOf(family2.family_members[y]);
+                    FamilyFeud feudHistory = new FamilyFeud(0, npcs[a], npcs[b]);
                     //Make them hate eachother if they don't already love eachother (romeo juliet situation)
-                    if (relationships[x,y] != 3) {
-                        relationships[x, y] = randomRelationshipValue(-3, -2, -3);
-                        npcs[x].addHistory(feudHistory);
-                    }
+                    if (relationships[a,b] != 3) {
+                        relationships[a, b] = randomRelationshipValue(-3, -2, -3);
+                        npcs[a].addHistory(feudHistory);
+                    }   
                         
-                    if (relationships[y, x] != 3) {
-                        if (npcs[x] == victim) victimDisputesCreated++;
-                        npcs[y].addHistory(feudHistory);
-                        relationships[y, x] = randomRelationshipValue(-3, -2, -3);
+                    if (relationships[b, a] != 3) {
+                        if (npcs[a] == victim) victimDisputesCreated++;
+                        npcs[b].addHistory(feudHistory);
+                        relationships[b, a] = randomRelationshipValue(-3, -2, -3);
                     }
                         
                 }
