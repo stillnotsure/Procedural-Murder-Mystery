@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace MurderMystery {
 
@@ -20,9 +21,21 @@ namespace MurderMystery {
         }
     }
 
-    public class Suspect {
+    //A suspect put forward by an NPC
+    //Each NPC may only have one suspect
+    //The suspect chosen may be a result of the NPC knowing a history, or could be a lie to suit their needs
+    public class SuspectTestimony {
         public Npc npc;
-        public Motives motive;
+        public bool truth;
+        public bool omitted;
+        public History motive;
+
+        public SuspectTestimony(Npc npc, bool truth, bool omitted, History motive) {
+            this.npc = npc;
+            this.truth = truth;
+            this.omitted = omitted;
+            this.motive = motive;
+        }
     }
 
     public static class TestimonyManager {
@@ -100,13 +113,42 @@ namespace MurderMystery {
             return new Testimony(s, npc, false, false);
         }
 
-        public static Suspect pickASuspect(Npc npc) {
-            Suspect s = new Suspect();
+        public static SuspectTestimony pickASuspect(Npc npc) {
+            List<SuspectTestimony> possibleSuspects = new List<SuspectTestimony>();
+            Npc victim = pg.victim;
+
+            //TODO - Able to lie about suspects
 
             //Check if there's anyone who it makes sense to blame
+            foreach (History history in npc.histories) {
+                if (history.whichNpcIsVictim == 0) {
+                    if (history.npc1 == victim || history.npc2 == victim) {
+                        Npc other;
+                        if (history.npc1 == victim) { other = history.npc2; }
+                        else { other = history.npc1; }
+                        possibleSuspects.Add(new SuspectTestimony(other, true, false, history));
+                    }
+                }
+                else if (history.whichNpcIsVictim == 1) {
+                    if (history.npc2 == victim) {
+                        possibleSuspects.Add(new SuspectTestimony(history.npc1, true, false, history));
+                    }
+                }
+                else if (history.whichNpcIsVictim == 2) {
+                    if (history.npc1 == victim) {
+                        possibleSuspects.Add(new SuspectTestimony(history.npc2, true, false, history));
+                    }
+                }
+            }
 
-
-            return s;
+            //If not going to lie, randomly choose one of these motives
+            if (possibleSuspects.Count > 0) {
+                int r = Random.Range(0, possibleSuspects.Count);
+                return possibleSuspects[r];
+            } else {
+                return null;
+            }
+                  
         }
 
     }

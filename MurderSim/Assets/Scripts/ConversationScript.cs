@@ -333,7 +333,13 @@ namespace MurderMystery {
         }
 
         void NPCSuspects() {
-
+            Debug.Log("Running npc suspects");
+            SuspectTestimony st = TestimonyManager.pickASuspect(speakingNPC);
+            if (st != null) {
+                displayText(string.Format("I think {0} did it, they've been out for revenge ever since {1} did that {2} to them", st.npc.getFullName(), pg.victim.getFullName(), st.motive.GetType()));
+            }
+            else
+                displayText("Sorry, I have no idea");
         }
 
         void NPCGreeting(Npc npc) {

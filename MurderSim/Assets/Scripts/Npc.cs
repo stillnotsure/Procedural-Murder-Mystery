@@ -11,7 +11,7 @@ namespace MurderMystery {
         //private Mansion mansion;
 
         //Memories
-        public List<History> histories;
+        public List<History> histories; //Contains all the histories they know about, or are involved in
 
         public Dictionary<Event, Testimony> testimonies;
         public List<Testimony> fabrications;
