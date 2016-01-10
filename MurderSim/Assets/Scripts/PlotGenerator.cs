@@ -95,6 +95,7 @@ namespace MurderMystery {
             createRelationships();
             placeNPCs();
             prepareMotive();
+            createRedHerrings();
             bodyFound = false;
             weaponHidden = false;
             timeSteps = 0;
@@ -262,6 +263,7 @@ namespace MurderMystery {
 
         void createRedHerrings() {
             int redHerrings = 0;
+            int attempts = 0;
 
             float r = Random.Range(0.0f, 1.0f);
             int requiredRedHerrings = 0;
@@ -270,13 +272,72 @@ namespace MurderMystery {
             else if (r > 0.8 && r <= 1.0) requiredRedHerrings = 3;
 
 
-            while (redHerrings < requiredRedHerrings) {
+            while (redHerrings < requiredRedHerrings && attempts < 100) {
                 float f = Random.Range(0f, 1f);
 
                 if (motive == Motives.jealousLove || motive == Motives.loverRevenge) {
-                    
+                    List<Npc> tempNpcs = new List<Npc>(npcs);
+
+                   if (victim.family != null && families.Count > 2) {
+                        //Fired By
+                        if (f <= 0.7) {
+                            bool suitableNPC = false;
+                            while (!suitableNPC && tempNpcs.Count > 0) {
+                                Npc npc = randomNPCfromList(tempNpcs);
+                                tempNpcs.Remove(npc);
+
+                                if (npc != victim && npc != murderer && npc.family != victim.family) {
+                                    suitableNPC = true;
+                                    FiredBy redHerring = new FiredBy(1, npc, victim);
+                                    npc.addHistory(redHerring);
+                                    victim.addHistory(redHerring);
+                                    redHerrings++;
+                                }
+                            }
+                        }
+
+                        //Family feud
+                        if (f > 0.7) {
+                            bool suitableNPC = false;
+                            while (!suitableNPC && tempNpcs.Count > 0) {
+                                Npc npc = randomNPCfromList(tempNpcs);
+                                tempNpcs.Remove(npc);
+
+                                if (npc != victim && npc != murderer && npc.family != victim.family && npc.family != null) {
+                                    suitableNPC = true;
+                                    int disputes = createFamilyFeud(victim.family, npc.family);
+                                    redHerrings += disputes;
+                                }
+                            }
+                        }
+                    }
+
+                   //If no suitable families for a feud
+                   else {
+                        //Fired By
+                        bool suitableNPC = false;
+                        while (!suitableNPC && tempNpcs.Count > 0) {
+                            Npc npc = randomNPCfromList(tempNpcs);
+                            tempNpcs.Remove(npc);
+
+                            if (npc != victim && npc != murderer && npc.family != victim.family) {
+                                suitableNPC = true;
+                                FiredBy redHerring = new FiredBy(1, npc, victim);
+                                npc.addHistory(redHerring);
+                                victim.addHistory(redHerring);
+                                redHerrings++;
+                            }
+                            else {
+                                Debug.Log(tempNpcs.Count);
+                                break;
+                            }
+                        }
+                    }
+
                 }
+                attempts++;
             }
+            if (debugMode)Debug.Log(string.Format("Created {0} red herrings", redHerrings));
         }
 
         Npc findPotentialLover(Npc seeker) {
@@ -306,6 +367,11 @@ namespace MurderMystery {
             }
 
             return lover;
+        }
+
+        Npc randomNPCfromList(List<Npc> list) {
+            int i = Random.Range(0, list.Count);
+            return npcs[i];
         }
 
         Npc[] findSiblings() {
@@ -513,11 +579,13 @@ namespace MurderMystery {
             return num;    
         }
 
-        void createFamilyFeud(Family family1, Family family2) {
+        int createFamilyFeud(Family family1, Family family2) {
 
+            int victimDisputesCreated = 0;
             for (int x = 0; x < family1.family_members.Count; x++) {
                 for (int y = 0; y < family2.family_members.Count; x++) {
                     FamilyFeud feudHistory = new FamilyFeud(0, npcs[x], npcs[y]);
+
                     //Make them hate eachother if they don't already love eachother (romeo juliet situation)
                     if (relationships[x,y] != 3) {
                         relationships[x, y] = randomRelationshipValue(-3, -2, -3);
@@ -525,12 +593,14 @@ namespace MurderMystery {
                     }
                         
                     if (relationships[y, x] != 3) {
+                        if (npcs[x] == victim) victimDisputesCreated++;
                         npcs[y].addHistory(feudHistory);
                         relationships[y, x] = randomRelationshipValue(-3, -2, -3);
                     }
                         
                 }
             }
+            return victimDisputesCreated;
         }
 
         void loadNames() {
