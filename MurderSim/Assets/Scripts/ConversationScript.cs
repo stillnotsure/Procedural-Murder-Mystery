@@ -336,7 +336,41 @@ namespace MurderMystery {
             Debug.Log("Running npc suspects");
             SuspectTestimony st = TestimonyManager.pickASuspect(speakingNPC);
             if (st != null) {
-                displayText(string.Format("I think {0} did it, they've been out for revenge ever since {1} did that {2} to them", st.npc.getFullName(), pg.victim.getFullName(), st.motive.GetType()));
+                Npc.Gender suspectGender = st.npc.gender;
+                Npc.Gender victimGender = pg.victim.gender;
+                displayText(string.Format("I think {0} did it.", st.npc.getFullName()));
+
+                if (st.motive is StoleLover) {
+                    StoleLover motive = st.motive as StoleLover;
+                    dialogueQueue.Enqueue(string.Format("Not long ago {0} left {1} for {2} and {3} clearly never got over it.", Grammar.selfOrName(motive.lover, speakingNPC), Grammar.getObjectPronoun(st.npc, speakingNPC), pg.victim.firstname, Grammar.getSubjectPronoun(st.npc, speakingNPC)));
+                }
+
+                else if (st.motive is CompetingForLove) {
+                    CompetingForLove motive = st.motive as CompetingForLove;
+                    dialogueQueue.Enqueue(string.Format("{0} been fighting {1} for {2}'s affections for a long time now, it was bound to come to a head at some point.", Grammar.getSubjectPronounHave(st.npc, speakingNPC), pg.victim.firstname, Grammar.selfOrNamePossessive(motive.lover, speakingNPC)));
+                }
+
+                else if (st.motive is BadBreakup) {
+                    BadBreakup motive = st.motive as BadBreakup;
+                    dialogueQueue.Enqueue(string.Format("It's no secret that {0} and {1} split up, {2} took it very badly.", Grammar.getSubjectPronoun(st.npc, speakingNPC), pg.victim.firstname, Grammar.getSubjectPronoun(st.npc, speakingNPC)));
+                }
+
+                else if (st.motive is FiredBy) {
+                    FiredBy motive = st.motive as FiredBy;
+                    dialogueQueue.Enqueue(string.Format("{0} used to work under {1} until {2} was fired, and {3} been looking for work since.", st.npc.firstname, pg.victim.firstname, Grammar.getSubjectPronoun(st.npc, speakingNPC), Grammar.getSubjectPronounHave(st.npc, speakingNPC)));
+                }
+
+                else if (st.motive is PutOutOfBusiness) {
+                    PutOutOfBusiness motive = st.motive as PutOutOfBusiness;
+                    dialogueQueue.Enqueue(string.Format("Everyone knows that {0} put {1} out of business, it completely ruined {2} and {3} family.", pg.victim.firstname, st.npc.firstname, Grammar.getObjectPronoun(st.npc, speakingNPC), Grammar.myHisHer(st.npc, speakingNPC)));
+                }
+
+                else if (st.motive is Nemeses) {
+                    Nemeses motive = st.motive as Nemeses;
+                    dialogueQueue.Enqueue(string.Format("{0} and {1} have been at eachother's throats for as long as I can remember.", Grammar.getObjectPronoun(st.npc, speakingNPC), pg.victim.firstname, Grammar.getObjectPronoun(st.npc, speakingNPC)));
+                }
+
+                else displayText(string.Format("I think {0} did it, they've been out for revenge ever since {1} did that {2} to them", st.npc.getFullName(), pg.victim.getFullName(), st.motive.GetType()));
             }
             else
                 displayText("Sorry, I have no idea");

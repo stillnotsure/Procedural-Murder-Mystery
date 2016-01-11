@@ -223,7 +223,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11476970, guid: 092a66da12f5e5446a4366168477698e, type: 2}
       propertyPath: seed
-      value: -660064535
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11476970, guid: 092a66da12f5e5446a4366168477698e, type: 2}
       propertyPath: timeOfDeathLeeway

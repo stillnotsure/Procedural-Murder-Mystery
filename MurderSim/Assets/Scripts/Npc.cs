@@ -319,6 +319,8 @@ namespace MurderMystery {
         public void addHistory(History history) {
             histories.Add(history);
             if (pg.debugMode) {
+                if (history.npc1 == pg.murderer) Debug.Log(firstname + " knows the truth"); 
+
                 Npc npc;
                 if (history.npc1 == this) { npc = history.npc2; } else { npc = history.npc1; }
                 Debug.Log(getFullName() + " : has a " + history.GetType() + " history with " + npc.getFullName());

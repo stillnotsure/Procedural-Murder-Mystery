@@ -22,7 +22,7 @@ namespace MurderMystery {
 
     public class PlotGenerator : MonoBehaviour {
 
-        //todo: turn the neccesary variables static so there won't be hundreds of PG references floating around
+        private float rumourSpreadChance = 0.2f;
         public bool debugMode;
         public int seed;
         private Transform npcHolder;
@@ -32,8 +32,9 @@ namespace MurderMystery {
         private Mansion mansion;
 
         public int number_of_characters = 8;
-        public int max_families = 2;
-        public int max_family_size = 3;
+        private int max_families = 2;
+        private int max_family_size = 3;
+        private FamilyFeud feud = null;
 
         //Vars directly related to the murder
         public int timeSteps;
@@ -172,21 +173,48 @@ namespace MurderMystery {
                 bool historyChosen = false;
 
                 while (!historyChosen) {
-                    int r = Random.Range(0, 2);
-                    if (r == 0) {
-                        History history = new FiredBy(1, npcs[m], npcs[v]);
-                        npcs[m].addHistory(history);
-                        npcs[v].addHistory(history);
-                        historyChosen = true;
+                    int r = Random.Range(0, 4);
+                    switch (r) {
+                        case 0: {
+                                History history = new FiredBy(1, npcs[m], npcs[v]);
+                                npcs[m].addHistory(history);
+                                npcs[v].addHistory(history);
+                                historyChosen = true;
+                                SpreadTruth(history);
+                                break;
+                            }
+                            
+                        case 1:
+                            {
+                                //Histories added in the family feud method
+                                if (npcs[m].family != null && npcs[v].family != null) {
+                                    createFamilyFeud(npcs[m].family, npcs[v].family);
+                                    historyChosen = true;
+                                }
+                                break;
+                            }
+                            
+                        case 2:
+                            {
+                                History history = new PutOutOfBusiness(1, npcs[m], npcs[v]);
+                                npcs[m].addHistory(history);
+                                npcs[v].addHistory(history);
+                                historyChosen = true;
+                                SpreadTruth(history);
+                                break;
+                            }
+                        case 3:
+                            {
+                                History history = new Nemeses(0, npcs[m], npcs[v]);
+                                npcs[m].addHistory(history);
+                                npcs[v].addHistory(history);
+                                historyChosen = true;
+                                SpreadTruth(history);
+                                break;
+                            }
+
                     }
-                    else if (r == 1) {
-                        //Histories added in the family feud method
-                        if (npcs[m].family != null && npcs[v].family != null) {
-                            createFamilyFeud(npcs[m].family, npcs[v].family);
-                            historyChosen = true;
-                        }
-                        
-                    }
+                    
                 }
                 
                 
@@ -264,77 +292,119 @@ namespace MurderMystery {
         void createRedHerrings() {
             int redHerrings = 0;
             int attempts = 0;
+            int requiredRedHerrings = 0;
 
             float r = Random.Range(0.0f, 1.0f);
-            int requiredRedHerrings = 0;
             if (r > 0 && r <= 0.5) requiredRedHerrings = 1;
-            else if (r > 0.5  && r < 0.8) requiredRedHerrings = 2;
+            else if (r > 0.5 && r < 0.8) requiredRedHerrings = 2;
             else if (r > 0.8 && r <= 1.0) requiredRedHerrings = 3;
 
-
             while (redHerrings < requiredRedHerrings && attempts < 100) {
-                float f = Random.Range(0f, 1f);
-
-                if (motive == Motives.jealousLove || motive == Motives.loverRevenge || motive == Motives.inheritance) {
-                    List<Npc> tempNpcs = new List<Npc>(npcs);
-
-                   if (victim.family != null && families.Count >= 2) {
-                        //Family Feud
-                        if (f <= 0.7) {
-                            Family targetFamily = null;
-                            for (int i = 0; i < families.Count; i++) {
-                                if (families[i] != victim.family) targetFamily = families[i];
-                            }
-
-                            int disputes = createFamilyFeud(victim.family, targetFamily);
-                            redHerrings += disputes;
-                        }
-                        
-
-                        //Fired By
-                        if (f > 0.7) {
-                            bool suitableNPC = false;
-                            while (!suitableNPC && tempNpcs.Count > 0) {
-                                Npc npc = randomNPCfromList(tempNpcs);
-                                tempNpcs.Remove(npc);
-
-                                if (npc != victim && npc != murderer && npc.family != victim.family) {
-                                    suitableNPC = true;
-                                    FiredBy redHerring = new FiredBy(1, npc, victim);
-                                    npc.addHistory(redHerring);
-                                    victim.addHistory(redHerring);
-                                    redHerrings++;
-                                }
-                            }
-                        }
-                    }
-
-                   //If no suitable families for a feud
-                   else {
-                        //Fired By
-                        bool suitableNPC = false;
-                        while (!suitableNPC && tempNpcs.Count > 0) {
-                            Npc npc = randomNPCfromList(tempNpcs);
-                            tempNpcs.Remove(npc);
-
-                            if (npc != victim && npc != murderer && npc.family != victim.family) {
-                                suitableNPC = true;
-                                FiredBy redHerring = new FiredBy(1, npc, victim);
-                                npc.addHistory(redHerring);
-                                victim.addHistory(redHerring);
-                                redHerrings++;
-                            }
-                            else {
-                                Debug.Log(tempNpcs.Count);
-                                break;
-                            }
-                        }
-                    }
-
-                }
+                int random = Random.Range(0, 5);
                 attempts++;
+
+                switch (random) {
+                    //Creates a family feud if there is an applicable family and no other feud
+                    case 0:
+                        {
+                            if (victim.family != null && families.Count >= 2 && feud == null) {
+                                Family targetFamily = null;
+                                for (int i = 0; i < families.Count; i++) {
+                                    if (families[i] != victim.family) targetFamily = families[i];
+                                }
+
+                                int disputes = createFamilyFeud(victim.family, targetFamily);
+                                redHerrings += disputes;
+                            }
+                            break;
+                        }
+                    case 1:
+                        {
+                            if (createAndSpreadHistory(typeof(FiredBy))) redHerrings++;
+                            break;
+                        }
+                    case 2:
+                        {
+                            if (createAndSpreadHistory(typeof(Nemeses))) redHerrings++;
+                            break;
+                        }
+                    case 3:
+                        {
+                            if (createAndSpreadHistory(typeof(PutOutOfBusiness))) redHerrings++;
+                            break;
+                        }
+                    case 4:
+                        {
+                            if (createAndSpreadHistory(typeof(BadBreakup))) redHerrings++;
+                            break;
+                        }
+                }   //end switch
             }
-            if (debugMode)Debug.Log(string.Format("Created {0} red herrings", redHerrings));
+
+        }
+        
+        bool createAndSpreadHistory(System.Type historyType) {
+            Debug.Log("Attempting to create a new " + historyType.ToString());
+
+                bool suitableNPC = false;
+                List<Npc> tempNpcs = new List<Npc>(npcs);
+
+                while (!suitableNPC && tempNpcs.Count > 0) {
+                    Npc npc = randomNPCfromList(tempNpcs);
+                    tempNpcs.Remove(npc);
+
+                    if (npc != victim && npc != murderer && npc.family != victim.family) {
+
+                        suitableNPC = true;
+
+                        History redHerring = null;
+                        if (historyType == typeof(FiredBy))
+                            redHerring = new FiredBy(1, npc, victim);
+                        else if (historyType == typeof(Nemeses))
+                            redHerring = new Nemeses(1, npc, victim);
+                        else if (historyType == typeof(PutOutOfBusiness))
+                            redHerring = new PutOutOfBusiness(1, npc, victim);
+                        else if (historyType == typeof(BadBreakup))
+                            redHerring = new BadBreakup(1, npc, victim);
+
+                        //TODO - Try and make Love-based red herrings. Difficuly because need to find plausible lovers
+
+                        npc.addHistory(redHerring);
+                        victim.addHistory(redHerring);
+
+                        SpreadRumour(redHerring, npc);
+                        return true;
+                    }
+                }
+            return false;
+        }
+
+        bool SpreadRumour(History history, Npc npc = null) {
+            bool rumourSpread = false;
+            //Give unrelated NPCs memory of this event
+            List<Npc> NpcCopy = new List<Npc>(npcs);
+            NpcCopy.Remove(victim); if (npc!=null) NpcCopy.Remove(npc);
+
+            for (int i = 0; i < NpcCopy.Count; i++) {
+                float random = Random.Range(0.0f, 1.0f);
+                if (random < rumourSpreadChance) {
+                    NpcCopy[i].addHistory(history);
+                    rumourSpread = true;
+                    if (debugMode) Debug.Log(string.Format("Spreading {0} rumour to {1}", history.GetType(), npcs[i]));  
+                }
+            }
+            return rumourSpread;
+        }
+
+        void SpreadTruth(History history) {
+            bool truthSpread = false;
+            Debug.Log("attempting to spread the truth");
+
+            while (truthSpread == false) {
+                truthSpread = SpreadRumour(history);
+                Debug.Log("spreading the truth");
+            }
+            Debug.Log("Spreaded the truth!");
         }
 
         Npc findPotentialLover(Npc seeker) {
@@ -584,6 +654,7 @@ namespace MurderMystery {
 
                     int a = npcs.IndexOf(family1.family_members[x]);
                     int b = npcs.IndexOf(family2.family_members[y]);
+
                     FamilyFeud feudHistory = new FamilyFeud(0, npcs[a], npcs[b]);
                     //Make them hate eachother if they don't already love eachother (romeo juliet situation)
                     if (relationships[a,b] != 3) {
@@ -596,7 +667,8 @@ namespace MurderMystery {
                         npcs[b].addHistory(feudHistory);
                         relationships[b, a] = randomRelationshipValue(-3, -2, -3);
                     }
-                        
+
+                    if (feud == null) { feud = feudHistory; }
                 }
             }
             return victimDisputesCreated;

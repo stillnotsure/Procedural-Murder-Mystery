@@ -73,6 +73,31 @@ namespace MurderMystery {
         }
     }
 
+    public class PutOutOfBusiness : History {
+        public int whichNpcIsVictim { get; set; }
+        public Npc npc1 { get; set; }
+        public Npc npc2 { get; set; }
+
+        public PutOutOfBusiness(int whichNpcIsVictim, Npc npc1, Npc npc2) {
+            this.whichNpcIsVictim = whichNpcIsVictim;
+            this.npc1 = npc1;
+            this.npc2 = npc2;
+        }
+    }
+
+    public class Nemeses : History {
+        public int whichNpcIsVictim { get; set; }
+        public Npc npc1 { get; set; }
+        public Npc npc2 { get; set; }
+
+        public Nemeses(int whichNpcIsVictim, Npc npc1, Npc npc2) {
+            this.whichNpcIsVictim = whichNpcIsVictim;
+            this.npc1 = npc1;
+            this.npc2 = npc2;
+        }
+
+    }
+
     public class FamilyFeud : History {
         public int whichNpcIsVictim { get; set; }
         public Npc npc1 { get; set; }

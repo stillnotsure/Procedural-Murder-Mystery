@@ -121,24 +121,31 @@ namespace MurderMystery {
 
             //Check if there's anyone who it makes sense to blame
             foreach (History history in npc.histories) {
-                if (history.whichNpcIsVictim == 0) {
-                    if (history.npc1 == victim || history.npc2 == victim) {
-                        Npc other;
-                        if (history.npc1 == victim) { other = history.npc2; }
-                        else { other = history.npc1; }
-                        possibleSuspects.Add(new SuspectTestimony(other, true, false, history));
+
+                //Don't tell the detective about history involving self
+                //Todo : Unless it's a family feud?
+                if (history.npc1 != npc && history.npc2 != npc) {
+                    if (history.whichNpcIsVictim == 0) {
+                        if (history.npc1 == victim || history.npc2 == victim) {
+                            Npc other;
+                            if (history.npc1 == victim) { other = history.npc2; }
+                            else { other = history.npc1; }
+                            possibleSuspects.Add(new SuspectTestimony(other, true, false, history));
+                        }
+                    }
+                    else if (history.whichNpcIsVictim == 1) {
+                        if (history.npc2 == victim) {
+                            possibleSuspects.Add(new SuspectTestimony(history.npc1, true, false, history));
+                        }
+                    }
+                    else if (history.whichNpcIsVictim == 2) {
+                        if (history.npc1 == victim) {
+                            possibleSuspects.Add(new SuspectTestimony(history.npc2, true, false, history));
+                        }
                     }
                 }
-                else if (history.whichNpcIsVictim == 1) {
-                    if (history.npc2 == victim) {
-                        possibleSuspects.Add(new SuspectTestimony(history.npc1, true, false, history));
-                    }
-                }
-                else if (history.whichNpcIsVictim == 2) {
-                    if (history.npc1 == victim) {
-                        possibleSuspects.Add(new SuspectTestimony(history.npc2, true, false, history));
-                    }
-                }
+                
+
             }
 
             //If not going to lie, randomly choose one of these motives
