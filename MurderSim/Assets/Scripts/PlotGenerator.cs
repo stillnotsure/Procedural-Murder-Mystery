@@ -22,34 +22,37 @@ namespace MurderMystery {
 
     public class PlotGenerator : MonoBehaviour {
 
+        private bool gameStarted = false;
         private float rumourSpreadChance = 0.2f;
         public bool debugMode;
         public int seed;
-        private Transform npcHolder;
-
+        
+        //References
         private ItemManager itemManager;
         private DebugRoomDisplay display;
         private Mansion mansion;
+        private Transform npcHolder;
 
+        //Characters and families
         public int number_of_characters = 8;
         private int max_families = 2;
         private int max_family_size = 3;
         private FamilyFeud feud = null;
+        public List<Family> families;
+        public List<Npc> npcs;
+        public int[,] relationships;
+        private readonly int nullRelationship = 100;
 
         //Vars directly related to the murder
         public int timeSteps;
+        private int timeUntilGameStart = 5;
+
         public Motives motive;
         public Npc victim, murderer;
         public Weapon murderWeapon;
         public bool bodyFound;
         public bool weaponHidden;
         public int timeOfDeathLeeway = 30; //The amount of time either side of the t.o.d estimate, so 30 means the estimate will be in the range of an hour
-
-        public List<Family> families;
-        public List<Npc> npcs;
-
-        public int[,] relationships;
-        private readonly int nullRelationship = 100;
 
         //To be removed once a much better solution is found...
         private List<string> firstnames_m;
@@ -67,6 +70,7 @@ namespace MurderMystery {
                 Random.seed = seed;
             }
 
+            Debug.Log(Random.seed);
             Ceilings.findCeilings();
             npcHolder = new GameObject("NPCS").transform;
             itemManager = GetComponent<ItemManager>();
@@ -100,12 +104,23 @@ namespace MurderMystery {
             bodyFound = false;
             weaponHidden = false;
             timeSteps = 0;
-            Ceilings.makeRoomVisible(GameObject.Find("Player").GetComponent<playerControl>().currentRoom);
+            
         }
 
         void Update() {
-            if (!weaponHidden) timeSteps++;
+            if (bodyFound && !gameStarted) timeUntilGameStart--;
+            if (!gameStarted) timeSteps++;
+
+            if (timeUntilGameStart <= 0 && !gameStarted) beginGame();
         }
+
+        void beginGame() {
+            gameStarted = true;
+            gameObject.GetComponent<BoardManager>().placeNPCs();
+            gameObject.GetComponent<ItemManager>().placeItemsOnBoard();
+            Ceilings.makeRoomVisible(GameObject.Find("Player").GetComponent<playerControl>().currentRoom);
+        }
+
 
         public void bodyWasFound() {
             bodyFound = true;
@@ -113,8 +128,6 @@ namespace MurderMystery {
 
         public void weaponWasHidden() {
             weaponHidden = true;
-            gameObject.GetComponent<BoardManager>().placeNPCs();
-            gameObject.GetComponent<ItemManager>().placeItemsOnBoard();
         }
 
         void placeWeaponAtMurderer() {
@@ -163,10 +176,14 @@ namespace MurderMystery {
                 int m = Random.Range(0, number_of_characters);
                 setMurderer(npcs[m]);
                 int v = 0;
-                while (victim == null || victim == murderer) {
+
+                while (victim == null) {
                     v = Random.Range(0, number_of_characters);
-                    setVictim(npcs[v]);
+                    if (npcs[v] != murderer) {
+                        setVictim(npcs[v]);
+                    }
                 }
+                
 
                 //Make murderer hate victim
                 relationships[m, v] = -3;
@@ -468,6 +485,7 @@ namespace MurderMystery {
         }
 
         void setVictim(Npc npc) {
+            Debug.Log(npc.firstname +  " is victim");
             npc.isVictim = true;
             victim = npc;
         }

@@ -377,7 +377,7 @@ namespace MurderMystery {
         }
 
         void NPCGreeting(Npc npc) {
-            displayText("Hi.");
+            displayText("Good evening detective");
         }
 
         void examineBody(Npc npc) {

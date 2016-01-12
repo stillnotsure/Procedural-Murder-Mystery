@@ -229,6 +229,10 @@ Prefab:
       propertyPath: timeOfDeathLeeway
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 11476970, guid: 092a66da12f5e5446a4366168477698e, type: 2}
+      propertyPath: number_of_characters
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 092a66da12f5e5446a4366168477698e, type: 2}
   m_IsPrefabParent: 0

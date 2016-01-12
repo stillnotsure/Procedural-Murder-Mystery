@@ -26,6 +26,7 @@ namespace MurderMystery {
         public bool isVictim = false;
         public bool isAlive = true;
         public bool foundBody = false;
+        public bool moveOnNextTurn = false; //Used to quickly get away from scene of crime/hiding spot
 
         public List<GameObject> inventory;
 
@@ -51,7 +52,7 @@ namespace MurderMystery {
 
         void Update() {
             //Will wait with the body
-            if (!pg.weaponHidden && !foundBody)
+            if ((!pg.weaponHidden || !pg.bodyFound) && !foundBody)
                 act();
         }
 
@@ -83,6 +84,14 @@ namespace MurderMystery {
                         //If already killed the victim
                         if (hasMurderWeapon) {
                             hideWeapon();
+                        }
+                        else {
+                            //Random chance to meander, behave like normal NPC
+                            float r = Random.Range(0f, 1f);
+                            
+                            if (r > 0.8f || moveOnNextTurn) {
+                                moveToRandomRoom();
+                            }
                         }
                     }
                 }
@@ -214,6 +223,7 @@ namespace MurderMystery {
                         placeItemInContainer(pg.murderWeapon, containerScript);
                         hasMurderWeapon = false;
                         pg.weaponWasHidden();
+                        moveOnNextTurn = true;
                         break;
                     }
                     containers.RemoveAt(r);
@@ -254,11 +264,14 @@ namespace MurderMystery {
         }
 
         public void kill(Npc npc, Weapon weapon) {
+            Event e = new Murder(pg.timeSteps, this, npc, currentRoom, weapon);
             Timeline.addEvent(new Murder(pg.timeSteps, this, npc, currentRoom, weapon));
             npc.die();
             pg.murderWeapon = weapon;
             hasMurderWeapon = true;
             SoundManager.instance.PlayMusic();
+
+            if (pg.debugMode) Debug.Log(e.toString());
         }
 
         public void die() {
@@ -284,8 +297,12 @@ namespace MurderMystery {
                 if (npc != this) {
                     if (npc.isAlive) Timeline.addEvent(new Encounter(pg.timeSteps, this, npc, currentRoom));
                     else {
-                        if (!isMurderer) {
-                            Timeline.addEvent(new FoundBody(pg.timeSteps, this, npc, currentRoom));
+                        if (!isMurderer && !pg.bodyFound) {
+                            Event e = new FoundBody(pg.timeSteps, this, npc, currentRoom);
+                            Timeline.addEvent(e);
+
+                            if (pg.debugMode) Debug.Log(e.toString());
+
                             foundBody = true;
                             pg.bodyWasFound();
                         }
@@ -312,7 +329,7 @@ namespace MurderMystery {
             item.setState(Item.ItemState.contained);
             inventory.Remove(item.gameObject);
             DropItem e = new DropItem(pg.timeSteps, this, currentRoom, item);
-            Debug.Log(e.toString());
+            if (pg.debugMode)   Debug.Log(e.toString());
             Timeline.addEvent(new DropItem(pg.timeSteps, this, currentRoom, item));
         }
 
