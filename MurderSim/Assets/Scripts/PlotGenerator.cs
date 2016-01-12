@@ -267,6 +267,7 @@ namespace MurderMystery {
                
                 npcs[m].addHistory(history);
                 npcs[v].addHistory(history);
+                SpreadTruth(history);
             }
 
             else if (motive == Motives.jealousLove) {
@@ -289,6 +290,7 @@ namespace MurderMystery {
                 relationships[m, v] = randomRelationshipValue(-3, -2, -2); //Make the murderer strongly dislike the victim
 
                 int r = Random.Range(0, 2);
+
                 History history;
                 if (r == 0) {
                     relationships[s, v] = 3;
@@ -302,6 +304,7 @@ namespace MurderMystery {
                 else {
                     history = null;
                 }
+                SpreadTruth(history);
 
             }
         }

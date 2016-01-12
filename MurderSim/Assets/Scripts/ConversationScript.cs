@@ -150,12 +150,22 @@ namespace MurderMystery {
         public void displayText(string text) {
             StopAllCoroutines();
             shownString = "";
-            fullString = text;
+            fullString = capitaliseFirstLetter(text);
 
             state = conversationState.npcSpeaking;
             StartCoroutine(RevealString());
         }
 
+        string capitaliseFirstLetter(string text) {
+            if (string.IsNullOrEmpty(text))
+                return string.Empty;
+
+            char[] letters = text.ToCharArray();
+            letters[0] = char.ToUpper(letters[0]);
+
+            return new string(letters);
+
+        }
         IEnumerator RevealString() {
 
             foreach (char letter in fullString.ToCharArray()) {
@@ -368,6 +378,11 @@ namespace MurderMystery {
                 else if (st.motive is Nemeses) {
                     Nemeses motive = st.motive as Nemeses;
                     dialogueQueue.Enqueue(string.Format("{0} and {1} have been at eachother's throats for as long as I can remember.", Grammar.getObjectPronoun(st.npc, speakingNPC), pg.victim.firstname, Grammar.getObjectPronoun(st.npc, speakingNPC)));
+                }
+
+                else if (st.motive is RejectedLove) {
+                    Nemeses motive = st.motive as Nemeses;
+                    dialogueQueue.Enqueue(string.Format("{0} confessed {1} love to {2} recently, but {3} rejected {4} very harshly.", Grammar.getSubjectPronoun(st.npc, speakingNPC), Grammar.myHisHer(st.npc, speakingNPC), pg.victim.firstname, Grammar.getSubjectPronoun(pg.victim, speakingNPC), Grammar.getObjectPronoun(st.npc, speakingNPC)));
                 }
 
                 else displayText(string.Format("I think {0} did it, they've been out for revenge ever since {1} did that {2} to them", st.npc.getFullName(), pg.victim.getFullName(), st.motive.GetType()));
