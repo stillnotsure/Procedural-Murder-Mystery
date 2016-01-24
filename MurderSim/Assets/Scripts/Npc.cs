@@ -21,6 +21,8 @@ namespace MurderMystery {
         public enum Gender { Male, Female };
         public string firstname, surname;
         public Gender gender;
+        public float audioPitch;
+        public float stress = 0;
 
         public bool isMurderer = false;
         public bool isVictim = false;
@@ -43,11 +45,13 @@ namespace MurderMystery {
             pg = GameObject.Find("GameManager").GetComponent<PlotGenerator>();
             histories = new List<History>();
         }
+
         void Start() {
             timeBuffer = 0;
             inventory = new List<GameObject>();
             testimonies = new Dictionary<Event, Testimony>();
-            
+            getAudioPitch();
+            stress = Random.Range(0f, 0.5f);
         }
 
         void Update() {
@@ -344,6 +348,13 @@ namespace MurderMystery {
             }
 
 
+        }
+
+        private void getAudioPitch() {
+            if (gender == Gender.Male) {
+                audioPitch = Random.Range(0.3f, 0.7f);
+            } else
+                audioPitch = Random.Range(0.8f, 1.5f);
         }
     }
 

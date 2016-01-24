@@ -15,6 +15,9 @@ namespace MurderMystery {
         public float letterDelay = 0.04f;
 
         //References
+        public AudioClip letterSound;
+        public AudioSource audioSource;
+
         public UIManager uiManager;
         public Npc speakingNPC;
         public GameObject textPanel;
@@ -35,6 +38,8 @@ namespace MurderMystery {
         void Start() {
             pg = gameObject.GetComponent<PlotGenerator>();
             uiManager = gameObject.GetComponent<UIManager>();
+            audioSource = gameObject.GetComponent<AudioSource>();
+            letterSound = Resources.Load<AudioClip>("Audio/text-letter");
 
             //Load gameobjects
             textPanel = GameObject.Find("Text Panel");
@@ -111,6 +116,8 @@ namespace MurderMystery {
                 responseArea.text = "";
                 TextArea.text = "";
                 textPanel.SetActive(false);
+                audioSource.Stop();
+                audioSource.pitch = 1.0f;
             }
 
         }
@@ -166,11 +173,29 @@ namespace MurderMystery {
             return new string(letters);
 
         }
+
         IEnumerator RevealString() {
 
             foreach (char letter in fullString.ToCharArray()) {
                 shownString += letter;
-                yield return new WaitForSeconds(letterDelay);
+                if (state == conversationState.npcSpeaking)audioSource.PlayOneShot(letterSound);
+
+                float combinedLetterDelay = letterDelay;
+                if (letter == ',') combinedLetterDelay += 0.09f;    //add a pause to commas
+                else if (letter == '.') combinedLetterDelay += 0.12f;   //slightly longer pause to full stops
+
+                //chance to stammer between each word to indicate stress
+                else if (letter == ' ') {
+                    float chanceToStutter = UnityEngine.Random.Range(0.1f, 1.0f);
+                    if (chanceToStutter < speakingNPC.stress) {
+                        combinedLetterDelay += UnityEngine.Random.Range(0.09f, 0.2f);
+                    }
+                }
+                
+
+                
+
+                yield return new WaitForSeconds(combinedLetterDelay);
             }
 
             if (shownString == fullString) {
@@ -402,10 +427,17 @@ namespace MurderMystery {
         public void handleInteractionWith(Npc npc) {
             gameObject.GetComponent<UIManager>().setRelationships(npc);
             speakingNPC = npc;
-            if (npc.isAlive)
+            if (npc.isAlive) {
+                setAudioPitch();
                 NPCGreeting(npc);
+            }
             else
                 examineBody(npc);
         }
+
+        private void setAudioPitch() {
+            audioSource.pitch = speakingNPC.audioPitch;
+        }
+
     }
 }   
