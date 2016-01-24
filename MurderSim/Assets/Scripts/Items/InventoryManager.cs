@@ -123,6 +123,7 @@ namespace MurderMystery {
                 foreach (GameObject item in items) {
                     GameObject go = new GameObject(item.GetComponent<Item>().name);
                     Image image = go.AddComponent<Image>();
+                    LayoutElement element = go.AddComponent<LayoutElement>();
                     image.preserveAspect = true;
                     image.sprite = item.GetComponent<SpriteRenderer>().sprite;
                     go.transform.SetParent(inventoryPanel.transform, false);

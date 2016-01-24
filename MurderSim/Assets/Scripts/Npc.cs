@@ -273,7 +273,7 @@ namespace MurderMystery {
             npc.die();
             pg.murderWeapon = weapon;
             hasMurderWeapon = true;
-            SoundManager.instance.PlayMusic();
+            stress = Mathf.Min(stress + Random.Range(0.1f, 0.3f), 1.0f);
 
             if (pg.debugMode) Debug.Log(e.toString());
         }
