@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using UnityEditor;
 
 namespace MurderMystery {
     public enum Motives { none, revenge, loverRevenge, jealousLove, inheritance }
@@ -410,7 +409,7 @@ namespace MurderMystery {
                 if (random < rumourSpreadChance) {
                     NpcCopy[i].addHistory(history);
                     rumourSpread = true;
-                    if (debugMode) Debug.Log(string.Format("Spreading {0} rumour to {1}", history.GetType(), npcs[i]));  
+                    if (debugMode) Debug.Log(string.Format("Spreading {0} rumour to {1}", history.GetType(), NpcCopy[i]));  
                 }
             }
             return rumourSpread;

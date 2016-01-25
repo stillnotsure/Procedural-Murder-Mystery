@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using UnityEditor;
 
 namespace MurderMystery {
 
@@ -31,8 +30,16 @@ namespace MurderMystery {
         public bool moveOnNextTurn = false; //Used to quickly get away from scene of crime/hiding spot
 
         public List<GameObject> inventory;
+        private int inventoryCapacity = 4;
+        private Dictionary<string, float> actionProbabilities;
 
-        private bool hasWeapon = false;
+        public float pickupChance = 0.08f;
+        public float putdownChance = 0.08f;
+        public float meanderChance = 0.15f;
+        public float nilChance = 1;
+
+
+        public bool hasWeapon = false;
         private bool hasMurderWeapon = false;
 
         [System.NonSerialized]
@@ -52,6 +59,10 @@ namespace MurderMystery {
             testimonies = new Dictionary<Event, Testimony>();
             getAudioPitch();
             stress = Random.Range(0f, 0.5f);
+            nilChance = 1 - (pickupChance + putdownChance + meanderChance);
+
+            actionProbabilities = new Dictionary<string, float>();
+            actionProbabilities.Add("Pickup", pickupChance); actionProbabilities.Add("PutDown", putdownChance); actionProbabilities.Add("Meander", meanderChance); actionProbabilities.Add("nil", nilChance);
         }
 
         void Update() {
@@ -62,24 +73,27 @@ namespace MurderMystery {
 
         public void act() {
             // pg.timeSteps++;
-
+            Debug.Log(firstname + ": acting");
             if (isAlive) {
-                //If Murderer
-                if (isMurderer) {
+                //If Murderer and not finished with villanous acts
+                if (isMurderer && !pg.weaponHidden) {
                     if (pg.victim.GetComponent<Npc>().isAlive) {
                         if (hasWeapon) {
+                            Debug.Log("has weapon, going for victim");
                             if (!victimInRoom()) seekVictim();
                             else {
+                                Debug.Log("vicitim in room, checking coast is clear");
                                 //Todo - Brash murderers will murder even when the coast isn't clear
                                 bool coastIsClear = true;
                                 foreach (Npc npc in currentRoom.npcs) {
                                     if (npc != this && !npc.isVictim) coastIsClear = false;
+                                    Debug.Log("spotted, not murdering");
                                 }
                                 if (coastIsClear) kill(pg.victim, randomWeapon());
 
                             }
-
                         }
+
                         else {
                             seekWeapon();
                         }
@@ -89,25 +103,64 @@ namespace MurderMystery {
                         if (hasMurderWeapon) {
                             hideWeapon();
                         }
-                        else {
-                            //Random chance to meander, behave like normal NPC
-                            float r = Random.Range(0f, 1f);
-                            
-                            if (r > 0.8f || moveOnNextTurn) {
-                                moveToRandomRoom();
-                            }
-                        }
+                       
                     }
                 }
 
-                //If not murderer
+                //If not murderer, or have finished the murder and acting like a civilian
                 else {
-                    //Random chance to meander
-                    float r = Random.Range(0f, 1f);
-
-                    if (r > 0.8f) {
+                    if (moveOnNextTurn) {
                         moveToRandomRoom();
+                    } else {
+                        //Random chance to take actions
+                        float r = Random.Range(0f, 1f);
+                        string actionChosen = null;
+                        float totalWeight = 0;
+
+                        foreach (KeyValuePair<string, float> action in actionProbabilities) {
+                            totalWeight += action.Value;
+                            if (r <= totalWeight) {
+                                actionChosen = action.Key;
+                                break;
+                            }
+                        }
+
+                        switch (actionChosen) {
+                            case "Meander":
+                                {
+                                    Debug.Log("meander");
+                                    moveToRandomRoom();
+                                    break;
+                                }
+                                
+                            case "Pickup":
+                                {
+                                    Debug.Log("pickup");
+                                    PickUpRandomItem();
+                                    break;
+                                }
+                                
+                            case "PutDown":
+                                {
+                                    Debug.Log("putdown");
+                                    PutDownRandomItem();
+                                    break;
+                                }
+                               
+                            case "nil":
+                                {
+                                    Debug.Log("nil");
+                                    break;
+                                }
+                                
+                            default:
+                                {
+                                    Debug.Log("default");
+                                    break;
+                                }
+                        }
                     }
+                    
                 }
             }
 
@@ -117,15 +170,72 @@ namespace MurderMystery {
             return (firstname + " " + surname);
         }
 
+        public void PickUpRandomItem() {
+            if (inventory.Count < inventoryCapacity) {
+                bool foundItem = false;
+
+                //Create list of all containers and check each randomly
+                List<GameObject> containers = new List<GameObject>(currentRoom.containers);
+
+                while (foundItem == false && containers.Count > 0) {
+                    int r = Random.Range(0, containers.Count);
+                    ContainerScript containerScript = containers[r].GetComponent<ContainerScript>();
+
+                    //Create list of items and check randomly
+                    List<GameObject> items = new List<GameObject>(containerScript.items);
+                    while (containerScript.items.Count > 0 && foundItem == false) {
+
+                        int i = Random.Range(0, items.Count);
+
+                        //NPCs don't interfere with the murder weapon
+                        if (containerScript.items[i] != pg.murderWeapon) {
+                            foundItem = true;
+                            pickupItemFromContainer(items[i].GetComponent<Item>(), containerScript);
+                            break;
+                        }
+
+                        items.RemoveAt(i);
+                    }
+                    containers.RemoveAt(r);
+                }
+            }
+            
+        }
+
+        public void PutDownRandomItem() {
+            if (inventory.Count > 0) {
+                bool putdownItem = false;
+                int i = Random.Range(0, inventory.Count); GameObject item = inventory[i];
+
+                //Create list of all containers and check each randomly
+                List<GameObject> containers = new List<GameObject>(currentRoom.containers);
+
+                while (putdownItem == false && containers.Count > 0) {
+                    int r = Random.Range(0, containers.Count);
+                    ContainerScript containerScript = containers[r].GetComponent<ContainerScript>();
+
+                    if (containerScript.capacity > containerScript.items.Count) {
+                        placeItemInContainer(item.GetComponent<Item>(), containerScript);
+                        break;
+                    }
+                    containers.RemoveAt(r);
+                }
+            }
+        }
+
         private void pickupItem(Item item) {
-            item.room.items.Remove(item.gameObject);
-            item.room = null;
+
+            if (item.room != null) {
+                item.room.items.Remove(item.gameObject);
+                item.room = null;
+            }
+            
             item.setState(Item.ItemState.held);
 
             inventory.Add(item.gameObject);
 
             Timeline.addEvent(new PickupItem(pg.timeSteps, this, currentRoom, item));
-            Debug.Log(new PickupItem(pg.timeSteps, this, currentRoom, item).toString());
+
         }
 
         private void pickupItemFromContainer(Item item, ContainerScript container) {
@@ -159,6 +269,7 @@ namespace MurderMystery {
         }
 
         private void seekVictim() {
+            Debug.Log("seeking vicitm");
             //TODO - low - pathfinding for victim search
             List<Room> neighbouringRooms = new List<Room>(currentRoom.neighbouringRooms);
 

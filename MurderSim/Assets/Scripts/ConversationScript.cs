@@ -343,7 +343,7 @@ namespace MurderMystery {
 
                         if (!t.omitted) {
                             PickupItem e = t.e as PickupItem;
-                            dialogueQueue.Enqueue(String.Format("At {0} I saw {1} pick up a {2} in the {3}", Timeline.convertTime(e.time), e.npc.getFullName(), e.item.name, e.room.roomName));
+                            dialogueQueue.Enqueue(String.Format("At {0} I saw {1} pick up something in the {2}", Timeline.convertTime(e.time), e.npc.getFullName(), e.room.roomName));
                         }
                        
                     }
