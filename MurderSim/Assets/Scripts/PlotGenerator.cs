@@ -24,6 +24,7 @@ namespace MurderMystery {
         private bool gameStarted = false;
         private float rumourSpreadChance = 0.2f;
         public bool debugMode;
+        public bool tutorialMode;
         public int seed;
         
         //References

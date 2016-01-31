@@ -8,12 +8,15 @@ namespace MurderMystery {
     //These are held alongside the true events they might be describing in the NPC's memories
     //If pure fabrication they are held seperately in NPC's lies, in chronological order
     public class Testimony {
-        public Event e;
         public Npc npc;
         public bool truth;
         public bool omitted; //Omitted events are those that the NPC decided not to tell, as such are still considered untrue even though they are based on real events
+    }
 
-        public Testimony(Event e, Npc npc, bool truth, bool omitted) {
+    public class EventTestimony : Testimony{
+        public Event e;
+
+        public EventTestimony(Event e, Npc npc, bool truth, bool omitted) {
             this.e = e;
             this.npc = npc;
             this.truth = truth;
@@ -24,10 +27,7 @@ namespace MurderMystery {
     //A suspect put forward by an NPC
     //Each NPC may only have one suspect
     //The suspect chosen may be a result of the NPC knowing a history, or could be a lie to suit their needs
-    public class SuspectTestimony {
-        public Npc npc;
-        public bool truth;
-        public bool omitted;
+    public class SuspectTestimony : Testimony{
         public History motive;
 
         public SuspectTestimony(Npc npc, bool truth, bool omitted, History motive) {
@@ -42,7 +42,24 @@ namespace MurderMystery {
 
         public static PlotGenerator pg;
 
-        public static Testimony createTestimony(Npc npc, Event e) {
+        public static EventTestimony getTrueEventTestimony(Npc npc, Event e) {
+            //Removes the existing false testimony and returns the truth
+            npc.removeTestimony(e: e);
+            return new EventTestimony(e, npc, true, false);
+        }
+
+        //Based on the type of event, runs through different scenarios in which an NPC might lie. If none apply it returns the truth in a new EventTestimony
+        public static EventTestimony createTestimony(Npc npc, Event e) {
+
+            if (e is Murder) {
+                Murder murder = e as Murder;
+
+                //If referring to self or someone they love...
+                if (e.npc == npc || pg.relationships[pg.npcs.IndexOf(npc), pg.npcs.IndexOf(e.npc)] == 3) {
+                    //Definitely don't tell the detective they witnessed the murder!
+                    return new EventTestimony(e, npc, false, true);
+                }
+            }
 
             if (e is SwitchRooms) {
                 SwitchRooms switchrooms = e as SwitchRooms;
@@ -60,7 +77,7 @@ namespace MurderMystery {
                 if (npc.timeBuffer > 0) {
                     Debug.Log("Buffering the time out");
                     SwitchRooms bufferedEvent = new SwitchRooms(e.time + npc.timeBuffer, npc, switchrooms.origRoom, switchrooms.newRoom);
-                    return new Testimony(bufferedEvent, npc, false, false);
+                    return new EventTestimony(bufferedEvent, npc, false, false);
                 }
             }
 
@@ -72,9 +89,10 @@ namespace MurderMystery {
                 //Todo - Make the required relationship value be based on their loyalty/personality
                 if (e.npc == npc || pg.relationships[pg.npcs.IndexOf(npc), pg.npcs.IndexOf(e.npc)] == 3) {
                     //If it's the murder weapon, don't tell the detective they ever picked it up
-                    if (item == pg.murderWeapon) {
-                        return new Testimony(e, npc, false, true);
-                    }
+
+                        Debug.Log("ommitting");
+                        return new EventTestimony(e, npc, false, true);
+                    
                 }
 
             }
@@ -88,16 +106,21 @@ namespace MurderMystery {
                 if (e.npc == npc || pg.relationships[pg.npcs.IndexOf(npc), pg.npcs.IndexOf(e.npc)] == 3) {
                     //If it's the murder weapon, don't tell the detective they ever dropped it
                     if (item == pg.murderWeapon) {
-                        return new Testimony(e, npc, false, true);
+                        return new EventTestimony(e, npc, false, true);
                     }
                 }
             }
 
+            //No reason to lie about finding the body
+            if (e is FoundBody) {
+                return new EventTestimony(e, npc, true, false);
+            }
+
             //If no reasons to lie, return the truth
-            return new Testimony(e, npc, true, false);
+            return new EventTestimony(e, npc, true, false);
         }
 
-        public static Testimony lieAboutSwitchRooms(Npc npc, SwitchRooms switchrooms) {
+        public static EventTestimony lieAboutSwitchRooms(Npc npc, SwitchRooms switchrooms) {
             int i = switchrooms.time;
             Room oldRoom = switchrooms.origRoom;
             Room newRoom = switchrooms.newRoom;
@@ -110,7 +133,7 @@ namespace MurderMystery {
             npc.timeBuffer += i;
 
             SwitchRooms s = new SwitchRooms(i, npc, oldRoom, newRoom);
-            return new Testimony(s, npc, false, false);
+            return new EventTestimony(s, npc, false, false);
         }
 
         public static SuspectTestimony pickASuspect(Npc npc) {

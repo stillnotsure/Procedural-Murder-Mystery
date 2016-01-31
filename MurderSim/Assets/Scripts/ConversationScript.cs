@@ -6,13 +6,15 @@ using System;
 
 namespace MurderMystery {
 
-    public enum dialog { greeting, alibi };
+    public enum dialog { none ,greeting, alibi, eventsWitnessed, suspect, corpse, accusation, murderAccusation };
     public enum conversationState { none, moreText, playerInput, npcSpeaking };
 
     public class ConversationScript : MonoBehaviour {
 
         public conversationState state;
+        public dialog dialogType;
         public float letterDelay = 0.04f;
+        public float detectiveAudioPitch = 0.8f;
 
         //References
         public AudioClip letterSound;
@@ -30,8 +32,9 @@ namespace MurderMystery {
         private List<String> responses;
         public int selected;
 
-        //Text holders
+        //Text and testimony holders
         private Queue<string> dialogueQueue;
+        private Queue<Testimony> testimonyQueue;
         private string fullString;
         private string shownString;
 
@@ -50,6 +53,7 @@ namespace MurderMystery {
             state = conversationState.none;
             responses = new List<string>();
             dialogueQueue = new Queue<string>();
+            testimonyQueue = new Queue<Testimony>();
         }
 
         void Update() {
@@ -62,11 +66,45 @@ namespace MurderMystery {
                     skipText();
                 }
             } else
+
             //More text is set when the current line is finished printing, but there is more dialogue from the NPC waiting to be displayed upon pressing shift
             if (state == conversationState.moreText) {
-                if (Input.GetKeyDown(KeyCode.LeftShift)) {
-                    displayText(dialogueQueue.Dequeue());
+                //Alibi and events witnessed go to more text after each time the NPC speaks, and wait for either continue or accuse
+                if (dialogType == dialog.alibi || dialogType == dialog.eventsWitnessed) {
+                    if (Input.GetKeyDown(KeyCode.F)) {
+                        AccuseOfLying();
+                    }
+                    if (Input.GetKeyDown(KeyCode.LeftShift)){
+                        if (dialogueQueue.Count > 0) {
+                            //todo - reactivate once it stops breaking everything
+                            Debug.Log(testimonyQueue.Dequeue().ToString());
+                            displayText(dialogueQueue.Dequeue());
+                        } else {
+                            dialogType = dialog.greeting;
+                            displayText("Can I help you with anything else?");
+                            testimonyQueue.Clear();
+                            state = conversationState.playerInput;
+                        }
+                    }
+                } else if (dialogType == dialog.suspect || dialogType == dialog.accusation) {
+                    if (dialogueQueue.Count > 0) {
+                        if (Input.GetKeyDown(KeyCode.LeftShift)) {
+                            displayText(dialogueQueue.Dequeue());
+                        }
+                    } else {
+                        if (Input.GetKeyDown(KeyCode.LeftShift)) {
+                            dialogType = dialog.greeting;
+                            displayText("Can I help you with anything else?");
+                            testimonyQueue.Clear();
+                            state = conversationState.playerInput;
+                        }
+                       /* else if (Input.GetKeyDown(KeyCode.F)) {
+                            AccuseOfLying();
+                        }
+                        */
+                    }
                 }
+                
             }
 
             //Player input is when the NPC has finished talking and the player uses the menu to respond to them
@@ -96,7 +134,7 @@ namespace MurderMystery {
                 TextArea.text = shownString;
             }
             else if (state == conversationState.playerInput) {
-
+                TextArea.text = shownString;
                 string responseText = "";
                 for (int i = 0; i < responses.Count; i++) {
                     if (selected == i)
@@ -107,7 +145,16 @@ namespace MurderMystery {
                 responseArea.text = responseText;
             }
             else if (state == conversationState.moreText) {
-                string responseText = "Press Shift to Continue";
+                //Debug.Log(testimonyQueue.Peek());
+                string responseText;
+                if (dialogType != dialog.murderAccusation) {
+                    responseText = "Press Shift to Continue";
+                    if (dialogType == dialog.alibi || dialogType == dialog.eventsWitnessed) responseText += Environment.NewLine + "Press F to accuse of lying";
+                }
+                else {
+                    responseText = "Press F to <b>Accuse</b>" + Environment.NewLine + "Press Shift to cancel";
+                }
+
                 responseArea.text = responseText;
             }
             else if (state == conversationState.none) {
@@ -124,10 +171,12 @@ namespace MurderMystery {
 
         void setStateNone() {
             state = conversationState.none;
+            dialogType = dialog.none;
+            testimonyQueue.Clear();
+            dialogueQueue.Clear();
             selected = 0;
             shownString = "";
             fullString = "";
-            dialogueQueue.Clear();
         }
 
         void selectResponse(int i) {
@@ -148,6 +197,15 @@ namespace MurderMystery {
             }
             else if (selectedText.Equals("Is there anyone you suspect?")) {
                 NPCSuspects();
+            }
+            else if (selectedText.Equals("I think you're hiding something.")) {
+                AccuseOfOmission();
+            }
+            else if (selectedText.Equals("(Accuse of committing the murder)")) {
+                accuseOfMurder();
+            }
+            else if (selectedText.Equals("Accuse")) {
+                accuseOfMurder();
             }
             else if (selectedText.Equals("Cancel")) {
                 setStateNone();
@@ -178,32 +236,34 @@ namespace MurderMystery {
 
             foreach (char letter in fullString.ToCharArray()) {
                 shownString += letter;
-                if (state == conversationState.npcSpeaking)audioSource.PlayOneShot(letterSound);
+                if (state == conversationState.npcSpeaking || state == conversationState.playerInput)audioSource.PlayOneShot(letterSound);
 
-                float combinedLetterDelay = letterDelay;
-                if (letter == ',') combinedLetterDelay += 0.09f;    //add a pause to commas
-                else if (letter == '.') combinedLetterDelay += 0.12f;   //slightly longer pause to full stops
+                if(dialogType != dialog.corpse && dialogType != dialog.murderAccusation) {
+                    float combinedLetterDelay = letterDelay;
+                    if (letter == ',') combinedLetterDelay += 0.09f;    //add a pause to commas
+                    else if (letter == '.') combinedLetterDelay += 0.12f;   //slightly longer pause to full stops
 
-                //chance to stammer between each word to indicate stress
-                else if (letter == ' ') {
-                    float chanceToStutter = UnityEngine.Random.Range(0.1f, 1.0f);
-                    if (chanceToStutter < speakingNPC.stress) {
-                        combinedLetterDelay += UnityEngine.Random.Range(0.09f, 0.2f);
+                    //chance to stammer between each word to indicate stress
+                    else if (letter == ' ') {
+                        float chanceToStutter = UnityEngine.Random.Range(0.1f, 1.0f);
+                        if (chanceToStutter < speakingNPC.stress) {
+                            combinedLetterDelay += UnityEngine.Random.Range(0.09f, 0.2f);
+                        }
                     }
+
+                    yield return new WaitForSeconds(combinedLetterDelay);
                 }
-                
-
-                
-
-                yield return new WaitForSeconds(combinedLetterDelay);
+                else yield return new WaitForSeconds(letterDelay);
             }
 
             if (shownString == fullString) {
-                if (dialogueQueue.Count > 0) {
+                if (dialogType == dialog.alibi || dialogType == dialog.eventsWitnessed || dialogType == dialog.suspect || dialogueQueue.Count > 0) {
                     state = conversationState.moreText;
                 }
                 else {
                     setUpDialogOptions();
+                    if (speakingNPC.isAlive) dialogType = dialog.greeting;
+                    else dialogType = dialog.corpse;
                     state = conversationState.playerInput;
                 }
                 StopAllCoroutines();
@@ -216,11 +276,13 @@ namespace MurderMystery {
             shownString = fullString;
             TextArea.text = shownString;
 
-            if (dialogueQueue.Count > 0) {
+            if (dialogType == dialog.alibi || dialogType == dialog.eventsWitnessed || dialogType == dialog.suspect || dialogueQueue.Count > 0) {
                 state = conversationState.moreText;
             }
             else {
                 setUpDialogOptions();
+                if (speakingNPC.isAlive) dialogType = dialog.greeting;
+                else dialogType = dialog.corpse;
                 state = conversationState.playerInput;
             }
 
@@ -230,10 +292,17 @@ namespace MurderMystery {
         void setUpDialogOptions() {
             responses.Clear();
             if (speakingNPC.isAlive) {
-                responses.Add("Who are you?");
-                responses.Add("Where were you at the time of the murder?");
-                responses.Add("What did you see around the time of the murder?");
-                responses.Add("Is there anyone you suspect?");
+                if (dialogType != dialog.murderAccusation) {
+                    responses.Add("Who are you?");
+                    responses.Add("Where were you at the time of the murder?");
+                    responses.Add("What did you see around the time of the murder?");
+                    responses.Add("Is there anyone you suspect?");
+                    responses.Add("I think you're hiding something.");
+                    responses.Add("(Accuse of committing the murder)");
+                }
+                else {
+                    responses.Add("Accuse");
+                }
             }
             else {
                 responses.Add("Examine the injuries");
@@ -269,16 +338,18 @@ namespace MurderMystery {
         }
 
         void NPCAlibi() {
+            dialogType = dialog.alibi;
             List<Event> events = Timeline.locationDuringTimeframe(speakingNPC, Timeline.murderEvent.time - (pg.timeOfDeathLeeway / Timeline.timeIncrements), Timeline.murderEvent.time + (pg.timeOfDeathLeeway / Timeline.timeIncrements));
             if (events.Count == 0)
                 displayText("I've been here the whole evening.");
 
             else {
                 foreach (SwitchRooms e in events) {
-                    Testimony t;
+                    EventTestimony t;
                     if (!speakingNPC.testimonies.TryGetValue(e, out t)) {
                         t = TestimonyManager.createTestimony(speakingNPC, e);
-                        speakingNPC.testimonies.Add(e, t);
+                        speakingNPC.addTestimony(t, e);
+                        testimonyQueue.Enqueue(t);
                     } 
                     
                     SwitchRooms switchrooms = t.e as SwitchRooms;
@@ -310,36 +381,71 @@ namespace MurderMystery {
             }
         }
 
-        void NPCWitnessed() {
-            List<Event> events = Timeline.EventsWitnessedDuringTimeframe(speakingNPC, Timeline.murderEvent.time - (pg.timeOfDeathLeeway / Timeline.timeIncrements), Timeline.murderEvent.time + (pg.timeOfDeathLeeway / Timeline.timeIncrements));
+        //Todo - Make ALL these events into testimonies so they can be lied about
+        void NPCWitnessed(List<Event> events = null, bool tellTruth = false, bool dontDisplay = false) {
+            if (!dontDisplay) dialogType = dialog.eventsWitnessed;
+            if (events == null) events = Timeline.EventsWitnessedDuringTimeframe(speakingNPC, Timeline.murderEvent.time - (pg.timeOfDeathLeeway / Timeline.timeIncrements), Timeline.murderEvent.time + (pg.timeOfDeathLeeway / Timeline.timeIncrements));
             if (events.Count == 0)
                 displayText("I haven't seen anything unusual");
             else {
                 for (int i = 0; i < events.Count; i++) {
                     if (events[i] is SwitchRooms) {
-                        SwitchRooms e = events[i] as SwitchRooms;
-                        dialogueQueue.Enqueue(String.Format("At {0} I saw {1} move into the {2}", Timeline.convertTime(events[i].time), e.npc.getFullName(), e.newRoom.roomName));
-                    }
-                    else if (events[i] is FoundBody) {
-                        FoundBody e = events[i] as FoundBody;
-                        dialogueQueue.Enqueue(String.Format("At {0} I found {1}'s body here", Timeline.convertTime(events[i].time), pg.victim.firstname));
-                    }
-                    /*
-                    else if (events[i] is Encounter) {
-                        Encounter e = events[i] as Encounter;
-                        dialogueQueue.Enqueue(String.Format("At {0} I saw {1} meet {2} in the {3}", Timeline.convertTime(events[i].time), e.npc.getFullName(), e.npc2.getFullName(), e.room.roomName));
-                    }
-                    */
-                    else if (events[i] is Murder) {
-                        Murder e = events[i] as Murder;
-                        dialogueQueue.Enqueue(String.Format("At {0} I saw {1} murder {2} in the {3}! I swear it's true!", Timeline.convertTime(events[i].time), e.npc.getFullName(), e.npc2.getFullName(), e.room.roomName));
-                    }
-                    else if (events[i] is PickupItem) {
-                        Testimony t;
-                        if (!speakingNPC.testimonies.TryGetValue(events[i], out t)) {
-                            t = TestimonyManager.createTestimony(speakingNPC, events[i]);
-                            speakingNPC.testimonies.Add(events[i], t);
+                        EventTestimony t;
+                        if (!speakingNPC.testimonies.TryGetValue(events[i], out t) || tellTruth) {
+                            if (tellTruth) t = TestimonyManager.getTrueEventTestimony(speakingNPC, events[i]);
+                            else t = TestimonyManager.createTestimony(speakingNPC, events[i]);
+                            speakingNPC.addTestimony(t, events[i]);
                         }
+
+                        testimonyQueue.Enqueue(t);
+
+                        if (!t.omitted) {
+                            SwitchRooms e = events[i] as SwitchRooms;
+                            dialogueQueue.Enqueue(String.Format("At {0} I saw {1} move into the {2}", Timeline.convertTime(events[i].time), e.npc.getFullName(), e.newRoom.roomName));
+                        }
+                    }
+
+                    else if (events[i] is FoundBody) {
+                        EventTestimony t;
+                        if (!speakingNPC.testimonies.TryGetValue(events[i], out t) || tellTruth) {
+                            if (tellTruth) t = TestimonyManager.getTrueEventTestimony(speakingNPC, events[i]);
+                            else t = TestimonyManager.createTestimony(speakingNPC, events[i]);
+                            speakingNPC.addTestimony(t, events[i]);
+                        }
+
+                        testimonyQueue.Enqueue(t);
+
+                        if (!t.omitted) {
+                            FoundBody e = events[i] as FoundBody;
+                            dialogueQueue.Enqueue(String.Format("At {0} I found {1}'s body here", Timeline.convertTime(events[i].time), pg.victim.firstname));
+                        }
+                    }
+
+                    else if (events[i] is Murder) {
+                        EventTestimony t;
+                        if (!speakingNPC.testimonies.TryGetValue(events[i], out t) || tellTruth) {
+                            if (tellTruth) t = TestimonyManager.getTrueEventTestimony(speakingNPC, events[i]);
+                            else t = TestimonyManager.createTestimony(speakingNPC, events[i]);
+                            speakingNPC.addTestimony(t, events[i]);
+                        }
+
+                        testimonyQueue.Enqueue(t);
+
+                        if (!t.omitted) {
+                            Murder e = events[i] as Murder;
+                            dialogueQueue.Enqueue(String.Format("At {0} I saw {1} murder {2} in the {3}! I swear it's true!", Timeline.convertTime(events[i].time), e.npc.getFullName(), e.npc2.getFullName(), e.room.roomName));
+                        }
+                    }
+
+                    else if (events[i] is PickupItem) {
+                        EventTestimony t;
+                        if (!speakingNPC.testimonies.TryGetValue(events[i], out t) || tellTruth) {
+                            if (tellTruth) t = TestimonyManager.getTrueEventTestimony(speakingNPC, events[i]);
+                            else t = TestimonyManager.createTestimony(speakingNPC, events[i]);
+                            speakingNPC.addTestimony(t, events[i]);
+                        }
+
+                        testimonyQueue.Enqueue(t);
 
                         if (!t.omitted) {
                             PickupItem e = t.e as PickupItem;
@@ -348,11 +454,14 @@ namespace MurderMystery {
                        
                     }
                     else if (events[i] is DropItem) {
-                        Testimony t;
-                        if (!speakingNPC.testimonies.TryGetValue(events[i], out t)) {
-                            t = TestimonyManager.createTestimony(speakingNPC, events[i]);
-                            speakingNPC.testimonies.Add(events[i], t);
+                        EventTestimony t;
+                        if (!speakingNPC.testimonies.TryGetValue(events[i], out t) || tellTruth) {
+                            if (tellTruth) t = TestimonyManager.getTrueEventTestimony(speakingNPC, events[i]);
+                            else t = TestimonyManager.createTestimony(speakingNPC, events[i]);
+                            speakingNPC.addTestimony(t, events[i]);
                         }
+
+                        testimonyQueue.Enqueue(t);
 
                         //Todo - Particularly shrewd NPCs have a chance of knowing what the item was
                         if (!t.omitted) {
@@ -362,15 +471,52 @@ namespace MurderMystery {
 
                     }
                 }
-                displayText(dialogueQueue.Dequeue());
+                if (!dontDisplay) displayText(dialogueQueue.Dequeue());
             }
 
         }
 
+        void revealTruth(Testimony lie) {
+            if (lie is EventTestimony) {
+                EventTestimony eventLie = lie as EventTestimony;
+                Event ev = eventLie.e;
+                Event truth;
+                speakingNPC.testimoniesReversed.TryGetValue(eventLie, out truth);
+
+                if (ev is SwitchRooms) {
+                    SwitchRooms e = ev as SwitchRooms;
+                    SwitchRooms convertedTruth = truth as SwitchRooms;
+                    if (e.time != truth.time) {
+                        dialogueQueue.Enqueue(string.Format("{0} actually moved to the {1} at {2}, not {3}", Grammar.getSubjectPronoun(e.npc, speakingNPC), e.newRoom.roomName,Timeline.convertTime(truth.time), Timeline.convertTime(e.time)));
+                    }
+                    else if (e.newRoom != convertedTruth.newRoom) {
+                        dialogueQueue.Enqueue(string.Format("{0} actually moved to the {1}, not the {3}", Grammar.getSubjectPronoun(e.npc, speakingNPC), e.newRoom.roomName, convertedTruth.newRoom, e.newRoom));
+                    }
+                }
+
+                EventTestimony trueTestimony = new EventTestimony(truth, speakingNPC, true, false);
+                speakingNPC.removeTestimony(eventLie, truth);
+                speakingNPC.addTestimony(trueTestimony, truth);
+            }
+
+        }
+
+        void revealOmission(Testimony omission) {
+            if (omission is EventTestimony) {
+                EventTestimony et = omission as EventTestimony;
+                Event e = et.e;
+                List<Event> events = new List<Event>();
+                events.Add(et.e);
+                NPCWitnessed(events, true, true);
+            }
+        }
+
         void NPCSuspects() {
+            dialogType = dialog.suspect;
             Debug.Log("Running npc suspects");
             SuspectTestimony st = TestimonyManager.pickASuspect(speakingNPC);
             if (st != null) {
+                testimonyQueue.Enqueue(st);
                 Npc.Gender suspectGender = st.npc.gender;
                 Npc.Gender victimGender = pg.victim.gender;
                 displayText(string.Format("I think {0} did it.", st.npc.getFullName()));
@@ -416,19 +562,64 @@ namespace MurderMystery {
                 displayText("Sorry, I have no idea");
         }
 
+        void AccuseOfLying() {
+            dialogType = dialog.accusation;
+            Testimony testimony = testimonyQueue.Dequeue();
+
+            if (testimony.truth == false) {
+                speakingNPC.stress = Mathf.Min(speakingNPC.stress + speakingNPC.stressIncrements, 1.0f);
+                displayText("Very shrewd detective... Fine, I'll tell you the truth");
+                revealTruth(testimony);
+            }
+            else
+                displayText("How dare you accuse me of such a thing!");
+        }
+
+        //Collects all the omitted truths from the NPCs memory, and randomly selects one of them
+        void AccuseOfOmission() {
+            dialogType = dialog.accusation;
+            List<EventTestimony> omissions = new List<EventTestimony>();
+
+            foreach (KeyValuePair<Event, EventTestimony> entry in speakingNPC.testimonies) {
+                if (entry.Value.omitted) {
+                    omissions.Add(entry.Value);
+                }
+            }
+
+            if (omissions.Count == 0) {
+                if (speakingNPC.testimonies.Count == 0)
+                    displayText("But detective, I haven't even given you my testimony yet.");
+                else
+                    displayText("How dare you make such wild accusations. Have you any proof?");
+            }
+            else {
+                int r = UnityEngine.Random.Range(0, omissions.Count);
+                speakingNPC.stress = Mathf.Min(speakingNPC.stress + speakingNPC.stressIncrements, 1.0f);
+                displayText("...Yes, there is something I still need to tell you.");
+                revealOmission(omissions[r]);
+            }
+        }
+
+        void accuseOfMurder() {
+            dialogType = dialog.murderAccusation;
+            displayText(String.Format("(Are you sure you want to accuse this person of the murder? This will end the game)"));
+        }
+
         void NPCGreeting(Npc npc) {
+            dialogType = dialog.greeting;
             displayText("Good evening detective");
         }
 
         void examineBody(Npc npc) {
+            dialogType = dialog.corpse;
             displayText(npc.getFullName() + "'s lifeless body lies before you");
         }
 
         public void handleInteractionWith(Npc npc) {
             gameObject.GetComponent<UIManager>().setRelationships(npc);
             speakingNPC = npc;
+            setAudioPitch();
             if (npc.isAlive) {
-                setAudioPitch();
                 NPCGreeting(npc);
             }
             else
@@ -436,7 +627,8 @@ namespace MurderMystery {
         }
 
         private void setAudioPitch() {
-            audioSource.pitch = speakingNPC.audioPitch;
+            if (speakingNPC.isAlive) audioSource.pitch = speakingNPC.audioPitch;
+            else audioSource.pitch = detectiveAudioPitch;
         }
 
     }

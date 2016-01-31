@@ -12,7 +12,9 @@ namespace MurderMystery {
         //Memories
         public List<History> histories; //Contains all the histories they know about, or are involved in
 
-        public Dictionary<Event, Testimony> testimonies;
+        public Dictionary<Event, EventTestimony> testimonies;
+        public Dictionary<EventTestimony, Event> testimoniesReversed;
+
         public List<Testimony> fabrications;
         public int timeBuffer; //Total amount of time to push back events they're recollecting as a result of lies
 
@@ -21,7 +23,9 @@ namespace MurderMystery {
         public string firstname, surname;
         public Gender gender;
         public float audioPitch;
+
         public float stress = 0;
+        public float stressIncrements = 0.3f; //How much stress increases when called out on a lie
 
         public bool isMurderer = false;
         public bool isVictim = false;
@@ -56,7 +60,8 @@ namespace MurderMystery {
         void Start() {
             timeBuffer = 0;
             inventory = new List<GameObject>();
-            testimonies = new Dictionary<Event, Testimony>();
+            testimonies = new Dictionary<Event, EventTestimony>();
+            testimoniesReversed = new Dictionary<EventTestimony, Event>();
             getAudioPitch();
             stress = Random.Range(0f, 0.5f);
             nilChance = 1 - (pickupChance + putdownChance + meanderChance);
@@ -73,21 +78,17 @@ namespace MurderMystery {
 
         public void act() {
             // pg.timeSteps++;
-            Debug.Log(firstname + ": acting");
             if (isAlive) {
                 //If Murderer and not finished with villanous acts
                 if (isMurderer && !pg.weaponHidden) {
                     if (pg.victim.GetComponent<Npc>().isAlive) {
                         if (hasWeapon) {
-                            Debug.Log("has weapon, going for victim");
                             if (!victimInRoom()) seekVictim();
                             else {
-                                Debug.Log("vicitim in room, checking coast is clear");
                                 //Todo - Brash murderers will murder even when the coast isn't clear
                                 bool coastIsClear = true;
                                 foreach (Npc npc in currentRoom.npcs) {
                                     if (npc != this && !npc.isVictim) coastIsClear = false;
-                                    Debug.Log("spotted, not murdering");
                                 }
                                 if (coastIsClear) kill(pg.victim, randomWeapon());
 
@@ -128,34 +129,29 @@ namespace MurderMystery {
                         switch (actionChosen) {
                             case "Meander":
                                 {
-                                    Debug.Log("meander");
                                     moveToRandomRoom();
                                     break;
                                 }
                                 
                             case "Pickup":
                                 {
-                                    Debug.Log("pickup");
                                     PickUpRandomItem();
                                     break;
                                 }
                                 
                             case "PutDown":
                                 {
-                                    Debug.Log("putdown");
                                     PutDownRandomItem();
                                     break;
                                 }
                                
                             case "nil":
                                 {
-                                    Debug.Log("nil");
                                     break;
                                 }
                                 
                             default:
                                 {
-                                    Debug.Log("default");
                                     break;
                                 }
                         }
@@ -164,6 +160,19 @@ namespace MurderMystery {
                 }
             }
 
+        }
+
+        public void addTestimony(EventTestimony testimony, Event e) {
+            testimonies.Add(e, testimony);
+            testimoniesReversed.Add(testimony, e);
+        }
+
+        public void removeTestimony(EventTestimony testimony = null, Event e = null) {
+            if (testimony != null) testimoniesReversed.TryGetValue(testimony, out e);
+            if (e != null) testimonies.TryGetValue(e, out testimony);
+
+            testimonies.Remove(e);
+            testimoniesReversed.Remove(testimony);
         }
 
         public string getFullName() {
@@ -234,7 +243,9 @@ namespace MurderMystery {
 
             inventory.Add(item.gameObject);
 
-            Timeline.addEvent(new PickupItem(pg.timeSteps, this, currentRoom, item));
+            PickupItem e = new PickupItem(pg.timeSteps, this, currentRoom, item);
+            if (pg.debugMode) Debug.Log(e.toString());
+            Timeline.addEvent(e);
 
         }
 
