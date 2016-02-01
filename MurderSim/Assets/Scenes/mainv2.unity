@@ -223,7 +223,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11476970, guid: 092a66da12f5e5446a4366168477698e, type: 2}
       propertyPath: seed
-      value: -191146166
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11476970, guid: 092a66da12f5e5446a4366168477698e, type: 2}
       propertyPath: timeOfDeathLeeway
@@ -932,15 +932,15 @@ Prefab:
       objectReference: {fileID: 173198, guid: 7dfd3275c87d26345994b8487e7905e6, type: 2}
     - target: {fileID: 199816, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 197914, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 176902, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 176336, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_IsActive
@@ -948,31 +948,31 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 172960, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 165586, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 155640, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 116104, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 110986, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 108394, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 106934, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11464746, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: items.Array.data[0]

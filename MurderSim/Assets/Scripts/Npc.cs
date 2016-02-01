@@ -55,6 +55,8 @@ namespace MurderMystery {
         void Awake() {
             pg = GameObject.Find("GameManager").GetComponent<PlotGenerator>();
             histories = new List<History>();
+            DontDestroyOnLoad(transform.gameObject);
+            
         }
 
         void Start() {

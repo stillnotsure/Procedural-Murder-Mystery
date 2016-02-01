@@ -64,13 +64,15 @@ namespace MurderMystery {
         }
 
         void OnGUI() {
-            if (state != inventoryState.none) {
-                selectedItemText.gameObject.SetActive(true);
-                inventoryPanel.SetActive(true);
-            }
-            else {
-                selectedItemText.gameObject.SetActive(false);
-                inventoryPanel.SetActive(false);
+            if (selectedItemText != null && inventoryPanel != null) {
+                if (state != inventoryState.none) {
+                    selectedItemText.gameObject.SetActive(true);
+                    inventoryPanel.SetActive(true);
+                }
+                else {
+                    selectedItemText.gameObject.SetActive(false);
+                    inventoryPanel.SetActive(false);
+                }
             }
         }
 

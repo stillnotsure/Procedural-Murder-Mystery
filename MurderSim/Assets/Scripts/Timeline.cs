@@ -36,6 +36,7 @@ namespace MurderMystery {
             }
         }
 
+
         public static List<Event> locationDuringTimeframe(Npc npc, int timeStep1, int timeStep2) {
             List<Event> alibi = new List<Event>();
 

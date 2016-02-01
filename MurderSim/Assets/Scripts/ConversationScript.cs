@@ -125,7 +125,7 @@ namespace MurderMystery {
 
             if (state != conversationState.none) {
                 if (pg.debugMode) uiManager.displayRelationManager(true);
-                textPanel.SetActive(true);
+                if (textPanel != null) textPanel.SetActive(true);
                 nameText.text = speakingNPC.firstname + " " + speakingNPC.surname;
             }
 
@@ -205,7 +205,7 @@ namespace MurderMystery {
                 accuseOfMurder();
             }
             else if (selectedText.Equals("Accuse")) {
-                accuseOfMurder();
+                selectMurdererAndGoToEnding();
             }
             else if (selectedText.Equals("Cancel")) {
                 setStateNone();
@@ -329,6 +329,12 @@ namespace MurderMystery {
                     displayText("The body is riddled with stab marks, indicating that the murder was committed using some kind of sharp, pointed weapon");
                     break;
             }
+        }
+
+        void selectMurdererAndGoToEnding() {
+            PlotGenerator.chosenNPC = speakingNPC;
+            speakingNPC.gameObject.AddComponent<DontDestroyOnLoad>();
+            Application.LoadLevel("Recap");
         }
 
         void TimeOfDeath() {

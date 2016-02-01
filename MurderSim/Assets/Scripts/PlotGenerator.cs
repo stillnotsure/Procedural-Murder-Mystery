@@ -21,6 +21,8 @@ namespace MurderMystery {
 
     public class PlotGenerator : MonoBehaviour {
 
+        public static Npc chosenNPC;
+
         private bool gameStarted = false;
         private float rumourSpreadChance = 0.2f;
         public bool debugMode;
@@ -60,6 +62,11 @@ namespace MurderMystery {
         private List<string> surnames;
 
         // Use this for initialization
+
+        void Awake() {
+            DontDestroyOnLoad(transform.gameObject);
+        }
+
         [ContextMenu("Reset")]
         void Start() {  
 
@@ -73,6 +80,7 @@ namespace MurderMystery {
             Debug.Log(Random.seed);
             Ceilings.findCeilings();
             npcHolder = new GameObject("NPCS").transform;
+            npcHolder.gameObject.AddComponent<DontDestroyOnLoad>();
             itemManager = GetComponent<ItemManager>();
             display = GetComponent<DebugRoomDisplay>();
             mansion = GetComponent<Mansion>();

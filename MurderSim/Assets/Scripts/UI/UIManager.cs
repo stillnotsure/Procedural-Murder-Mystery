@@ -49,7 +49,7 @@ namespace MurderMystery {
         }
 
         public void displayRelationManager(bool visible) {
-            debugPanel.SetActive(visible);
+            if (debugPanel != null) debugPanel.SetActive(visible);
         }
 
     }
