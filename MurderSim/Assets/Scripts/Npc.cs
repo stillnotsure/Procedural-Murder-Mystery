@@ -73,6 +73,7 @@ namespace MurderMystery {
         }
 
         void Update() {
+            GetComponent<SpriteRenderer>().sortingOrder = Mathf.RoundToInt(transform.position.y * 100f) * -1;
             //Will wait with the body
             if ((!pg.weaponHidden || !pg.bodyFound) && !foundBody)
                 act();

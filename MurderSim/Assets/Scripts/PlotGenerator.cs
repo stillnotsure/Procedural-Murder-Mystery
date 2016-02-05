@@ -523,7 +523,7 @@ namespace MurderMystery {
         }
 
         Npc newCharacter() {
-            GameObject npcGameobject = (GameObject)Instantiate(Resources.Load("NPC Placeholder"));
+            GameObject npcGameobject = (GameObject)Instantiate(Resources.Load("Prefabs/NPC"));
             Npc newNPC = npcGameobject.GetComponent<Npc>();
 
             //Assign gender
@@ -542,6 +542,8 @@ namespace MurderMystery {
                 firstnames_f.RemoveAt(r);
             }
 
+            NPCSpriteCreator spriteCreator = GetComponent<NPCSpriteCreator>();
+            spriteCreator.getBody(newNPC, npcGameobject);
             npcGameobject.transform.SetParent(npcHolder);
             return newNPC;
         }

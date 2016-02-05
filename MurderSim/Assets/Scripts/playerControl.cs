@@ -32,6 +32,7 @@ namespace MurderMystery {
         }
 
         void FixedUpdate() {
+            GetComponent<SpriteRenderer>().sortingOrder = Mathf.RoundToInt(transform.position.y * 100f) * -1;
             if (!Ceilings.roomLit) Ceilings.makeRoomVisible(currentRoom);
             checkCollisions();
             if (conversationScript.state == conversationState.none && inventoryManager.state == inventoryState.none)
