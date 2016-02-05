@@ -5,6 +5,7 @@ namespace MurderMystery {
     public class playerControl : MonoBehaviour {
 
         //References
+        public PlayerAnimation animation;
         public GameObject currentRoom;
         public ConversationScript conversationScript;
         public InventoryManager inventoryManager;
@@ -21,6 +22,7 @@ namespace MurderMystery {
         void Start() {
 
             //references
+            animation = GetComponent<PlayerAnimation>();
             conversationScript = GameObject.Find("GameManager").GetComponent<ConversationScript>();
             inventoryManager = GameObject.Find("GameManager").GetComponent<InventoryManager>();
 
@@ -45,10 +47,11 @@ namespace MurderMystery {
 
             transform.Translate(horiz * 5 * Time.deltaTime, vertic * 5 * Time.deltaTime, 0);
 
-            if (Input.GetKey("w")) { lastDirection = "up"; }
-            if (Input.GetKey("s")) { lastDirection = "down"; }
-            if (Input.GetKey("a")) { lastDirection = "left"; }
-            if (Input.GetKey("d")) { lastDirection = "right"; }
+            if (Input.GetKey("w")) { lastDirection = "up"; animation.faceUp(); animation.move(); }
+            else if (Input.GetKey("s")) { lastDirection = "down"; animation.faceDown(); animation.move(); }
+            else if (Input.GetKey("a")) { lastDirection = "left"; animation.faceLeft(); animation.move(); }
+            else if (Input.GetKey("d")) { lastDirection = "right"; animation.faceRight(); animation.move(); }
+            else animation.stopMove();
         }
 
         void checkCollisions() {
