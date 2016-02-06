@@ -7,7 +7,9 @@ namespace MurderMystery {
     public class Npc : MonoBehaviour {
 
         public PlotGenerator pg;
-        //private Mansion mansion;
+        public BoardManager boardManager;
+        public bool checkCollisions = true;
+        public BoxCollider2D collider;
 
         //Memories
         public List<History> histories; //Contains all the histories they know about, or are involved in
@@ -73,10 +75,36 @@ namespace MurderMystery {
         }
 
         void Update() {
-            GetComponent<SpriteRenderer>().sortingOrder = Mathf.RoundToInt(transform.position.y * 100f) * -1;
+            if (isAlive)GetComponent<SpriteRenderer>().sortingOrder = Mathf.RoundToInt(transform.position.y * 100f) * -1;
             //Will wait with the body
             if ((!pg.weaponHidden || !pg.bodyFound) && !foundBody)
                 act();
+        }
+
+        void OnCollisionEnter2D(Collision2D collider) {
+            Debug.Log("Collision");
+            
+            if (collider.gameObject.name != "Player") {
+                if (checkCollisions) boardManager.repositionNpc(this);
+            }
+            
+        }
+
+        public void checkPosition() {
+            string targetRoomName = currentRoom.roomName;
+            GameObject targetRoom = GameObject.Find(targetRoomName);
+            Collider2D roomCollider;
+            if (targetRoom.GetComponent<BoxCollider2D>() != null) roomCollider = targetRoom.GetComponent<BoxCollider2D>();
+            else roomCollider = targetRoom.GetComponent<PolygonCollider2D>();
+
+            if (!roomCollider.bounds.Contains(collider.bounds.min) || !roomCollider.bounds.Contains(collider.bounds.max)){
+                boardManager.repositionNpc(this);
+            }
+        }
+
+        [ContextMenu("Reposition")]
+        void reposition() {
+            boardManager.repositionNpc(this);
         }
 
         public void act() {
