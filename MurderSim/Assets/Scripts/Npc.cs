@@ -139,6 +139,7 @@ namespace MurderMystery {
                     }
                 }
 
+
                 //If not murderer, or have finished the murder and acting like a civilian
                 else {
                     if (moveOnNextTurn) {
