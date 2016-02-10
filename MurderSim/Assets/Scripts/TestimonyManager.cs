@@ -136,6 +136,22 @@ namespace MurderMystery {
             return new EventTestimony(s, npc, false, false);
         }
 
+        /*
+        public static SuspectTestimony[] pickSuspects(Npc npc) {
+            Npc victim = pg.victim;
+            SuspectTestimony testimony1; SuspectTestimony testimony2;
+            List<History> historyCopy = new List<History>(npc.histories);
+
+            while (historyCopy.Count > 0) {
+                int r = Random.Range(0, historyCopy.Count);
+                History history = historyCopy[r];
+
+                if 
+            }
+
+        }
+        */
+
         public static SuspectTestimony pickASuspect(Npc npc) {
             List<SuspectTestimony> possibleSuspects = new List<SuspectTestimony>();
             Npc victim = pg.victim;
@@ -146,26 +162,38 @@ namespace MurderMystery {
             foreach (History history in npc.histories) {
 
                 //Don't tell the detective about history involving self
-                //Todo : Unless it's a family feud?
                 if (history.npc1 != npc && history.npc2 != npc) {
                     if (history.whichNpcIsVictim == 0) {
                         if (history.npc1 == victim || history.npc2 == victim) {
                             Npc other;
                             if (history.npc1 == victim) { other = history.npc2; }
                             else { other = history.npc1; }
-                            possibleSuspects.Add(new SuspectTestimony(other, true, false, history));
+
+                            if (pg.relationships[pg.npcs.IndexOf(npc), pg.npcs.IndexOf(other)] >= npc.loyaltyPoint)
+                                possibleSuspects.Add(new SuspectTestimony(other, true, true, history));
+                            else
+                                possibleSuspects.Add(new SuspectTestimony(other, true, false, history));
                         }
+
                     }
                     else if (history.whichNpcIsVictim == 1) {
                         if (history.npc2 == victim) {
-                            possibleSuspects.Add(new SuspectTestimony(history.npc1, true, false, history));
+                            if (pg.relationships[pg.npcs.IndexOf(npc), pg.npcs.IndexOf(history.npc1)] >= npc.loyaltyPoint)
+                                possibleSuspects.Add(new SuspectTestimony(history.npc1, true, true, history));
+                            else
+                                possibleSuspects.Add(new SuspectTestimony(history.npc1, true, false, history));
                         }
                     }
+
                     else if (history.whichNpcIsVictim == 2) {
                         if (history.npc1 == victim) {
-                            possibleSuspects.Add(new SuspectTestimony(history.npc2, true, false, history));
+                            if (pg.relationships[pg.npcs.IndexOf(npc), pg.npcs.IndexOf(history.npc2)] >= npc.loyaltyPoint)
+                                possibleSuspects.Add(new SuspectTestimony(history.npc2, true, true, history));
+                            else
+                                possibleSuspects.Add(new SuspectTestimony(history.npc2, true, false, history));
                         }
                     }
+
                 }
                 
 

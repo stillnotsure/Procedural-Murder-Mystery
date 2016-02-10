@@ -6,7 +6,7 @@ using System;
 
 namespace MurderMystery {
 
-    public enum dialog { none ,greeting, alibi, eventsWitnessed, suspect, corpse, accusation, murderAccusation };
+    public enum dialog { none, introduction, greeting, alibi, eventsWitnessed, suspect, corpse, accusation, murderAccusation };
     public enum conversationState { none, moreText, playerInput, npcSpeaking };
 
     public class ConversationScript : MonoBehaviour {
@@ -86,7 +86,7 @@ namespace MurderMystery {
                             state = conversationState.playerInput;
                         }
                     }
-                } else if (dialogType == dialog.suspect || dialogType == dialog.accusation) {
+                } else if (dialogType == dialog.suspect || dialogType == dialog.accusation || dialogType == dialog.introduction) {
                     if (dialogueQueue.Count > 0) {
                         if (Input.GetKeyDown(KeyCode.LeftShift)) {
                             displayText(dialogueQueue.Dequeue());
@@ -126,7 +126,8 @@ namespace MurderMystery {
             if (state != conversationState.none) {
                 if (pg.debugMode) uiManager.displayRelationManager(true);
                 if (textPanel != null) textPanel.SetActive(true);
-                nameText.text = speakingNPC.firstname + " " + speakingNPC.surname;
+                if (speakingNPC.nameKnown == true || !speakingNPC.isAlive)  nameText.text = speakingNPC.getFullName();
+                else nameText.text = "???";
             }
 
             if (state == conversationState.npcSpeaking) {
@@ -182,7 +183,9 @@ namespace MurderMystery {
         void selectResponse(int i) {
             selected = 0;
             string selectedText = responses[i];
-
+            if (selectedText.Equals("Who are you?")) {
+                NPCIntroduction();
+            }
             if (selectedText.Equals("Where were you at the time of the murder?")) {
                 NPCAlibi();
             }
@@ -515,6 +518,71 @@ namespace MurderMystery {
                 events.Add(et.e);
                 NPCWitnessed(events, true, true);
             }
+        }
+
+        void NPCIntroduction() {
+            dialogType = dialog.introduction;
+            speakingNPC.nameKnown = true;
+            displayText(string.Format("I am {0}", speakingNPC.getFullName()));
+
+            Family family = speakingNPC.family;
+
+            if (family != null) {
+                bool isHusband = false; bool isWife = false;
+                if (family.husband == speakingNPC)
+                    isHusband = true;
+                else if (family.wife == speakingNPC)
+                    isWife = true;
+
+                if (isHusband || isWife) {
+                    if (isHusband) dialogueQueue.Enqueue(string.Format("{0} is my wife", family.wife.firstname));
+                    else if (isWife) dialogueQueue.Enqueue(string.Format("{0} is my husband", family.husband.firstname));
+
+                    if (family.children.Count == 1) {
+                        if (family.children[0].gender == Npc.Gender.Male)
+                            dialogueQueue.Enqueue(string.Format("Our son, {0}, is also here tonight.", family.children[0].firstname));
+                        else
+                            dialogueQueue.Enqueue(string.Format("Our daughter, {0}, is also here tonight.", family.children[0].firstname));
+                    }
+                    else if (family.children.Count > 1) {
+                        string children = "Our children, ";
+                        for (int i = 0; i < family.children.Count - 1; i++) {
+                            children += String.Format("{0}, ", family.children[i].firstname);
+                        }
+                        children += String.Format("and {0} are also here tonight.", family.children[family.children.Count - 1].firstname);
+                        dialogueQueue.Enqueue(children);
+                    }
+                }
+
+                //If not husband or wife, must be a child
+                else {
+                    dialogueQueue.Enqueue(string.Format("{0} and {1} are my parents", family.husband.firstname, family.wife.firstname));
+
+                    if (family.children.Count == 2) {
+                        int childNumber = family.children.IndexOf(speakingNPC);
+                        if (childNumber == 0) {
+                            if (family.children[1].gender == Npc.Gender.Male) dialogueQueue.Enqueue(string.Format("My brother, {0}, is also here tonight.", family.children[1].firstname));
+                            else dialogueQueue.Enqueue(string.Format("My sister, {0}, is also here tonight.", family.children[1].firstname));
+                        }
+                        else {
+                            if (family.children[0].gender == Npc.Gender.Male) dialogueQueue.Enqueue(string.Format("My brother, {0}, is also here tonight.", family.children[0].firstname));
+                            else dialogueQueue.Enqueue(string.Format("My sister, {0}, is also here tonight.", family.children[0].firstname));
+                        }
+                    } else {
+                        string siblings = "My siblings, ";
+                        List<Npc> siblingsList = new List<Npc>(family.children);
+                        siblingsList.Remove(speakingNPC);
+
+                        for (int i = 0; i < siblingsList.Count - 1; i++) {
+                            siblings += String.Format("{0}, ", siblingsList[i].firstname);
+                        }
+                        siblings += String.Format("and {0} are also here tonight.", siblingsList[siblingsList.Count - 1].firstname);
+                        dialogueQueue.Enqueue(siblings);
+                    }
+                        
+                }
+            }
+           
         }
 
         void NPCSuspects() {

@@ -9,11 +9,11 @@ namespace MurderMystery {
         public PlotGenerator pg;
         public BoardManager boardManager;
         public bool checkCollisions = true;
-        public BoxCollider2D collider;
+        public BoxCollider2D boxCollider;
 
         //Memories
         public List<History> histories; //Contains all the histories they know about, or are involved in
-
+        public SuspectTestimony[] chosenSuspects; //Contains up to 2 suspects, the first of which is the one told to the detective
         public Dictionary<Event, EventTestimony> testimonies;
         public Dictionary<EventTestimony, Event> testimoniesReversed;
 
@@ -25,10 +25,12 @@ namespace MurderMystery {
         public string firstname, surname;
         public Gender gender;
         public float audioPitch;
+        public int loyaltyPoint;
 
         public float stress = 0;
         public float stressIncrements = 0.3f; //How much stress increases when called out on a lie
 
+        public bool nameKnown = false;
         public bool isMurderer = false;
         public bool isVictim = false;
         public bool isAlive = true;
@@ -56,6 +58,7 @@ namespace MurderMystery {
 
         void Awake() {
             pg = GameObject.Find("GameManager").GetComponent<PlotGenerator>();
+            boardManager = GameObject.Find("GameManager").GetComponent<BoardManager>();
             histories = new List<History>();
             DontDestroyOnLoad(transform.gameObject);
             
@@ -68,6 +71,7 @@ namespace MurderMystery {
             testimoniesReversed = new Dictionary<EventTestimony, Event>();
             getAudioPitch();
             stress = Random.Range(0f, 0.5f);
+            loyaltyPoint = Random.Range(2, 3);
             nilChance = 1 - (pickupChance + putdownChance + meanderChance);
 
             actionProbabilities = new Dictionary<string, float>();
@@ -76,6 +80,7 @@ namespace MurderMystery {
 
         void Update() {
             if (isAlive)GetComponent<SpriteRenderer>().sortingOrder = Mathf.RoundToInt(transform.position.y * 100f) * -1;
+
             //Will wait with the body
             if ((!pg.weaponHidden || !pg.bodyFound) && !foundBody)
                 act();
@@ -97,7 +102,7 @@ namespace MurderMystery {
             if (targetRoom.GetComponent<BoxCollider2D>() != null) roomCollider = targetRoom.GetComponent<BoxCollider2D>();
             else roomCollider = targetRoom.GetComponent<PolygonCollider2D>();
 
-            if (!roomCollider.bounds.Contains(collider.bounds.min) || !roomCollider.bounds.Contains(collider.bounds.max)){
+            if (!roomCollider.bounds.Contains(boxCollider.bounds.min) || !roomCollider.bounds.Contains(boxCollider.bounds.max)){
                 boardManager.repositionNpc(this);
             }
         }
@@ -434,6 +439,8 @@ namespace MurderMystery {
 
         public void die() {
             isAlive = false;
+            GetComponent<BoxCollider2D>().isTrigger = false;
+            GetComponent<SpriteRenderer>().sortingOrder = 0;
         }
 
         private void moveToRandomRoom() {

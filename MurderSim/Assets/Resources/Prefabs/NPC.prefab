@@ -10,8 +10,8 @@ GameObject:
   - 4: {fileID: 454166}
   - 212: {fileID: 21276814}
   - 114: {fileID: 11494206}
-  - 61: {fileID: 6112840}
   - 61: {fileID: 6197256}
+  - 61: {fileID: 6112840}
   - 50: {fileID: 5030686}
   m_Layer: 11
   m_Name: NPC
@@ -88,12 +88,13 @@ MonoBehaviour:
   pg: {fileID: 0}
   boardManager: {fileID: 0}
   checkCollisions: 1
-  collider: {fileID: 6112840}
+  boxCollider: {fileID: 6112840}
   timeBuffer: 0
   firstname: 
   surname: 
   gender: 0
   audioPitch: 0
+  loyaltyPoint: 0
   stress: 0
   stressIncrements: .300000012
   isMurderer: 0
@@ -178,6 +179,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: collider
+      value: 
+      objectReference: {fileID: 6112840}
+    - target: {fileID: 0}
+      propertyPath: boxCollider
       value: 
       objectReference: {fileID: 6112840}
     m_RemovedComponents: []
