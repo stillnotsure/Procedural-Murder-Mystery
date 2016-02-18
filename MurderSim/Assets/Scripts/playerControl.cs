@@ -46,11 +46,11 @@ namespace MurderMystery {
             float vertic = Input.GetAxisRaw("Vertical");
 
             transform.Translate(horiz * 5 * Time.deltaTime, vertic * 5 * Time.deltaTime, 0);
-
-            if (Input.GetKey("w")) { lastDirection = "up"; animation.faceUp(); animation.move(); }
-            else if (Input.GetKey("s")) { lastDirection = "down"; animation.faceDown(); animation.move(); }
-            else if (Input.GetKey("a")) { lastDirection = "left"; animation.faceLeft(); animation.move(); }
-            else if (Input.GetKey("d")) { lastDirection = "right"; animation.faceRight(); animation.move(); }
+            
+            if (Input.GetKey("w") || Input.GetKey(KeyCode.UpArrow)) { lastDirection = "up"; animation.faceUp(); animation.move(); }
+            else if (Input.GetKey("s") || Input.GetKey(KeyCode.DownArrow)) { lastDirection = "down"; animation.faceDown(); animation.move(); }
+            else if (Input.GetKey("a") || Input.GetKey(KeyCode.LeftArrow)) { lastDirection = "left"; animation.faceLeft(); animation.move(); }
+            else if (Input.GetKey("d") || Input.GetKey(KeyCode.RightArrow)) { lastDirection = "right"; animation.faceRight(); animation.move(); }
             else animation.stopMove();
         }
 

@@ -27,6 +27,7 @@ namespace MurderMystery {
         public float audioPitch;
         public int loyaltyPoint;
 
+        public int lieAccusations = 3;
         public float stress = 0;
         public float stressIncrements = 0.3f; //How much stress increases when called out on a lie
 

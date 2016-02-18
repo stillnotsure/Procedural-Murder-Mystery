@@ -6,7 +6,7 @@ using System;
 
 namespace MurderMystery {
 
-    public enum dialog { none, introduction, greeting, alibi, eventsWitnessed, suspect, corpse, accusation, murderAccusation };
+    public enum dialog { none, introduction, greeting, alibi, eventsWitnessed, suspect, corpse, accusation, murderAccusation, lockedOut};
     public enum conversationState { none, moreText, playerInput, npcSpeaking };
 
     public class ConversationScript : MonoBehaviour {
@@ -76,8 +76,6 @@ namespace MurderMystery {
                     }
                     if (Input.GetKeyDown(KeyCode.LeftShift)){
                         if (dialogueQueue.Count > 0) {
-                            //todo - reactivate once it stops breaking everything
-                            Debug.Log(testimonyQueue.Dequeue().ToString());
                             displayText(dialogueQueue.Dequeue());
                         } else {
                             dialogType = dialog.greeting;
@@ -102,6 +100,18 @@ namespace MurderMystery {
                             AccuseOfLying();
                         }
                         */
+                    }
+                }
+                else if (dialogType == dialog.lockedOut) {
+                    if (dialogueQueue.Count > 0) {
+                        if (Input.GetKeyDown(KeyCode.LeftShift)) {
+                            displayText(dialogueQueue.Dequeue());
+                        }
+                    }
+                    else {
+                        if (Input.GetKeyDown(KeyCode.LeftShift)) {
+                            setStateNone();
+                        }
                     }
                 }
                 
@@ -295,7 +305,7 @@ namespace MurderMystery {
         void setUpDialogOptions() {
             responses.Clear();
             if (speakingNPC.isAlive) {
-                if (dialogType != dialog.murderAccusation) {
+                if (dialogType != dialog.murderAccusation && dialogType != dialog.lockedOut ) {
                     responses.Add("Who are you?");
                     responses.Add("Where were you at the time of the murder?");
                     responses.Add("What did you see around the time of the murder?");
@@ -303,7 +313,7 @@ namespace MurderMystery {
                     responses.Add("I think you're hiding something.");
                     responses.Add("(Accuse of committing the murder)");
                 }
-                else {
+                else if (dialogType == dialog.murderAccusation){
                     responses.Add("Accuse");
                 }
             }
@@ -355,11 +365,13 @@ namespace MurderMystery {
             else {
                 foreach (SwitchRooms e in events) {
                     EventTestimony t;
-                    if (!speakingNPC.testimonies.TryGetValue(e, out t)) {
+                    if (speakingNPC.testimonies.TryGetValue(e, out t)) {
+                        testimonyQueue.Enqueue(t);
+                    } else {
                         t = TestimonyManager.createTestimony(speakingNPC, e);
                         speakingNPC.addTestimony(t, e);
                         testimonyQueue.Enqueue(t);
-                    } 
+                    }
                     
                     SwitchRooms switchrooms = t.e as SwitchRooms;
                     string s = String.Format("At {0} I moved to the {1}", Timeline.convertTime(switchrooms.time), switchrooms.newRoom.roomName);
@@ -645,8 +657,13 @@ namespace MurderMystery {
                 displayText("Very shrewd detective... Fine, I'll tell you the truth");
                 revealTruth(testimony);
             }
-            else
+            else {
+                speakingNPC.lieAccusations--;
                 displayText("How dare you accuse me of such a thing!");
+                if (speakingNPC.lieAccusations <= 0)
+                    lockedOut();
+            }
+                
         }
 
         //Collects all the omitted truths from the NPCs memory, and randomly selects one of them
@@ -663,8 +680,13 @@ namespace MurderMystery {
             if (omissions.Count == 0) {
                 if (speakingNPC.testimonies.Count == 0)
                     displayText("But detective, I haven't even given you my testimony yet.");
-                else
+                else {
+                    speakingNPC.lieAccusations--;
                     displayText("How dare you make such wild accusations. Have you any proof?");
+                    if (speakingNPC.lieAccusations <= 0)
+                        lockedOut();
+                }
+                    
             }
             else {
                 int r = UnityEngine.Random.Range(0, omissions.Count);
@@ -680,8 +702,20 @@ namespace MurderMystery {
         }
 
         void NPCGreeting(Npc npc) {
-            dialogType = dialog.greeting;
-            displayText("Good evening detective");
+            if (npc.lieAccusations > 0) {
+                dialogType = dialog.greeting;
+                displayText("Good evening detective");
+            }
+            else {
+                dialogType = dialog.lockedOut;
+                displayText("I have nothing more to say to you.");
+            }
+        }
+
+        void lockedOut() {
+            dialogType = dialog.lockedOut;
+            dialogueQueue.Enqueue("If you're going to keep making these baseless accusations I see no reason to continue this conversation.");
+            displayText(dialogueQueue.Dequeue());
         }
 
         void examineBody(Npc npc) {
