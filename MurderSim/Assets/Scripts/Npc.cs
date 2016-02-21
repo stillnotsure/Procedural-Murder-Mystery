@@ -50,8 +50,7 @@ namespace MurderMystery {
 
         public bool hasWeapon = false;
         private bool hasMurderWeapon = false;
-
-        [System.NonSerialized]
+    
         public Room currentRoom;
         private Room lastRoom;
 
@@ -88,7 +87,6 @@ namespace MurderMystery {
         }
 
         void OnCollisionEnter2D(Collision2D collider) {
-            Debug.Log("Collision");
             
             if (collider.gameObject.name != "Player") {
                 if (checkCollisions) boardManager.repositionNpc(this);

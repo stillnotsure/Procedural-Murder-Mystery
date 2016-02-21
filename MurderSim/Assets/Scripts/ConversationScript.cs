@@ -359,13 +359,16 @@ namespace MurderMystery {
         void NPCAlibi() {
             dialogType = dialog.alibi;
             List<Event> events = Timeline.locationDuringTimeframe(speakingNPC, Timeline.murderEvent.time - (pg.timeOfDeathLeeway / Timeline.timeIncrements), Timeline.murderEvent.time + (pg.timeOfDeathLeeway / Timeline.timeIncrements));
-            if (events.Count == 0)
+            if (events.Count == 0) {
                 displayText("I've been here the whole evening.");
+            }
+                
 
             else {
                 foreach (SwitchRooms e in events) {
                     EventTestimony t;
                     if (speakingNPC.testimonies.TryGetValue(e, out t)) {
+                        t.firstTimeTold = false;
                         testimonyQueue.Enqueue(t);
                     } else {
                         t = TestimonyManager.createTestimony(speakingNPC, e);
@@ -417,6 +420,8 @@ namespace MurderMystery {
                             else t = TestimonyManager.createTestimony(speakingNPC, events[i]);
                             speakingNPC.addTestimony(t, events[i]);
                         }
+                        else
+                            t.firstTimeTold = false;
 
                         testimonyQueue.Enqueue(t);
 
@@ -433,6 +438,8 @@ namespace MurderMystery {
                             else t = TestimonyManager.createTestimony(speakingNPC, events[i]);
                             speakingNPC.addTestimony(t, events[i]);
                         }
+                        else
+                            t.firstTimeTold = false;
 
                         testimonyQueue.Enqueue(t);
 
@@ -449,6 +456,8 @@ namespace MurderMystery {
                             else t = TestimonyManager.createTestimony(speakingNPC, events[i]);
                             speakingNPC.addTestimony(t, events[i]);
                         }
+                        else
+                            t.firstTimeTold = false;
 
                         testimonyQueue.Enqueue(t);
 
@@ -465,6 +474,8 @@ namespace MurderMystery {
                             else t = TestimonyManager.createTestimony(speakingNPC, events[i]);
                             speakingNPC.addTestimony(t, events[i]);
                         }
+                        else
+                            t.firstTimeTold = false;
 
                         testimonyQueue.Enqueue(t);
 
@@ -481,7 +492,9 @@ namespace MurderMystery {
                             else t = TestimonyManager.createTestimony(speakingNPC, events[i]);
                             speakingNPC.addTestimony(t, events[i]);
                         }
-
+                        else
+                            t.firstTimeTold = false;
+                        
                         testimonyQueue.Enqueue(t);
 
                         //Todo - Particularly shrewd NPCs have a chance of knowing what the item was
@@ -580,7 +593,7 @@ namespace MurderMystery {
                             if (family.children[0].gender == Npc.Gender.Male) dialogueQueue.Enqueue(string.Format("My brother, {0}, is also here tonight.", family.children[0].firstname));
                             else dialogueQueue.Enqueue(string.Format("My sister, {0}, is also here tonight.", family.children[0].firstname));
                         }
-                    } else {
+                    } else if (family.children.Count > 2){
                         string siblings = "My siblings, ";
                         List<Npc> siblingsList = new List<Npc>(family.children);
                         siblingsList.Remove(speakingNPC);
@@ -651,10 +664,12 @@ namespace MurderMystery {
         void AccuseOfLying() {
             dialogType = dialog.accusation;
             Testimony testimony = testimonyQueue.Dequeue();
+            testimonyQueue.Clear();
+            dialogueQueue.Clear();
 
             if (testimony.truth == false) {
                 speakingNPC.stress = Mathf.Min(speakingNPC.stress + speakingNPC.stressIncrements, 1.0f);
-                displayText("Very shrewd detective... Fine, I'll tell you the truth");
+                displayText("...okay, I'll tell you the truth.");
                 revealTruth(testimony);
             }
             else {

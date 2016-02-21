@@ -231,6 +231,7 @@ namespace MurderMystery {
                         case 3:
                             {
                                 History history = new Nemeses(0, npcs[m], npcs[v]);
+                                relationships[v, m] = -3;
                                 npcs[m].addHistory(history);
                                 npcs[v].addHistory(history);
                                 historyChosen = true;
@@ -610,6 +611,7 @@ namespace MurderMystery {
                     string randomSurname = surnames[i];
                     surnames.RemoveAt(i);
                     npc.surname = randomSurname;
+                    npc.family = null;
                 }
             }
 

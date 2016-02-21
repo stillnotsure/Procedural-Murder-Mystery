@@ -11,6 +11,7 @@ namespace MurderMystery {
         public Npc npc;
         public bool truth;
         public bool omitted; //Omitted events are those that the NPC decided not to tell, as such are still considered untrue even though they are based on real events
+        public bool firstTimeTold = true; //First time lies are told, NPC stress increases
     }
 
     public class EventTestimony : Testimony{

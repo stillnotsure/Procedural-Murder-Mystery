@@ -39,6 +39,8 @@ namespace MurderMystery {
             checkCollisions();
             if (conversationScript.state == conversationState.none && inventoryManager.state == inventoryState.none)
                 Move();
+            else
+                animation.stopMove();
         }
 
         void Move() {
