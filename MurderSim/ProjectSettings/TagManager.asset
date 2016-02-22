@@ -53,11 +53,17 @@ TagManager:
   - name: Foreground 1
     uniqueID: 2154676861
     locked: 0
+  - name: Foreground 2
+    uniqueID: 342485607
+    locked: 0
+  - name: Doorway
+    uniqueID: 1780784365
+    locked: 0
   - name: Characters
     uniqueID: 3226123173
     locked: 0
-  - name: Foreground 2
-    uniqueID: 342485607
+  - name: Appears Above Player
+    uniqueID: 222106345
     locked: 0
   - name: GUI
     uniqueID: 749057171

@@ -40,7 +40,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa4afbcc175dc17448b7766d92b677d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 2
+  state: 0
   room:
     roomName: 
     npcs: []

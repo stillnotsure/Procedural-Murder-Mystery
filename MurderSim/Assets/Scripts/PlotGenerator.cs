@@ -126,7 +126,6 @@ namespace MurderMystery {
             gameStarted = true;
             gameObject.GetComponent<BoardManager>().placeNPCs();
             gameObject.GetComponent<ItemManager>().placeItemsOnBoard();
-            Ceilings.makeRoomVisible(GameObject.Find("Player").GetComponent<playerControl>().currentRoom);
         }
 
 

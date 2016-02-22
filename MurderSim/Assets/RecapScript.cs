@@ -10,44 +10,16 @@ namespace MurderMystery {
 
         GameObject timelineText;
         PlotGenerator pg;
+        public AudioSource audioSource;
 
         // Use this for initialization
         void Start() {
             pg = GameObject.Find("GameManager").GetComponent<PlotGenerator>();
             timelineText = GameObject.Find("TimelineText");
-            Text tlTextComponent = timelineText.GetComponent<Text>();
-            List<Event> events = Timeline.fullNPCHistory(pg.murderer);
-            tlTextComponent.text = "";
 
-            foreach (Event e in events) {
-                if (e is PickupItem) {
-                    PickupItem pickup = e as PickupItem;
+            GameObject.Find("NameText").GetComponent<Text>().text = PlotGenerator.chosenNPC.getFullName();
 
-                    tlTextComponent.text += (String.Format("{0} : <color=red>???</color> picked up the {1} in the {2}",Timeline.convertTime(e.time), pickup.item.name, pickup.room.roomName));
-                    tlTextComponent.text += System.Environment.NewLine;
-                }
-                    
-                if (e is Murder) {
-                    Murder murder = e as Murder;
-                    tlTextComponent.text += (String.Format("{0} : <color=red>???</color> murdererd {1} in the {2}", Timeline.convertTime(e.time), murder.npc2.name, murder.room.roomName));
-                    tlTextComponent.text += System.Environment.NewLine;
-                }
-
-                if (e is DropItem) {
-                    DropItem drop = e as DropItem;
-                    if (drop.item == pg.murderWeapon) {
-                        tlTextComponent.text += (String.Format("{0} : <color=red>???</color> hid the {1} in the {2}", Timeline.convertTime(e.time), drop.item.name, drop.room.roomName));
-                        tlTextComponent.text += System.Environment.NewLine;
-                        break;
-                    }
-                }
-                
-            }
-
-            string s = tlTextComponent.text;
-            s = Regex.Replace(s, "\\?\\?\\?", pg.murderer.getFullName());
-            tlTextComponent.text = s;
-
+            StartCoroutine(RevealEvent());
         }
 
 
@@ -55,6 +27,48 @@ namespace MurderMystery {
         void Update() {
 
         }
-    }
 
+        IEnumerator RevealEvent() {
+            Text tlTextComponent = timelineText.GetComponent<Text>();
+            List<Event> events = Timeline.fullNPCHistory(pg.murderer);
+            tlTextComponent.text = "";
+            yield return new WaitForSeconds(3f);
+
+            foreach (Event e in events) {
+                if (e is PickupItem) {
+                    PickupItem pickup = e as PickupItem;
+
+                    tlTextComponent.text += (String.Format("{0} : <color=red>???</color> picked up the {1} in the {2}", Timeline.convertTime(e.time), pickup.item.name, pickup.room.roomName));
+                    tlTextComponent.text += System.Environment.NewLine;
+                    audioSource.Play();
+                    yield return new WaitForSeconds(3f);
+                }
+
+                if (e is Murder) {
+                    Murder murder = e as Murder;
+                    tlTextComponent.text += (String.Format("{0} : <color=red>???</color> murderered {1} in the {2}", Timeline.convertTime(e.time), murder.npc2.name, murder.room.roomName));
+                    tlTextComponent.text += System.Environment.NewLine;
+                    audioSource.Play();
+                    yield return new WaitForSeconds(3f);
+                }
+
+                if (e is DropItem) {
+                    DropItem drop = e as DropItem;
+                    if (drop.item == pg.murderWeapon) {
+                        tlTextComponent.text += (String.Format("{0} : <color=red>???</color> hid the {1} in the {2}", Timeline.convertTime(e.time), drop.item.name, drop.room.roomName));
+                        tlTextComponent.text += System.Environment.NewLine;
+                        audioSource.Play();
+                        yield return new WaitForSeconds(4f);
+                    }
+                }
+            }
+
+            audioSource.Play();
+            string s = tlTextComponent.text;
+            s = Regex.Replace(s, "\\?\\?\\?", pg.murderer.getFullName());
+            tlTextComponent.text = s;
+        }
+
+
+    }
 }
