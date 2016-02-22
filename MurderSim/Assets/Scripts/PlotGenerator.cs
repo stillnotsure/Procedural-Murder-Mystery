@@ -26,10 +26,10 @@ namespace MurderMystery {
         private bool gameStarted = false;
         private float rumourSpreadChance = 0.4f;
         public bool debugMode;
-        public bool tutorialMode;
         public int seed;
-        
+
         //References
+
         private ItemManager itemManager;
         private DebugRoomDisplay display;
         private Mansion mansion;
@@ -42,6 +42,7 @@ namespace MurderMystery {
         private FamilyFeud feud = null;
         public List<Family> families;
         public List<Npc> npcs;
+        private List<Npc> npcsWhoKnowTheTruth;
         public int[,] relationships;
         private readonly int nullRelationship = 100;
 
@@ -49,6 +50,7 @@ namespace MurderMystery {
         public int timeSteps;
         private int timeUntilGameStart = 5;
 
+        private History truth;
         public Motives motive;
         public Npc victim, murderer;
         public Weapon murderWeapon;
@@ -88,6 +90,7 @@ namespace MurderMystery {
 
             families = new List<Family>();
             npcs = new List<Npc>();
+            npcsWhoKnowTheTruth = new List<Npc>();
 
             relationships = new int[number_of_characters, number_of_characters];
             for (int i = 0; i < number_of_characters; i++) {
@@ -139,6 +142,24 @@ namespace MurderMystery {
 
         void placeWeaponAtMurderer() {
             itemManager.createItem(0, murderer.currentRoom);
+        }
+
+        //Called by conversation script when the player is locked out of speaking to an NPC. Checks that at least one NPC who knows the truth can still be spoken to, and if not distributes the truth again.
+        public void checkNPCKnowledge() {
+            Debug.Log("checking NPC knowledge");
+            bool truthAccessible = false;
+            foreach (Npc npc in npcsWhoKnowTheTruth) {
+                if (npc.lieAccusations > 0 && npc.isAlive && !npc.isMurderer) {
+                    truthAccessible = true;
+                    Debug.Log(npc.firstname + " still knows the truth");
+                }
+                
+            }
+
+            if (!truthAccessible) {
+                SpreadTruth();
+                checkNPCKnowledge();
+            }
         }
 
         void selectMotive() {
@@ -406,7 +427,7 @@ namespace MurderMystery {
             return false;
         }
 
-        bool SpreadRumour(History history, Npc npc = null) {
+        bool SpreadRumour(History history, bool truth = false, Npc npc = null) {
             bool rumourSpread = false;
             //Give unrelated NPCs memory of this event
             List<Npc> NpcCopy = new List<Npc>(npcs);
@@ -415,6 +436,7 @@ namespace MurderMystery {
             for (int i = 0; i < NpcCopy.Count; i++) {
                 float random = Random.Range(0.0f, 1.0f);
                 if (random < rumourSpreadChance) {
+                    if (truth) npcsWhoKnowTheTruth.Add(NpcCopy[i]);
                     NpcCopy[i].addHistory(history);
                     rumourSpread = true;
                 }
@@ -422,11 +444,14 @@ namespace MurderMystery {
             return rumourSpread;
         }
 
-        void SpreadTruth(History history) {
+        void SpreadTruth(History history = null) {
+            if (debugMode) Debug.Log("Spreading truth");
+            if (history == null) history = truth;
+            truth = history;
             bool truthSpread = false;
 
             while (truthSpread == false) {
-                truthSpread = SpreadRumour(history);
+                truthSpread = SpreadRumour(history, true);
             }
         }
 

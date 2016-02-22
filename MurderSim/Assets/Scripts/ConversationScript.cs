@@ -737,6 +737,7 @@ namespace MurderMystery {
             dialogType = dialog.lockedOut;
             dialogueQueue.Enqueue("If you're going to keep making these baseless accusations I see no reason to continue this conversation.");
             displayText(dialogueQueue.Dequeue());
+            pg.checkNPCKnowledge();
         }
 
         void examineBody(Npc npc) {
