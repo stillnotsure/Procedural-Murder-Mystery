@@ -9,7 +9,6 @@ namespace MurderMystery {
         public GameObject currentRoom;
         public ConversationScript conversationScript;
         public InventoryManager inventoryManager;
-        public GameObject room;
 
         //Movement Vars
         public float playerSpeed = 2.0f;

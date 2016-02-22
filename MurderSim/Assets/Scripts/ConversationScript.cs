@@ -77,6 +77,9 @@ namespace MurderMystery {
                     if (Input.GetKeyDown(KeyCode.LeftShift)){
                         if (dialogueQueue.Count > 0) {
                             displayText(dialogueQueue.Dequeue());
+                            testimonyQueue.Dequeue();
+                            Testimony testimony = testimonyQueue.Peek();
+                            if (!testimony.truth && testimony.firstTimeTold) speakingNPC.stress += speakingNPC.stressIncrements;
                         } else {
                             dialogType = dialog.greeting;
                             displayText("Can I help you with anything else?");
@@ -311,6 +314,9 @@ namespace MurderMystery {
                     responses.Add("What did you see around the time of the murder?");
                     responses.Add("Is there anyone you suspect?");
                     responses.Add("I think you're hiding something.");
+                    responses.Add("(Accuse of committing the murder)");
+                }
+                else if (dialogType != dialog.murderAccusation && dialogType == dialog.lockedOut) {
                     responses.Add("(Accuse of committing the murder)");
                 }
                 else if (dialogType == dialog.murderAccusation){
@@ -663,7 +669,7 @@ namespace MurderMystery {
 
         void AccuseOfLying() {
             dialogType = dialog.accusation;
-            Testimony testimony = testimonyQueue.Dequeue();
+            Testimony testimony = testimonyQueue.Peek();
             testimonyQueue.Clear();
             dialogueQueue.Clear();
 

@@ -219,11 +219,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11476970, guid: 092a66da12f5e5446a4366168477698e, type: 2}
       propertyPath: debugMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11476970, guid: 092a66da12f5e5446a4366168477698e, type: 2}
       propertyPath: seed
-      value: 2063542771
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11476970, guid: 092a66da12f5e5446a4366168477698e, type: 2}
       propertyPath: timeOfDeathLeeway
@@ -744,7 +744,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 175432, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_Layer
-      value: 9
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 6166274, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_IsTrigger
@@ -968,15 +968,15 @@ Prefab:
       objectReference: {fileID: 173198, guid: 7dfd3275c87d26345994b8487e7905e6, type: 2}
     - target: {fileID: 199816, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 197914, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 176902, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 176336, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_IsActive
@@ -984,31 +984,31 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 172960, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 165586, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 155640, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 116104, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 110986, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 108394, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 106934, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11464746, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: items.Array.data[0]
@@ -1140,35 +1140,35 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 138406, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_Layer
-      value: 9
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 151874, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_Layer
-      value: 9
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 127594, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_Layer
-      value: 9
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 126374, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_Layer
-      value: 9
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 118658, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_Layer
-      value: 9
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 157114, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_Layer
-      value: 9
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 136890, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_Layer
-      value: 9
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 112026, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_Layer
-      value: 9
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 178284, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_Layer
@@ -1176,7 +1176,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 127918, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
       propertyPath: m_Layer
-      value: 9
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c671e2094c1749c409c72d6164c89aad, type: 2}
@@ -1250,8 +1250,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -29.899992}
-  m_SizeDelta: {x: 0, y: 24.2000008}
+  m_AnchoredPosition: {x: 0, y: -39.4000092}
+  m_SizeDelta: {x: 0, y: 42}
   m_Pivot: {x: .5, y: .5}
 --- !u!1 &1315873840
 GameObject:
@@ -1290,7 +1290,6 @@ MonoBehaviour:
   currentRoom: {fileID: 0}
   conversationScript: {fileID: 0}
   inventoryManager: {fileID: 0}
-  room: {fileID: 0}
   playerSpeed: 2
   box: {fileID: 0}
   facing: {fileID: 0}
@@ -1344,7 +1343,9 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -1578,8 +1579,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: 0}
   m_AnchorMax: {x: .5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 86}
-  m_SizeDelta: {x: 672, y: 170}
+  m_AnchoredPosition: {x: 0, y: 98}
+  m_SizeDelta: {x: 672, y: 195}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1603111205
 MonoBehaviour:

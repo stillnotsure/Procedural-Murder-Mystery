@@ -24,7 +24,7 @@ namespace MurderMystery {
         public static Npc chosenNPC;
 
         private bool gameStarted = false;
-        private float rumourSpreadChance = 0.2f;
+        private float rumourSpreadChance = 0.4f;
         public bool debugMode;
         public bool tutorialMode;
         public int seed;
@@ -373,7 +373,6 @@ namespace MurderMystery {
         }
         
         bool createAndSpreadHistory(System.Type historyType) {
-            Debug.Log("Attempting to create a new " + historyType.ToString());
 
                 bool suitableNPC = false;
                 List<Npc> tempNpcs = new List<Npc>(npcs);
@@ -419,7 +418,6 @@ namespace MurderMystery {
                 if (random < rumourSpreadChance) {
                     NpcCopy[i].addHistory(history);
                     rumourSpread = true;
-                    if (debugMode) Debug.Log(string.Format("Spreading {0} rumour to {1}", history.GetType(), NpcCopy[i]));  
                 }
             }
             return rumourSpread;
@@ -427,13 +425,10 @@ namespace MurderMystery {
 
         void SpreadTruth(History history) {
             bool truthSpread = false;
-            Debug.Log("attempting to spread the truth");
 
             while (truthSpread == false) {
                 truthSpread = SpreadRumour(history);
-                Debug.Log("spreading the truth");
             }
-            Debug.Log("Spreaded the truth!");
         }
 
         Npc findPotentialLover(Npc seeker) {
@@ -497,7 +492,6 @@ namespace MurderMystery {
         }
 
         void setVictim(Npc npc) {
-            Debug.Log(npc.firstname +  " is victim");
             npc.isVictim = true;
             victim = npc;
         }

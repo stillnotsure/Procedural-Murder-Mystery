@@ -44,7 +44,6 @@ namespace MurderMystery {
 
                     npc.checkCollisions = false;
                     //npc.transform.Translate(new Vector3(x, y, 0));
-                    Debug.Log("X: " + x + " Y: " + y);
                     npc.transform.position = new Vector3(x,y,0);
                     npc.checkCollisions = true;
                 }
@@ -58,7 +57,6 @@ namespace MurderMystery {
         public void repositionNpc(Npc npc) {
             List<Npc> npcs = new List<Npc>();
             npcs.Add(npc);
-            Debug.Log("repositioning " + npc.firstname);
             placeNPCs(npcs);
         }
 

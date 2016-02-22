@@ -17,7 +17,6 @@ namespace MurderMystery {
         public Dictionary<Event, EventTestimony> testimonies;
         public Dictionary<EventTestimony, Event> testimoniesReversed;
 
-        public List<Testimony> fabrications;
         public int timeBuffer; //Total amount of time to push back events they're recollecting as a result of lies
 
         public NPCLog log;
@@ -42,8 +41,8 @@ namespace MurderMystery {
         private int inventoryCapacity = 4;
         private Dictionary<string, float> actionProbabilities;
 
-        public float pickupChance = 0.08f;
-        public float putdownChance = 0.08f;
+        public float pickupChance = 0.16f;
+        public float putdownChance = 0.1f;
         public float meanderChance = 0.15f;
         public float nilChance = 1;
 
@@ -316,7 +315,6 @@ namespace MurderMystery {
         }
 
         private void seekVictim() {
-            Debug.Log("seeking vicitm");
             //TODO - low - pathfinding for victim search
             List<Room> neighbouringRooms = new List<Room>(currentRoom.neighbouringRooms);
 
@@ -338,7 +336,7 @@ namespace MurderMystery {
 
                 //Create list of items and check randomly
                 List<GameObject> items = new List<GameObject>(containerScript.items);
-                while (containerScript.items.Count > 0 && foundWeapon == false) {
+                while (items.Count > 0 && foundWeapon == false) {
 
                     int i = Random.Range(0, items.Count);
                     Item itemscript = items[i].GetComponent<Item>();
@@ -493,7 +491,6 @@ namespace MurderMystery {
             item.setState(Item.ItemState.contained);
             inventory.Remove(item.gameObject);
             DropItem e = new DropItem(pg.timeSteps, this, currentRoom, item);
-            if (pg.debugMode)   Debug.Log(e.toString());
             Timeline.addEvent(new DropItem(pg.timeSteps, this, currentRoom, item));
         }
 
@@ -504,7 +501,6 @@ namespace MurderMystery {
 
                 Npc npc;
                 if (history.npc1 == this) { npc = history.npc2; } else { npc = history.npc1; }
-                Debug.Log(getFullName() + " : has a " + history.GetType() + " history with " + npc.getFullName());
             }
 
 

@@ -66,9 +66,8 @@ namespace MurderMystery {
                 SwitchRooms switchrooms = e as SwitchRooms;
 
                 if (npc.isMurderer) {
-                    Debug.Log(switchrooms.time + ", time of murder " + Timeline.murderEvent.time + ", " + switchrooms.newRoom.roomName);
+                    Debug.Log(Timeline.convertTime(switchrooms.time) + ", time of murder " + Timeline.convertTime(Timeline.murderEvent.time) + ", " + switchrooms.newRoom.roomName);
                     //If this would take them into the room the victim was murdered, and at the time of the murder, deny it
-                    //Todo : Denying being in that room means they need to be able to figure out an alternate route to where they are standing
                     if (switchrooms.newRoom == Timeline.murderEvent.room) {
                         Debug.Log("Would have been in the killroom at the time of death, lying");
                         return lieAboutSwitchRooms(npc, switchrooms);
