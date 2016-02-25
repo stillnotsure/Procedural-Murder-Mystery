@@ -11,6 +11,7 @@ namespace MurderMystery {
         GameObject timelineText;
         PlotGenerator pg;
         public AudioSource audioSource;
+        public GameObject lowerText;
 
         // Use this for initialization
         void Start() {
@@ -67,8 +68,35 @@ namespace MurderMystery {
             string s = tlTextComponent.text;
             s = Regex.Replace(s, "\\?\\?\\?", pg.murderer.getFullName());
             tlTextComponent.text = s;
+            yield return new WaitForSeconds(1f);
+            revealMotive();
         }
 
+        private void revealMotive() {
+            lowerText.SetActive(true);
+            GameObject.Find("killerNPCText").GetComponent<Text>().text = pg.murderer.getFullName();
+
+            Motives motive = pg.motive;
+            string motiveString = "Who ";
+
+            if (motive == Motives.inheritance) {
+                motiveString += "murdered their sibling for the inheritance money";
+            } 
+            else if (motive == Motives.jealousLove) {
+                motiveString += "murdered their rival in love";
+            }
+            else if (motive == Motives.loverRevenge) {
+                motiveString += "murdered the lover they couldn't have";
+            }
+            else if (motive == Motives.revenge) {
+                motiveString += "murdered their longtime enemy";
+            }
+
+            GameObject.Find("motiveText").GetComponent<Text>().text = motiveString;
+           
+        }
 
     }
+
+    
 }
