@@ -49,7 +49,8 @@ namespace MurderMystery {
 
         public bool hasWeapon = false;
         private bool hasMurderWeapon = false;
-    
+
+        [System.NonSerialized]
         public Room currentRoom;
         private Room lastRoom;
 
@@ -85,14 +86,6 @@ namespace MurderMystery {
                 act();
         }
 
-        void OnCollisionEnter2D(Collision2D collider) {
-            
-            if (collider.gameObject.name != "Player") {
-                if (checkCollisions) boardManager.repositionNpc(this);
-            }
-            
-        }
-
         public void checkPosition() {
             string targetRoomName = currentRoom.roomName;
             GameObject targetRoom = GameObject.Find(targetRoomName);
@@ -111,6 +104,7 @@ namespace MurderMystery {
         }
 
         public void act() {
+            Debug.Log(pg.npcs.IndexOf(this) + ": acting");
             // pg.timeSteps++;
             if (isAlive) {
                 //If Murderer and not finished with villanous acts

@@ -72,14 +72,6 @@ namespace MurderMystery {
         [ContextMenu("Reset")]
         void Start() {  
 
-            if (seed != 0) {
-                Random.seed = seed;
-            } else {
-                seed = (int)System.DateTime.Now.Ticks;
-                Random.seed = seed;
-            }
-
-            Debug.Log(Random.seed);
             Ceilings.findCeilings();
             npcHolder = new GameObject("NPCS").transform;
             npcHolder.gameObject.AddComponent<DontDestroyOnLoad>();
