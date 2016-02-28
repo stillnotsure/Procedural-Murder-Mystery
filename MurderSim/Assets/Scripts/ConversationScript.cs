@@ -353,6 +353,7 @@ namespace MurderMystery {
         void selectMurdererAndGoToEnding() {
             PlotGenerator.chosenNPC = speakingNPC;
             speakingNPC.gameObject.AddComponent<DontDestroyOnLoad>();
+            setStateNone();
             Application.LoadLevel("Recap");
         }
 

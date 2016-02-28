@@ -23,10 +23,9 @@ namespace MurderMystery {
 
         public static Npc chosenNPC;
 
-        private bool gameStarted = false;
+        public bool gameStarted = false;
         private float rumourSpreadChance = 0.4f;
         public bool debugMode;
-        public int seed;
 
         //References
 
@@ -70,8 +69,8 @@ namespace MurderMystery {
         }
 
         [ContextMenu("Reset")]
-        void Start() {  
-
+        void Start() {
+            Seed.setSeed();
             Ceilings.findCeilings();
             npcHolder = new GameObject("NPCS").transform;
             npcHolder.gameObject.AddComponent<DontDestroyOnLoad>();
@@ -119,8 +118,11 @@ namespace MurderMystery {
 
         void beginGame() {
             gameStarted = true;
+            GameObject.Find("Clock").GetComponent<Clock>().setClock();
             gameObject.GetComponent<BoardManager>().placeNPCs();
             gameObject.GetComponent<ItemManager>().placeItemsOnBoard();
+            GameObject.Find("Player").GetComponent<playerControl>().LightRoom();
+
         }
 
 

@@ -26,7 +26,13 @@ namespace MurderMystery {
 
         // Update is called once per frame
         void Update() {
+            if (Input.GetKey("r")){
+                Destroy(GameObject.Find("GameManager"));
+                Destroy(GameObject.Find("NPCS"));
 
+                Seed.seed = 0;
+                Application.LoadLevel("Menu");
+            }
         }
 
         IEnumerator RevealEvent() {

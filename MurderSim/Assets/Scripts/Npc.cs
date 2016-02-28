@@ -104,7 +104,6 @@ namespace MurderMystery {
         }
 
         public void act() {
-            Debug.Log(pg.npcs.IndexOf(this) + ": acting");
             // pg.timeSteps++;
             if (isAlive) {
                 //If Murderer and not finished with villanous acts

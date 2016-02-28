@@ -9,6 +9,7 @@ namespace MurderMystery {
         public GameObject currentRoom;
         public ConversationScript conversationScript;
         public InventoryManager inventoryManager;
+        private PlotGenerator pg;
 
         //Movement Vars
         public float playerSpeed = 2.0f;
@@ -21,6 +22,7 @@ namespace MurderMystery {
         void Start() {
 
             //references
+            pg = GameObject.Find("GameManager").GetComponent<PlotGenerator>();
             animation = GetComponent<PlayerAnimation>();
             conversationScript = GameObject.Find("GameManager").GetComponent<ConversationScript>();
             inventoryManager = GameObject.Find("GameManager").GetComponent<InventoryManager>();
@@ -33,13 +35,20 @@ namespace MurderMystery {
         }
 
         void FixedUpdate() {
-            GetComponent<SpriteRenderer>().sortingOrder = Mathf.RoundToInt(transform.position.y * 100f) * -1;
-            if (!Ceilings.roomLit) Ceilings.makeRoomVisible(currentRoom);
-            checkCollisions();
-            if (conversationScript.state == conversationState.none && inventoryManager.state == inventoryState.none)
-                Move();
-            else
-                animation.stopMove();
+            if (pg.gameStarted) {
+                GetComponent<SpriteRenderer>().sortingOrder = Mathf.RoundToInt(transform.position.y * 100f) * -1;
+                if (!Ceilings.roomLit) Ceilings.makeRoomVisible(currentRoom);
+                checkCollisions();
+                if (conversationScript.state == conversationState.none && inventoryManager.state == inventoryState.none)
+                    Move();
+                else
+                    animation.stopMove();
+            }
+            
+        }
+
+        public void LightRoom() {
+            Ceilings.makeRoomVisible(currentRoom);
         }
 
         void Move() {

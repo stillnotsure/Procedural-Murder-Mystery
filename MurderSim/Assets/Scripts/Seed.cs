@@ -1,17 +1,33 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Seed : MonoBehaviour {
+namespace MurderMystery {
+    public static class Seed {
 
-    public float seed;
+        public static int seed;
 
-	// Use this for initialization
-	void Start () {
-	    
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+        public static void setSeed() {
+            if (seed == 0) {
+                Debug.Log("Creating random seed");
+                Random.seed = (int)System.DateTime.Now.Ticks;
+            }
+            else {
+                Random.seed = seed;
+            }
+
+            seed = Random.seed;
+            Debug.Log("Seed : " + seed);
+        }
+
+        public static void inputField(string val) {
+            if (val != "") {
+                seed = int.Parse(val);
+                Debug.Log(seed);
+            }
+            else {
+                seed = 0;
+            }
+        }
+    }
+
 }

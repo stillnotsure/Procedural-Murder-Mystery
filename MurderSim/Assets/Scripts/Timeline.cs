@@ -75,6 +75,10 @@ namespace MurderMystery {
             return String.Format("{0:t}", startTime.AddMinutes(timeStep * timeIncrements));
         }
 
+        public static DateTime convertTimeDateTime(int timeStep) {
+            return startTime.AddMinutes(timeStep * timeIncrements);
+        }
+
     }
 
     public interface Event {
