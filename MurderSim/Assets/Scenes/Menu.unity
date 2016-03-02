@@ -767,8 +767,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 40
+    m_Font: {fileID: 12800000, guid: 8eed26622519dff4cad8a905f9dc09d9, type: 3}
+    m_FontSize: 92
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -799,8 +799,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 163}
-  m_SizeDelta: {x: 523.950012, y: 67}
+  m_AnchoredPosition: {x: 0, y: 127}
+  m_SizeDelta: {x: 561, y: 138}
   m_Pivot: {x: .5, y: .5}
 --- !u!1 &1900635335
 GameObject:
