@@ -65,7 +65,7 @@ namespace MurderMystery {
             if (e is SwitchRooms) {
                 SwitchRooms switchrooms = e as SwitchRooms;
 
-                if (npc.isMurderer) {     
+                if (npc.isMurderer || npc.paranoid) {     
                     //If this would take them into the room the victim was murdered, and at the time of the murder, deny it
                     if (switchrooms.newRoom == Timeline.murderEvent.room && (switchrooms.time > Timeline.murderEvent.time - 2 && switchrooms.time < Timeline.murderEvent.time + 2)) {
                         if (pg.debugMode) Debug.Log(Timeline.convertTime(switchrooms.time) + ", time of murder " + Timeline.convertTime(Timeline.murderEvent.time) + ", " + switchrooms.newRoom.roomName);

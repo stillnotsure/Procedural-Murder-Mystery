@@ -340,12 +340,10 @@ namespace MurderMystery {
         void createRedHerrings() {
             int redHerrings = 0;
             int attempts = 0;
-            int requiredRedHerrings = 0;
+            int requiredRedHerrings = 2;
 
             float r = Random.Range(0.0f, 1.0f);
-            if (r > 0 && r <= 0.5) requiredRedHerrings = 1;
-            else if (r > 0.5 && r < 0.8) requiredRedHerrings = 2;
-            else if (r > 0.8 && r <= 1.0) requiredRedHerrings = 3;
+            if (r > 0.8 && r <= 1.0) requiredRedHerrings = 3;
 
             while (redHerrings < requiredRedHerrings && attempts < 100) {
                 int random = Random.Range(0, 5);
@@ -430,7 +428,7 @@ namespace MurderMystery {
             bool rumourSpread = false;
             //Give unrelated NPCs memory of this event
             List<Npc> NpcCopy = new List<Npc>(npcs);
-            NpcCopy.Remove(victim); if (npc!=null) NpcCopy.Remove(npc);
+            NpcCopy.Remove(victim); NpcCopy.Remove(murderer); if (npc!=null) NpcCopy.Remove(npc);
 
             for (int i = 0; i < NpcCopy.Count; i++) {
                 float random = Random.Range(0.0f, 1.0f);
@@ -532,6 +530,22 @@ namespace MurderMystery {
                         relationships[i, i] = nullRelationship;
                     }
                     else if (relationships[i, x] == nullRelationship) {
+                        if (npcs[i].family != null && npcs[x].family != null) {
+                            if (npcs[i].family == npcs[x].family) {
+                                float r = Random.Range(0f, 1f);
+
+                                //0.2f chance for families to have random relationships
+                                if (r <= 0.2f) {
+                                    relationships[i, x] = randomRelationshipValue(-3, 3, 3);
+                                    relationships[x, i] = randomRelationshipValue(-3, 3, 3);
+                                }
+                                //Otherwise they love eachother
+                                else {
+                                    relationships[i, x] = 3;
+                                    relationships[x, i] = 3;
+                                }
+                            }
+                        }
                         relationships[i, x] = randomRelationshipValue(-3, 3, 0);
                         relationships[i, x] = randomRelationshipValue(-3, 3, 0);
                     }
