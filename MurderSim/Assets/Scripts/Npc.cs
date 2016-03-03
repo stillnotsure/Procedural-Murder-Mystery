@@ -11,6 +11,14 @@ namespace MurderMystery {
         public bool checkCollisions = true;
         public BoxCollider2D boxCollider;
 
+
+        //Personality
+        public bool paranoid = false;   //Paranoid characters will be afraid to admit certain things to the player for fear that they will be accused
+        public bool kleptomaniac = false; //Kleptomaniac characters will pickup items more often than others
+        public float stress = 0;
+        public int loyaltyPoint;    //The minimum relationship value this character needs with someone to lie for them
+        public float stressIncrements = 0.3f; //How much stress increases when called out on a lie
+
         //Memories
         public List<History> histories; //Contains all the histories they know about, or are involved in
         public SuspectTestimony[] chosenSuspects; //Contains up to 2 suspects, the first of which is the one told to the detective
@@ -24,11 +32,8 @@ namespace MurderMystery {
         public string firstname, surname;
         public Gender gender;
         public float audioPitch;
-        public int loyaltyPoint;
-
+  
         public int lieAccusations = 3;
-        public float stress = 0;
-        public float stressIncrements = 0.3f; //How much stress increases when called out on a lie
 
         public bool nameKnown = false;
         public bool isMurderer = false;
@@ -39,14 +44,13 @@ namespace MurderMystery {
 
         public List<GameObject> inventory;
         private int inventoryCapacity = 4;
-        private Dictionary<string, float> actionProbabilities;
 
+        private Dictionary<string, float> actionProbabilities;
         public float pickupChance = 0.16f;
         public float putdownChance = 0.1f;
         public float meanderChance = 0.15f;
         public float nilChance = 1;
-
-
+        
         public bool hasWeapon = false;
         private bool hasMurderWeapon = false;
 
@@ -70,12 +74,8 @@ namespace MurderMystery {
             testimonies = new Dictionary<Event, EventTestimony>();
             testimoniesReversed = new Dictionary<EventTestimony, Event>();
             getAudioPitch();
-            stress = Random.Range(0f, 0.5f);
-            loyaltyPoint = Random.Range(2, 3);
-            nilChance = 1 - (pickupChance + putdownChance + meanderChance);
 
-            actionProbabilities = new Dictionary<string, float>();
-            actionProbabilities.Add("Pickup", pickupChance); actionProbabilities.Add("PutDown", putdownChance); actionProbabilities.Add("Meander", meanderChance); actionProbabilities.Add("nil", nilChance);
+            generatePersonality();
         }
 
         void Update() {
@@ -84,6 +84,25 @@ namespace MurderMystery {
             //Will wait with the body
             if ((!pg.weaponHidden || !pg.bodyFound) && !foundBody)
                 act();
+        }
+
+        private void generatePersonality() {
+            actionProbabilities = new Dictionary<string, float>();
+            float f = Random.Range(0f, 1f);
+            if (f <= pg.paranoidChance) paranoid = true;
+
+            f = Random.Range(0f, 1f);
+            if (f <= pg.kleptoChance) kleptomaniac = true;
+
+            meanderChance = Random.Range(pg.minMeanderChance, pg.maxMeanderChance);
+
+            if (kleptomaniac) {
+                pickupChance = 0.4f;
+                putdownChance = 0.05f;
+            }
+
+            nilChance = 1 - (pickupChance + putdownChance + meanderChance);
+            actionProbabilities.Add("Pickup", pickupChance); actionProbabilities.Add("PutDown", putdownChance); actionProbabilities.Add("Meander", meanderChance); actionProbabilities.Add("nil", nilChance);
         }
 
         public void checkPosition() {

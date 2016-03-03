@@ -65,18 +65,17 @@ namespace MurderMystery {
             if (e is SwitchRooms) {
                 SwitchRooms switchrooms = e as SwitchRooms;
 
-                if (npc.isMurderer) {
-                    Debug.Log(Timeline.convertTime(switchrooms.time) + ", time of murder " + Timeline.convertTime(Timeline.murderEvent.time) + ", " + switchrooms.newRoom.roomName);
+                if (npc.isMurderer) {     
                     //If this would take them into the room the victim was murdered, and at the time of the murder, deny it
-                    if (switchrooms.newRoom == Timeline.murderEvent.room) {
-                        Debug.Log("Would have been in the killroom at the time of death, lying");
+                    if (switchrooms.newRoom == Timeline.murderEvent.room && (switchrooms.time > Timeline.murderEvent.time - 2 && switchrooms.time < Timeline.murderEvent.time + 2)) {
+                        if (pg.debugMode) Debug.Log(Timeline.convertTime(switchrooms.time) + ", time of murder " + Timeline.convertTime(Timeline.murderEvent.time) + ", " + switchrooms.newRoom.roomName);
                         return lieAboutSwitchRooms(npc, switchrooms);
                     }
                 }
 
                 if (npc.timeBuffer > 0) {
-                    Debug.Log("Buffering the time out");
                     SwitchRooms bufferedEvent = new SwitchRooms(e.time + npc.timeBuffer, npc, switchrooms.origRoom, switchrooms.newRoom);
+                    Debug.Log("Buffering the time out for " + bufferedEvent.newRoom.roomName);
                     return new EventTestimony(bufferedEvent, npc, false, false);
                 }
             }
@@ -125,14 +124,16 @@ namespace MurderMystery {
             Room oldRoom = switchrooms.origRoom;
             Room newRoom = switchrooms.newRoom;
 
-            //Todo - Pathfinding, so that they know how to figure out different routes to the room they're in now
-            //Gonna be impossibly difficult...
+            //change the time and get the NPC to add the difference in truthTime and lieTime to all further switchroom testimonies
 
-            //If no alternate route, change the time and get the NPC to add the difference in truthTime and lieTime to all further switchroom testimonies
-            i += Random.Range(1, 10);
+            /*
+            i += Random.Range(1, 3);
             npc.timeBuffer += i;
+            */
 
-            SwitchRooms s = new SwitchRooms(i, npc, oldRoom, newRoom);
+            npc.timeBuffer += ( (Timeline.murderEvent.time  + pg.timeOfDeathLeeway) - switchrooms.time);
+
+            SwitchRooms s = new SwitchRooms(i + npc.timeBuffer, npc, oldRoom, newRoom);
             return new EventTestimony(s, npc, false, false);
         }
 

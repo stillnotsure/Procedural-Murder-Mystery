@@ -358,14 +358,19 @@ namespace MurderMystery {
         }
 
         void TimeOfDeath() {
-            string time1 = (Timeline.convertTime(Timeline.murderEvent.time - (pg.timeOfDeathLeeway / Timeline.timeIncrements)));
-            string time2 = (Timeline.convertTime(Timeline.murderEvent.time + (pg.timeOfDeathLeeway / Timeline.timeIncrements)));
-            displayText(String.Format("You ascertain that the murder occurred sometime between {0} and {1}", time1, time2));
+            Debug.Log(pg.timeOfDeathLeeway);
+
+            if (Timeline.preTimeOfDeath == -99 && Timeline.postTimeOfDeath == -99) {
+                Timeline.preTimeOfDeath = Timeline.murderEvent.time - UnityEngine.Random.Range(3, pg.timeOfDeathLeeway);
+                Timeline.postTimeOfDeath = Timeline.murderEvent.time + UnityEngine.Random.Range(3, pg.timeOfDeathLeeway);
+            }
+
+            displayText(String.Format("You ascertain that the murder occurred sometime between {0} and {1}", Timeline.convertTime(Timeline.preTimeOfDeath), Timeline.convertTime(Timeline.postTimeOfDeath)));
         }
 
         void NPCAlibi() {
             dialogType = dialog.alibi;
-            List<Event> events = Timeline.locationDuringTimeframe(speakingNPC, Timeline.murderEvent.time - (pg.timeOfDeathLeeway / Timeline.timeIncrements), Timeline.murderEvent.time + (pg.timeOfDeathLeeway / Timeline.timeIncrements));
+            List<Event> events = Timeline.locationDuringTimeframe(speakingNPC, Timeline.murderEvent.time - (pg.timeOfDeathLeeway), Timeline.murderEvent.time + (pg.timeOfDeathLeeway));
             if (events.Count == 0) {
                 displayText("I've been here the whole evening.");
             }
@@ -415,7 +420,7 @@ namespace MurderMystery {
         //Todo - Make ALL these events into testimonies so they can be lied about
         void NPCWitnessed(List<Event> events = null, bool tellTruth = false, bool dontDisplay = false) {
             if (!dontDisplay) dialogType = dialog.eventsWitnessed;
-            if (events == null) events = Timeline.EventsWitnessedDuringTimeframe(speakingNPC, Timeline.murderEvent.time - (pg.timeOfDeathLeeway / Timeline.timeIncrements), Timeline.murderEvent.time + (pg.timeOfDeathLeeway / Timeline.timeIncrements));
+            if (events == null) events = Timeline.EventsWitnessedDuringTimeframe(speakingNPC, Timeline.murderEvent.time - (pg.timeOfDeathLeeway), Timeline.murderEvent.time + (pg.timeOfDeathLeeway));
             if (events.Count == 0)
                 displayText("I haven't seen anything unusual");
             else {

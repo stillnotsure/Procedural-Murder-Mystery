@@ -9,6 +9,8 @@ namespace MurderMystery {
         public static DateTime startTime = Convert.ToDateTime("17:00");
         public static int timeIncrements = 5; //minutes
         public static Murder murderEvent;
+        public static int preTimeOfDeath = -99;
+        public static int postTimeOfDeath = -99;
 
         public static void addEvent(Event e) {
             events.Add(e);

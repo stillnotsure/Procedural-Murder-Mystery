@@ -45,9 +45,14 @@ namespace MurderMystery {
         public int[,] relationships;
         private readonly int nullRelationship = 100;
 
+        public float kleptoChance = 0.05f;
+        public float paranoidChance = 0.1f;
+        public float minMeanderChance = 0.07f;
+        public float maxMeanderChance = 0.3f;
+
         //Vars directly related to the murder
         public int timeSteps;
-        private int timeUntilGameStart = 5;
+        private int timeUntilGameStart = 12;
 
         private History truth;
         public Motives motive;
@@ -55,7 +60,7 @@ namespace MurderMystery {
         public Weapon murderWeapon;
         public bool bodyFound;
         public bool weaponHidden;
-        public int timeOfDeathLeeway = 30; //The amount of time either side of the t.o.d estimate, so 30 means the estimate will be in the range of an hour
+        public int timeOfDeathLeeway; //The amount of time either side of the t.o.d estimate, so 30 means the estimate will be in the range of an hour
 
         //To be removed once a much better solution is found...
         private List<string> firstnames_m;
