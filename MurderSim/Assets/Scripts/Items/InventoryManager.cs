@@ -40,12 +40,12 @@ namespace MurderMystery {
                 setStateNone();
             }
             if (state != inventoryState.none && items.Count > 0) {
-                if (Input.GetKeyDown("a")) {
+                if (Input.GetKeyDown("a") || Input.GetKeyDown(KeyCode.LeftArrow)) {
                     deSelect();
                     selected = Math.Max(0, selected - 1);
                     highlightSelected();
                 }
-                else if (Input.GetKeyDown("d")) {
+                else if (Input.GetKeyDown("d") || Input.GetKeyDown(KeyCode.RightArrow)) {
                     deSelect();
                     selected = Math.Min(images.Count - 1, selected + 1);
                     highlightSelected();

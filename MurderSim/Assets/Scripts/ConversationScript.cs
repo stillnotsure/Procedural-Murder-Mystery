@@ -61,8 +61,8 @@ namespace MurderMystery {
                 setStateNone();
             }
 
-            if (state == conversationState.npcSpeaking) {
-                if (Input.GetKeyDown(KeyCode.Space)) {
+            if (state == conversationState.npcSpeaking && dialogType != dialog.greeting) {
+                if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)) {
                     skipText();
                 }
             } else
@@ -74,7 +74,7 @@ namespace MurderMystery {
                     if (Input.GetKeyDown(KeyCode.F)) {
                         AccuseOfLying();
                     }
-                    if (Input.GetKeyDown(KeyCode.LeftShift)){
+                    if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) {
                         if (dialogueQueue.Count > 0) {
                             displayText(dialogueQueue.Dequeue());
                             testimonyQueue.Dequeue();
@@ -89,11 +89,11 @@ namespace MurderMystery {
                     }
                 } else if (dialogType == dialog.suspect || dialogType == dialog.accusation || dialogType == dialog.introduction) {
                     if (dialogueQueue.Count > 0) {
-                        if (Input.GetKeyDown(KeyCode.LeftShift)) {
+                        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift) ) {
                             displayText(dialogueQueue.Dequeue());
                         }
                     } else {
-                        if (Input.GetKeyDown(KeyCode.LeftShift)) {
+                        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift) ) {
                             dialogType = dialog.greeting;
                             displayText("Can I help you with anything else?");
                             testimonyQueue.Clear();
@@ -107,12 +107,12 @@ namespace MurderMystery {
                 }
                 else if (dialogType == dialog.lockedOut) {
                     if (dialogueQueue.Count > 0) {
-                        if (Input.GetKeyDown(KeyCode.LeftShift)) {
+                        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) {
                             displayText(dialogueQueue.Dequeue());
                         }
                     }
                     else {
-                        if (Input.GetKeyDown(KeyCode.LeftShift)) {
+                        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) {
                             setStateNone();
                         }
                     }
@@ -122,13 +122,13 @@ namespace MurderMystery {
 
             //Player input is when the NPC has finished talking and the player uses the menu to respond to them
             else if (state == conversationState.playerInput) {
-                if (Input.GetKeyDown("w")) {
+                if (Input.GetKeyDown("w") || Input.GetKey(KeyCode.UpArrow)) {
                     selected = Math.Max(0, selected - 1);
                 }
-                else if (Input.GetKeyDown("s")) {
+                else if (Input.GetKeyDown("s") || Input.GetKey(KeyCode.DownArrow)) {
                     selected = Math.Min(responses.Count - 1, selected + 1);
                 }
-                if (Input.GetKeyDown(KeyCode.LeftShift)) {
+                if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) {
                     selectResponse(selected);
                 }
             }
