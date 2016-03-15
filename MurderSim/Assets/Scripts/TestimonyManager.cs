@@ -86,7 +86,7 @@ namespace MurderMystery {
 
                 //If referring to self or someone they love...
                 //Todo - Make the required relationship value be based on their loyalty/personality
-                if (e.npc == npc || pg.relationships[pg.npcs.IndexOf(npc), pg.npcs.IndexOf(e.npc)] == 3) {
+                if (e.npc == npc || pg.relationships[pg.npcs.IndexOf(npc), pg.npcs.IndexOf(e.npc)] >= npc.loyaltyPoint) {
                     //If it's the murder weapon, don't tell the detective they ever picked it up
 
                         Debug.Log("ommitting");
@@ -102,7 +102,7 @@ namespace MurderMystery {
 
                 //If referring to self or someone they love...
                 //Todo - Make the required relationship value be based on their loyalty/personality
-                if (e.npc == npc || pg.relationships[pg.npcs.IndexOf(npc), pg.npcs.IndexOf(e.npc)] == 3) {
+                if (e.npc == npc || pg.relationships[pg.npcs.IndexOf(npc), pg.npcs.IndexOf(e.npc)] >= npc.loyaltyPoint) {
                     //If it's the murder weapon, don't tell the detective they ever dropped it
                     if (item == pg.murderWeapon) {
                         return new EventTestimony(e, npc, false, true);
