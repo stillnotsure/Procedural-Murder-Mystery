@@ -691,7 +691,7 @@ namespace MurderMystery {
             }
         }
 
-        public int randomRelationshipValue(int min, int max, int mostLikely, int minWeight = 20, int maxWeight = 20) {
+        int randomRelationshipValue(int min, int max, int mostLikely, int minWeight = 20, int maxWeight = 20) {
 
             int num, weight, randomWeight;
             do {

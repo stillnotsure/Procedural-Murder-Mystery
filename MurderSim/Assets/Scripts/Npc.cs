@@ -87,8 +87,6 @@ namespace MurderMystery {
         }
 
         private void generatePersonality() {
-            loyaltyPoint = pg.randomRelationshipValue(1, 3, 3);
-
             actionProbabilities = new Dictionary<string, float>();
             float f = Random.Range(0f, 1f);
             if (f <= pg.paranoidChance) paranoid = true;
